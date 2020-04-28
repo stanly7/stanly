@@ -908,8 +908,8 @@ end
 
 if text == 'تحديث السورس 〽️' and SudoBot(msg) then 
 os.execute('rm -rf BLACK.lua')
-os.execute('wget https://raw.githubusercontent.com/BLACKTEAM/BLACK/master/BLACK.lua')
-send(msg.chat_id_, msg.id_,'🔭┇ تم تحديث البوت \n📮┇ لديك اخر اصدار سورس بلاك\n📡┇ الاصدار ← { 1.2v}')
+os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACK/master/BLACK.lua')
+send(msg.chat_id_, msg.id_,'🗂️┇ تم تحديث السورس')
 dofile('BLACK.lua')  
 end
 if text == 'الاصدار⚙️' and SudoBot(msg) then 
@@ -2150,8 +2150,8 @@ end
 return false
 end
 os.execute('rm -rf BLACK.lua')
-os.execute('wget https://raw.githubusercontent.com/BLACKTEAM/BLACK/master/BLACK.lua')
-send(msg.chat_id_, msg.id_,'??┇ تم تحديث البوت \n📮┇ لديك اخر اصدار سورس بلاك\n📡┇ الاصدار ← { 1.2v}')
+os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACK/master/BLACK.lua')
+send(msg.chat_id_, msg.id_,'🗂️┇ تم تحديث السورس')
 dofile('BLACK.lua')  
 end
 
@@ -8719,7 +8719,7 @@ send(msg.chat_id_, msg.id_, '〽️┇ تم استعادة الاوامر الق
 end
 if text == 'تغير امر الاوامر' and SudoBot(msg) then
 send(msg.chat_id_, msg.id_, '〽️┇ الان يمكنك ارسال الكليشه الاوامر')
-datahso:set(bot_id..'help'..msg.sender_user_id_,'true')
+datahso:set(bot_id..'help7'..msg.sender_user_id_,'true')
 return false 
 end
 
@@ -8751,22 +8751,21 @@ send(msg.chat_id_, msg.id_, '〽️┇ الان يمكنك ارسال الكلي
 datahso:set(bot_id..'help10'..msg.sender_user_id_,'true')
 return false 
 end
-
 if text == 'الاوامر' then
 if not Mod(msg) then
 send(msg.chat_id_, msg.id_,'⚠️┇ عذرا الاوامر هذا لا تخصك ') 
 return false
 end
+print(AddChannel(msg.sender_user_id_))
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = datahso:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'🔖┇ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌┇ اشترك هنا ['..datahso:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'👥┇ عذراً عليك الاشتراك في القناة\n📡┇قناة الاشتراك ['..datahso:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-local help_text = datahso:get(bot_id..'help_text')
 Text = [[
 📮┇ اهلا بك في اوامر البوت  
 📮┇ يحتوي البوت ع 5 اوامر 
@@ -8779,7 +8778,7 @@ Text = [[
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
-send(msg.chat_id_, msg.id_,(help_text or Text)) 
+send(msg.chat_id_, msg.id_,Text) 
 return false
 end
 ----------------------------------------------------------------------------
@@ -9317,7 +9316,7 @@ name = string.gsub(name,'ضفدع','🐸')
 name = string.gsub(name,'بومه','🦉')
 name = string.gsub(name,'نحله','🐝')
 name = string.gsub(name,'ديك','🐓')
-name = string.gsub(name,'جمل','🐫')
+name = string.gsub(name,'جمل','??')
 name = string.gsub(name,'بقره','🐄')
 name = string.gsub(name,'دولفين','🐬')
 name = string.gsub(name,'تمساح','🐊')
