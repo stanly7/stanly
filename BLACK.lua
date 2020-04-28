@@ -138,15 +138,13 @@ end
 _redis = load_redis()  
 --------------------------------------------------------------------------------------------------------------
 print([[
-
- __  __    _    ____ _____ ____  
-┇  \/  ┇  / \  / ___┇_   _┇  _ \ 
-┇ ┇\/┇ ┇ / _ \ \___ \ ┇ ┇ ┇ ┇_) ┇
-┇ ┇  ┇ ┇/ ___ \ ___) ┇┇ ┇ ┇  _ < 
-┇_┇  ┇_/_/   \_\____/ ┇_┇ ┇_┇ \_\
+ ____  _        _    ____ _  __
+| __ )| |      / \  / ___| |/ /
+|  _ \| |     / _ \| |   | ' / 
+| |_) | |___ / ___ \ |___| . \ 
+|____/|_____/_/   \_\____|_|\_\
 
 > CH › @II_II_II
-~> DEVELOPER › @VlVlVI
 ]])
 sudos = dofile("./Info.lua") 
 SUDO = tonumber(sudos.SUDO)
@@ -223,7 +221,7 @@ elseif tonumber(user_id) == tonumber(633868576) then
 var = true  
 elseif tonumber(user_id) == tonumber(907554334) then
 var = true  
-elseif tonumber(user_id) == tonumber(SUDO) then
+elseif tonumber(user_id) == tonumber(SUDO) then  
 var = true  
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
 var = true  
@@ -242,6 +240,7 @@ var = false
 end  
 return var
 end 
+
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(665877797) then  
 var = 'مطور السورس👨‍🔧'
@@ -909,8 +908,8 @@ end
 
 if text == 'تحديث السورس 〽️' and SudoBot(msg) then 
 os.execute('rm -rf BLACK.lua')
-os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/Black/master/BLACK.lua')
-send(msg.chat_id_, msg.id_,'🗂️┇ تم تحديث السورس')
+os.execute('wget https://raw.githubusercontent.com/BLACKTEAM/BLACK/master/BLACK.lua')
+send(msg.chat_id_, msg.id_,'🔭┇ تم تحديث البوت \n📮┇ لديك اخر اصدار سورس بلاك\n📡┇ الاصدار ← { 1.2v}')
 dofile('BLACK.lua')  
 end
 if text == 'الاصدار⚙️' and SudoBot(msg) then 
@@ -2151,8 +2150,8 @@ end
 return false
 end
 os.execute('rm -rf BLACK.lua')
-os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/Black/master/BLACK.lua')
-send(msg.chat_id_, msg.id_,'🗂️┇ تم تحديث السورس')
+os.execute('wget https://raw.githubusercontent.com/BLACKTEAM/BLACK/master/BLACK.lua')
+send(msg.chat_id_, msg.id_,'??┇ تم تحديث البوت \n📮┇ لديك اخر اصدار سورس بلاك\n📡┇ الاصدار ← { 1.2v}')
 dofile('BLACK.lua')  
 end
 
@@ -2214,6 +2213,7 @@ Text = [[
 
 📮┇[To talk to us](t.me/TWSBLACKBOT)
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+[@II_II_II](t.me/II_II_II)
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ]]
 send(msg.chat_id_, msg.id_,Text)
@@ -8777,7 +8777,7 @@ Text = [[
 🔖┇ م4 » اوامر التفعيل والتعطيل
 🔖┇ م5 » المطور 
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🔖┇ CH » @II_II_II
+🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,(help_text or Text)) 
 return false
@@ -8836,7 +8836,7 @@ Text = [[
 🔗 ┇قفل / فتح النكليزيه
 🔗 ┇قفل / فتح الانلاين
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🔖| CH » @II_II_II
+🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text) 
 return false
@@ -8916,7 +8916,7 @@ Text = [[
 🌀┇الاوامر المضافه
 🌀┇قائمه المنع
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-🌀┇ CH »  @II_II_II
+🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text) 
 return false
@@ -8993,10 +8993,10 @@ Text = [[
 🚸┇تغير رد المدير + اسم
 🚸┇تغير رد العضو + اسم
 🚸┇تغير رد المميز + اسم
-🚸┇تغير امر م1ل م6
+🚸┇تغير امر م1ل م5
 🚸┇تغير امر الاوامر
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🔖┇ CH »  @II_II_II
+🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text) 
 return false
@@ -9040,7 +9040,7 @@ Text = [[
 🔖| اوامر التحشيش
 🔖| صورتي
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-🔖| CH »  @II_II_II
+🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text) 
 return false
@@ -9132,11 +9132,12 @@ Text = [[
 🔖┇ تفعيل الالعاب
 🔖┇ تعطيل الالعاب
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🔖┇ CH » @II_II_II
+🔖┇ CH » [@II_II_II](t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text) 
 return false
 end
+----------------------------------------------------------------------------
 ----------------------------------------------------------------------------
 if text == 'سمايلات' or text == 'سمايل' then
 if AddChannel(msg.sender_user_id_) == false then
@@ -9657,7 +9658,6 @@ Text_Games = [[
 🎮┋ لعبه الاسرع <> الاسرع
 🎮┋ لعبة سمايل <> سمايل
 🎮┋ لعبة المختلف <> المختلف
-🎮┋ لعبة رياضيات <> رياضيات
 🎮┋ لعبة امثله <> امثله
 🎮┋ لعبة العكس <> العكس
 🎮┋ لعبة حزوره <> حزوره
