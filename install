@@ -22,7 +22,6 @@ sudo chmod +x tg
 lua BLACK.lua
 sudo chmod +x BLACK
 sudo chmod +x ./ts
-./ts
 }
 if [ "$1" = "install" ]; then
 install
@@ -35,5 +34,4 @@ sudo chmod +x tg
 lua BLACK.lua
 sudo chmod +x BLACK
 sudo chmod +x ./ts
-./ts
 fi
