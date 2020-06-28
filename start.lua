@@ -70,11 +70,11 @@ RunBLACKBOTSS:write([[
 #!/usr/bin/env bash
 cd $HOME/BLACKBOTSS
 token="]]..database:get(Server_BLACKBOTSS.."Token_BLACKBOTSS")..[["
-rm -fr BLACK.lua
-wget "https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/BLACK.lua"
+rm -fr BLACKBOTSS.lua
+wget "https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/BLACKBOTSS.lua"
 while(true) do
 rm -fr ../.telegram-cli
-./tg -s ./BLACK.lua -p PROFILE --bot=$token
+./tg -s ./BLACKBOTSS.lua -p PROFILE --bot=$token
 done
 ]])
 RunBLACKBOTSS:close()
