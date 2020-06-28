@@ -8138,7 +8138,25 @@ if text == 'حذف كليشه ستارت 🃏' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
 end
-
+if text == 'ضع كليشه الاشتراك 📧' then
+database:setex(bot_id..'textch:user',true) 
+send(msg.chat_id_, msg.id_,'🔘┇ارسل لي الكليشه الان') 
+return false
+end
+database:set(bot_id.."textch:user",text)  
+send(msg.chat_id_, msg.id_,'🔘┇تم حفظ كليشه الاشتراك') 
+database:del(bot_id..'textch:user') 
+return false
+end
+if text == '🎟 الاشتراك' then
+if database:get(bot_id..'add:ch:username') then
+local addchusername = database:get(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_, "⚙┇قناة الاشتراك الاجباري \n📡┇  ["..addchusername.."]")
+else
+send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ") 
+end
+return false  
+end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
 send(msg.chat_id_, msg.id_, "\n📮┇تم مسح قائمه العام")
