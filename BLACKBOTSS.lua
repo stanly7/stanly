@@ -8139,7 +8139,7 @@ database:del(bot_id..'Start:Bot')
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
 end
 if text == 'ضع كليشه الاشتراك 📧' then
-database:setex(bot_id..'textch:user',true) 
+database:set(bot_id..'textch:user',true) 
 send(msg.chat_id_, msg.id_,'🔘┇ارسل لي الكليشه الان') 
 return false
 end
