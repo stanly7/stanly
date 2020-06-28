@@ -1244,49 +1244,6 @@ end
 return false
 end
 
-if database:get(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
-if text and text:match("^الغاء$") then 
-sendtext(msg.chat_id_, msg.id_, "📬| تم الغاء الامر ") 
-database:del(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
-return false  end 
-database:del(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
-local username = string.match(text, "@[%a%d_]+") 
-tdcli_function ({    
-ID = "SearchPublicChat",    
-username_ = username  
-},function(arg,data) 
-if data and data.message_ and data.message_ == "USERNAME_NOT_OCCUPIED" then 
-send(msg.chat_id_, msg.id_, '📮| المعرف لا يوجد فيه قناة')
-return false  end
-if data and data.type_ and data.type_.ID and data.type_.ID == 'PrivateChatInfo' then
-send(msg.chat_id_, msg.id_, '📮| عذا لا يمكنك وضع معرف حسابات في الاشتراك ') 
-return false  end
-if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == true then
-send(msg.chat_id_, msg.id_,'📮| عذا لا يمكنك وضع معرف مجوعه في الاشتراك ') 
-return false  end
-if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
-if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
-send(msg.chat_id_, msg.id_,'📮| البوت ادمن في القناة \n📮| تم تفعيل الاشتراك الاجباري في \n📮| ايدي القناة ('..data.id_..')\n📮| معرف القناة ([@'..data.type_.channel_.username_..'])') 
-database:set(bot_id..'add:ch:id',data.id_)
-database:set(bot_id..'add:ch:username','@'..data.type_.channel_.username_)
-else
-send(msg.chat_id_, msg.id_,'📮| البوت ليس ادمن في القناة يرجى ترقيته ادمن ثم اعادة المحاوله ') 
-end
-return false  
-end
-end,nil)
-end
-if database:get(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
-if text and text:match("^الغاء$") then 
-sendtext(msg.chat_id_, msg.id_, "📬| تم الغاء الامر ") 
-database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
-return false  end 
-database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
-local texxt = string.match(text, "(.*)") 
-database:set(bot_id..'text:ch:user',texxt)
-send(msg.chat_id_, msg.id_,'📮| تم تغيير رسالة الاشتراك بنجاح ')
-end
-
 --------------------------------------------------------------------------------------------------------------
 if text and not Vips(msg) then  
 local BLACKBOTSS_Msg = database:get(bot_id.."BLACKBOTSS:Add:Filter:Rp2"..text..msg.chat_id_)   
@@ -7853,7 +7810,7 @@ local keyboard = {
 {'تحديث السورس 📥','تحديث ♻'},
 {'🎟 تغير الاشتراك','ضع كليشه الاشتراك 📧'},
 {'تعطيل الاشتراك الاجباري 🎐','🎟 الاشتراك'},
-{'تفعيل الاشتراك الاجباري'},
+{'تفعيل الاشتراك الاجباري 📥'},
 {'قائمه العام 🚷'},
 {'جلب نسخه احتياطيه 📁'},
 {'الغاء ✖'}
@@ -8098,12 +8055,12 @@ database:del(bot_id..'Start:Bot')
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
 end
 if text == '🎟 تغير الاشتراك' then
-database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+database:setex(bot_id.."add:ch:jm", true)  
 send(msg.chat_id_, msg.id_,'🔘┇ارسل لي معرف القناة الان مع @') 
 return false  
 end
 if text == 'ضع كليشه الاشتراك 📧' then
-database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+database:setex(bot_id.."textch:user", true)  
 send(msg.chat_id_, msg.id_,'🔘┇ارسل لي الكليشه الان') 
 return false  
 end
@@ -8112,13 +8069,13 @@ database:del(bot_id..'text:ch:user')
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه الاشتراك') 
 return false  
 end
-if text == "تفعيل الاشتراك الاجباري" then  
+if text == "تفعيل الاشتراك الاجباري 📥" and SudoBot(msg) then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_,"📮| الاشتراك الاجباري مفعل \n📮| على القناة » ["..addchusername.."]") 
+send(msg.chat_id_, msg.id_,"📮| الاشتراك الاجباري مفعل \n🔘| على القناة » ["..addchusername.."]")
 else
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_,"📮| اهلا عزيزي المطور \n📮| ارسل معرف قناتك ليتم تفعيل الاشتراك الاجباري") 
+send(msg.chat_id_, msg.id_,"🔖| اهلا عزيزي المطور \n📌| ارسل معرف قناتك ليتم تفعيل الاشتراك الاجباري")
 end
 return false  
 end
@@ -8136,6 +8093,48 @@ else
 send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ") 
 end
 return false  
+end
+if database:get(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if text and text:match("^الغاء$") then 
+sendtext(msg.chat_id_, msg.id_, "📬| تم الغاء الامر ") 
+database:del(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+return false  end 
+database:del(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+local username = string.match(text, "@[%a%d_]+") 
+tdcli_function ({    
+ID = "SearchPublicChat",    
+username_ = username  
+},function(arg,data) 
+if data and data.message_ and data.message_ == "USERNAME_NOT_OCCUPIED" then 
+send(msg.chat_id_, msg.id_, '📮| المعرف لا يوجد فيه قناة')
+return false  end
+if data and data.type_ and data.type_.ID and data.type_.ID == 'PrivateChatInfo' then
+send(msg.chat_id_, msg.id_, '📮| عذا لا يمكنك وضع معرف حسابات في الاشتراك ') 
+return false  end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == true then
+send(msg.chat_id_, msg.id_,'📮| عذا لا يمكنك وضع معرف مجوعه في الاشتراك ') 
+return false  end
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
+if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
+send(msg.chat_id_, msg.id_,'📮| البوت ادمن في القناة \n📮| تم تفعيل الاشتراك الاجباري في \n📮| ايدي القناة ('..data.id_..')\n📮| معرف القناة ([@'..data.type_.channel_.username_..'])') 
+database:set(bot_id..'add:ch:id',data.id_)
+database:set(bot_id..'add:ch:username','@'..data.type_.channel_.username_)
+else
+send(msg.chat_id_, msg.id_,'📮| البوت ليس ادمن في القناة يرجى ترقيته ادمن ثم اعادة المحاوله ') 
+end
+return false  
+end
+end,nil)
+end
+if database:get(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if text and text:match("^الغاء$") then 
+sendtext(msg.chat_id_, msg.id_, "📬| تم الغاء الامر ") 
+database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+return false  end 
+database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+local texxt = string.match(text, "(.*)") 
+database:set(bot_id..'text:ch:user',texxt)
+send(msg.chat_id_, msg.id_,'📮| تم تغيير رسالة الاشتراك بنجاح ')
 end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
