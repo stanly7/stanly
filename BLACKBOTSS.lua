@@ -8154,7 +8154,6 @@ local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "⚙┇قناة الاشتراك الاجباري \n📡┇  ["..addchusername.."]")
 else
 send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ") 
-end
 return false  
 end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
