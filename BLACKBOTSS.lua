@@ -7257,22 +7257,23 @@ return false
 end
 end
 
-if text and text:match("^تغير الاشتراك$") and DevBLACKBOTSS(msg) then
+
+if text == '🎟 تغير الاشتراك' then
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_, '📮| حسنآ ارسل لي معرف القناة') 
+send(msg.chat_id_, msg.id_,'🔘┇ارسل لي معرف القناة الان مع @') 
 return false  
 end
-if text and text:match("^تغير رساله الاشتراك$") and DevBLACKBOTSS(msg) then  
+if text == 'ضع كليشه الاشتراك 📧' then
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_, '📮| حسنآ ارسل لي النص الذي تريده') 
+send(msg.chat_id_, msg.id_,'🔘┇ارسل لي الكليشه الان') 
 return false  
 end
-if text == "حذف رساله الاشتراك" and DevBLACKBOTSS(msg) then  
+if text == 'حذف كليشه الاشتراك 🃏' then
 database:del(bot_id..'text:ch:user')
-send(msg.chat_id_, msg.id_, "📮| تم مسح رساله الاشتراك ") 
+send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه الاشتراك') 
 return false  
 end
-if text == "تفعيل الاشتراك الاجباري" and DevBLACKBOTSS(msg) then  
+if text == "تفعيل الاشتراك الاجباري" then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_,"📮| الاشتراك الاجباري مفعل \n📮| على القناة » ["..addchusername.."]") 
@@ -7282,18 +7283,18 @@ send(msg.chat_id_, msg.id_,"📮| اهلا عزيزي المطور \n📮| ار�
 end
 return false  
 end
-if text == "تعطيل الاشتراك الاجباري"  and DevBLACKBOTSS(msg) then  
+if text == "تعطيل الاشتراك الاجباري 🎐" then  
 database:del(bot_id..'add:ch:id')
 database:del(bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_, "📮| تم تعطيل الاشتراك الاجباري ") 
+send(msg.chat_id_, msg.id_, "🔘┇تم تعطيل الاشتراك الاجباري  ") 
 return false  
 end
-if text == "الاشتراك الاجباري" and DevBLACKBOTSS(msg) then  
+if text == '🎟 الاشتراك' then
 if database:get(bot_id..'add:ch:username') then
 local addchusername = database:get(bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_, "📮| تم تفعيل الاشتراك الاجباري \n📮| على القناة » ["..addchusername.."]") 
+send(msg.chat_id_, msg.id_, "⚙┇قناة الاشتراك الاجباري \n📡┇  ["..addchusername.."]")
 else
-send(msg.chat_id_, msg.id_, "📮| لا يوجد قناة في الاشتراك الاجباري ") 
+send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ") 
 end
 return false  
 end
@@ -8137,24 +8138,6 @@ end
 if text == 'حذف كليشه ستارت 🃏' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
-end
-if text == 'ضع كليشه الاشتراك 📧' then
-database:set(bot_id..'textch:user',true) 
-send(msg.chat_id_, msg.id_,'🔘┇ارسل لي الكليشه الان') 
-return false
-end
-database:set(bot_id.."textch:user",text)  
-send(msg.chat_id_, msg.id_,'🔘┇تم حفظ كليشه الاشتراك') 
-database:del(bot_id..'textch:user') 
-return false
-end
-if text == '🎟 الاشتراك' then
-if database:get(bot_id..'add:ch:username') then
-local addchusername = database:get(bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_, "⚙┇قناة الاشتراك الاجباري \n📡┇  ["..addchusername.."]")
-else
-send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ") 
-return false  
 end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
