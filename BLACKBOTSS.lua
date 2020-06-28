@@ -7892,6 +7892,9 @@ local keyboard = {
 {'مسح قائمه العام 📮','مسح المطورين 🚸'},
 {'حذف كليشه ستارت 🃏','ضع كليشه ستارت 📧'},
 {'تحديث السورس 📥','تحديث ♻'},
+{'🎟 تغير الاشتراك','ضع كليشه الاشتراك 📧'},
+{'تعطيل الاشتراك الاجباري 🎐','🎟 الاشتراك'},
+{'تفعيل الاشتراك الاجباري'},
 {'قائمه العام 🚷'},
 {'جلب نسخه احتياطيه 📁'},
 {'الغاء ✖'}
@@ -8134,6 +8137,55 @@ end
 if text == 'حذف كليشه ستارت 🃏' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
+end
+if text == 'ضع كليشه الاشتراك 📧' then
+database:set(bot_id..'textch:user',true) 
+send(msg.chat_id_, msg.id_,'🔘┇ارسل لي الكليشه الان') 
+return false
+end
+database:set(bot_id.."textch:user",text)  
+send(msg.chat_id_, msg.id_,'🔘┇تم حفظ كليشه الاشتراك') 
+database:del(bot_id..'textch:user') 
+return false
+end
+if text == '🎟 تغير الاشتراك' then
+database:set(bot_id..'add:ch:jm',true) 
+send(msg.chat_id_, msg.id_,'🔘┇ارسل لي معرف القناة الان مع @') 
+return false
+end
+database:set(bot_id.."add:ch:jm",text)  
+send(msg.chat_id_, msg.id_,'🔘┇تم حفظ قناة الاشتراك') 
+database:del(bot_id..'add:ch:jm') 
+return false
+end
+if text == 'حذف كليشه الاشتراك 🃏' then
+database:del(bot_id..'text:ch:user') 
+send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه الاشتراك') 
+end
+if text == '🎟 الاشتراك' then
+if database:get(bot_id..'add:ch:username') then
+local addchusername = database:get(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_, "⚙┇قناة الاشتراك الاجباري \n📡┇  ["..addchusername.."]")
+else
+send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ") 
+end
+return false  
+end
+if text == "تعطيل الاشتراك الاجباري 🎐" then  
+database:del(bot_id..'add:ch:id')
+database:del(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_, "🔘┇تم تعطيل الاشتراك الاجباري  ") 
+return false  
+end
+if text == "تفعيل الاشتراك الاجباري" then  
+if database:get(bot_id..'add:ch:id') then
+local addchusername = database:get(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_,"📮| الاشتراك الاجباري مفعل \n📮| على القناة » ["..addchusername.."]") 
+else
+database:set(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+send(msg.chat_id_, msg.id_,"📮| اهلا عزيزي المطور \n📮| ارسل معرف قناتك ليتم تفعيل الاشتراك الاجباري") 
+end
+return false  
 end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
