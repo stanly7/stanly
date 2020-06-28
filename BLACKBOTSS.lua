@@ -8069,13 +8069,13 @@ database:del(bot_id..'text:ch:user')
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه الاشتراك') 
 return false  
 end
-if text == "تفعيل الاشتراك الاجباري 📥" and SudoBot(msg) then  
+if text == 'تفعيل الاشتراك الاجباري 📥' and SudoBot(msg) then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_,"📮| الاشتراك الاجباري مفعل \n🔘| على القناة » ["..addchusername.."]")
+send(msg.chat_id_, msg.id_,'📮| الاشتراك الاجباري مفعل \n🔘| على القناة » ['..addchusername..']')
 else
-database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_,"🔖| اهلا عزيزي المطور \n📌| ارسل معرف قناتك ليتم تفعيل الاشتراك الاجباري")
+database:setex(bot_id..'add:ch:jm' .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+send(msg.chat_id_, msg.id_,'🔖| اهلا عزيزي المطور \n📌| ارسل معرف قناتك ليتم تفعيل الاشتراك الاجباري')
 end
 return false  
 end
