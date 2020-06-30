@@ -7366,7 +7366,7 @@ Text = [[
 🎖┇م4 ~⪼ لعرض اوامر المنشئين
 👤┇م5 ~⪼ لعرض اوامر المطورين
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH @II_II_II
+[📡┇CH @II_II_II](https://t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7413,7 +7413,7 @@ Text = [[
 🔐┇الكلايش
 🔐┇السيلفي
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH @II_II_II
+[📡┇CH @II_II_II](https://t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7488,7 +7488,7 @@ Text = [[
 📮┇الصلاحيات
 📮┇الرابط
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH @II_II_II
+[📡┇CH @II_II_II](https://t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7541,7 +7541,7 @@ Text = [[
 تغير رد المميز + النص
 تغير رد العضو + النص
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH @II_II_II
+[📡┇CH @II_II_II](https://t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7575,7 +7575,7 @@ Text = [[
 ➕┇اضف رسائل + العدد بالرد
 ➕┇اضف مجوهرات + العدد بالرد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH @II_II_II
+[📡┇CH @II_II_II](https://t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7621,7 +7621,7 @@ Text = [[
 ➕┇اذاعه بالتثبيت 
 ➕┇الاحصائيات 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📡┇CH @II_II_II
+[📡┇CH @II_II_II](https://t.me/II_II_II)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
