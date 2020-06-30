@@ -5162,39 +5162,6 @@ send(msg.chat_id_, msg.id_,"\n🔖┇تم تنزيل الشخص من الرتب 
 else
 send(msg.chat_id_, msg.id_,"\n🚸┇ليس لديه رتب حتى استطيع تنزيله \n")
 end
-if text and text:match("^تنزيل الكل @(.*)$") and Owner(msg) then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'👥┇ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌┇ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-function Function_BLACKBOTSS(extra, result, success)
-if tonumber(SUDO) == tonumber(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"💢┇ لا تستطيع تنزيل المطور الاساسي")
-return false 
-end
-if database:sismember(bot_id.."BLACKBOTSS:Sudo:User",result.sender_user_id_) then
-dev = "المطور ،" else dev = "" end
-if database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, result.sender_user_id_) then
-crr = "منشئ اساسي ،" else crr = "" end
-if database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, result.sender_user_id_) then
-cr = "منشئ ،" else cr = "" end
-if database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_, result.sender_user_id_) then
-own = "مدير ،" else own = "" end
-if database:sismember(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_, result.sender_user_id_) then
-mod = "ادمن ،" else mod = "" end
-if database:sismember(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_, result.sender_user_id_) then
-vip = "مميز ،" else vip = ""
-end
-if Rank_Checking(result.sender_user_id_,msg.chat_id_) ~= false then
-send(msg.chat_id_, msg.id_,"\n🔖┇تم تنزيل الشخص من الرتب التاليه \n📥┇ { "..dev..""..crr..""..cr..""..own..""..mod..""..vip.." } \n")
-else
-send(msg.chat_id_, msg.id_,"\n🚸┇ليس لديه رتب حتى استطيع تنزيله \n")
-end
 if tonumber(Id_Sudo) == tonumber(msg.sender_user_id_) then
 database:srem(bot_id.."BLACKBOTSS:Sudo:User", result.sender_user_id_)
 database:srem(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_,result.sender_user_id_)
