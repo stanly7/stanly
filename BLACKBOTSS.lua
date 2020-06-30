@@ -4699,7 +4699,7 @@ send(msg.chat_id_, msg.id_,"🔖┇ تم تغير رد العضو الى » "..T
 end
 
 
-if text == ("مسح ردود المدير") and Owner(msg) then
+if text == ("مسح ردود المدير") and BasicConstructor(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Manager"..msg.chat_id_.."")
 for k,v in pairs(list) do
 database:del(bot_id.."BLACKBOTSS:Add:Rd:Manager:Gif"..v..msg.chat_id_)   
