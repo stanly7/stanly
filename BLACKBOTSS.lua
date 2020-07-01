@@ -416,8 +416,8 @@ for BLACKBOTSS in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = BLACKBOTSS
 end
 local NameUser = "🗣┇بواسطه ~⪼ ["..data.first_name_.."](T.me/"..UserName..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
-local NameUseradd = "🎫┇الاسم ~⪼ ["..data.first_name_.."](T.me/"..UserName..")
 local NameUserr = "🗣┇العضو ~ ["..data.first_name_.."](T.me/"..UserName..")"
+local NameUserrr = "🎫┇الاسم ~⪼ ["..data.first_name_.."](T.me/"..UserName..")"
 if status == "lock" then
 send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية ~⪼ المسح\n")
 return false
@@ -443,8 +443,8 @@ send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
 end
 if status == "reply_Add" then
-send(msg.chat_id_, msg.id_,NameUseradd.."\n"..text)
-return false 
+send(msg.chat_id_, msg.id_,NameUserrr.."\n"..text)
+return false
 end
 else
 send(msg.chat_id_, msg.id_,"👤┇ الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
@@ -7637,7 +7637,7 @@ tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)
 if database:sismember(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'📮┇المجموعه مفعله سابقا ')
 else
-Reply_Status(msg,result.id_,'reply_Add','☑┇تم تفعيل المجموعه - '..chat.title_..'')
+Reply_Status(msg,result.id_,'reply_Add','☑┇تم تفعيل المجموعه ~ '..chat.title_..'')
 database:sadd(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
