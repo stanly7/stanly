@@ -6167,15 +6167,6 @@ send(msg.chat_id_, msg.id_,'📌┇تم تعين الايدي')
 end
 
 if text == 'ايدي' and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'BLACKBOTSS:Lock:ID:Bot'..msg.chat_id_) then
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'👥┇ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌┇ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
 if not database:sismember(bot_id..'BLACKBOTSS:Spam:Group'..msg.sender_user_id_,text) then
 database:sadd(bot_id.."BLACKBOTSS:Spam:Group"..msg.sender_user_id_,text) 
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
