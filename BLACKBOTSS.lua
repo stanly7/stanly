@@ -416,6 +416,7 @@ for BLACKBOTSS in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = BLACKBOTSS
 end
 local NameUser = "🗣┇بواسطه ~⪼ ["..data.first_name_.."](T.me/"..UserName..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+local NameUseradd = "🎫┇الاسم ~⪼ ["..data.first_name_.."](T.me/"..UserName..")
 local NameUserr = "🗣┇العضو ~ ["..data.first_name_.."](T.me/"..UserName..")"
 if status == "lock" then
 send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية ~⪼ المسح\n")
@@ -442,7 +443,7 @@ send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
 end
 if status == "reply_Add" then
-send(msg.chat_id_, msg.id_,"🎫┇الاسم ~⪼ ["..data.first_name_.."](T.me/"..UserName..")\n"..text)
+send(msg.chat_id_, msg.id_,NameUseradd.."\n"..text)
 return false 
 end
 else
