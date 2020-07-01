@@ -7636,7 +7636,7 @@ tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)
 if database:sismember(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'📮┇المجموعه مفعله سابقا ')
 else
-Reply_Status(msg,result.id_,'reply_Add','☑┇تم تفعيل المجموعه { '..chat.title_..'}')
+Reply_Status(msg,result.id_,'reply_Add','☑┇تم تفعيل المجموعه - '..chat.title_..'')
 database:sadd(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
