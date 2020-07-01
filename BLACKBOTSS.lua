@@ -415,22 +415,22 @@ local UserName = (data.username_ or "BLACKBOTSSTEAM")
 for BLACKBOTSS in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = BLACKBOTSS
 end
-local NameUser = "🗣┇بواسطه - ["..data.first_name_.."](T.me/"..UserName..")"
+local NameUser = "🗣┇بواسطه ~⪼ ["..data.first_name_.."](T.me/"..UserName..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 local NameUserr = "🗣┇العضو ~ ["..data.first_name_.."](T.me/"..UserName..")"
 if status == "lock" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية - المسح\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية ~⪼ المسح\n")
 return false
 end
 if status == "lockktm" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية - الكتم\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية ~⪼ الكتم\n")
 return false
 end
 if status == "lockkick" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية - الطرد\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية ~⪼ الطرد\n")
 return false
 end
 if status == "lockkid" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية - التقييد\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n🚫┇خاصية ~⪼ التقييد\n")
 return false
 end
 if status == "unlock" then
