@@ -132,7 +132,7 @@ end
 return var
 end 
 function Get_Rank(user_id,chat_id)
-if tonumber(user_id) == tonumber(1048831878) then  
+if tonumber(user_id) == tonumber(970017493) then  
 var = 'مطور السورس'
 elseif DevBLACKBOTSSe(user_id) == true then
 var = "المطور الاساسي"  
@@ -7313,15 +7313,15 @@ end
 return false
 end
 Text = [[
-اهلا  بك في سورس بلاك ،
+- اهلا  بك  في سورس بلاك 📂 
 
-- [قناة السورس](t.me/II_II_ii) 
+- [قناة السورس](t.me/II_II_II) 📑
 
-- [قناة الـ Php ](t.me/FF17FF) 
+- [مطور السورس](t.me/UBBBB) 📮 
 
-- [قناة البوتات ](t.me/G_G6G) 
+- [بوتات الخدميه لتابعه الى السورس](t.me/G_G6G) 📁 
 
-- [تواصل السورس](t.me/TwSBlack_bot)
+- [تواصل السورس](t.me/Nveerbot) 🔖 
 ]]
 send(msg.chat_id_, msg.id_,Text)
 end
