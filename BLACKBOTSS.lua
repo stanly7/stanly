@@ -7086,7 +7086,7 @@ t = "\n⛔️┇قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
-t = t..i.."-  `"..v.." `\n"
+t = t..i.."-  "..v.." \n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
