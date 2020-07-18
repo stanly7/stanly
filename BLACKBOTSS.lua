@@ -7081,10 +7081,9 @@ if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS
 local linkvid = text:match("^تنزيل (.*)$")
 vid = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(linkvid)..'')
 yu = JSON.decode(vid)
+i = 0
 for k,v in pairs(yu.ok.1) do
-t = v
-end
-sendVideo(msg.chat_id_,msg.id_,t,'تم التنزيل')
+sendVideo(msg.chat_id_,msg.id_,v,'تم التنزيل')
 end
 if text == "تعطيل الزخرفه" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الزخرفه')
