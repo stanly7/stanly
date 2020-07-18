@@ -7069,6 +7069,25 @@ os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/
 dofile('BLACKBOTSS.lua')  
 return false
 end
+if text == "تعطيل اليوتيوب" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل اليوتيوب')
+database:set(bot_id.."BLACKBOTSS:vhhhhh"..msg.chat_id_,"closevid")
+end
+if text == "تفعيل اليوتيوب" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل اليوتيوب')
+database:set(bot_id.."BLACKBOTSS:vhhhhh"..msg.chat_id_,"openvid")
+end
+if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS:vhhhhh"..msg.chat_id_) == "openvid" then
+local linkvid = text:match("^تنزيل (.*)$")
+vid = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(linkvid)..'')
+yu = JSON.decode(vid)
+i = 0
+for k,v in pairs(yu.ok) do
+i = i + 1
+t = v
+end
+sendVideo(msg.chat_id_,msg.id_,t,'تم التنزيل')
+end
 if text == "تعطيل الزخرفه" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الزخرفه')
 database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
