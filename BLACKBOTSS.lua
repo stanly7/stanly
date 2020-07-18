@@ -7069,7 +7069,26 @@ os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/
 dofile('BLACKBOTSS.lua')  
 return false
 end
-
+if text == "تعطيل الزخرفه" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الزخرفه')
+database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
+end
+if text == "تفعيل الزخرفه" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الزخرفه')
+database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"open")
+end
+if text and text:match("^زخرفه (.*)$") and database:get(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_) == "open" then
+local TextZhrfa = text:match("^زخرفه (.*)$")
+zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
+zx = JSON.decode(zh)
+t = "\n⛔️┇قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+i = 0
+for k,v in pairs(zx.ok) do
+i = i + 1
+t = t..i.."-  "..v.." \n"
+end
+send(msg.chat_id_, msg.id_, t)
+end
 
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
@@ -7857,7 +7876,7 @@ database:sadd(bot_id..'BaN:In:User',data.id_)
 return false  
 end 
 if text =='الغاء الحظر' then
-sendText(Id_Sudo,'👤┇الشخص » ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n💢┇ تم الغاء حظره من التواصل ',msg.id_/2097152/0.5,'md')
+sendText(Id_Sudo,'??┇الشخص » ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n💢┇ تم الغاء حظره من التواصل ',msg.id_/2097152/0.5,'md')
 database:srem(bot_id..'BaN:In:User',data.id_)  
 return false  
 end 
@@ -8144,26 +8163,6 @@ database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)
 local texxt = string.match(text, "(.*)") 
 database:set(bot_id..'text:ch:user',texxt)
 send(msg.chat_id_, msg.id_,'🔘┇تم تغيير رسالة الاشتراك ')
-end
-if text == "تعطيل الزخرفه" and Owner(msg) then
-send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الزخرفه')
-database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل الزخرفه" and Owner(msg) then
-send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الزخرفه')
-database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"open")
-end
-if text and text:match("^زخرفه (.*)$") and database:get(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_) == "open" then
-local TextZhrfa = text:match("^زخرفه (.*)$")
-zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
-zx = JSON.decode(zh)
-t = "\n⛔️┇قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
-i = 0
-for k,v in pairs(zx.ok) do
-i = i + 1
-t = t..i.."-  "..v.." \n"
-end
-send(msg.chat_id_, msg.id_, t)
 end
 if text == ("مسح قائمه العام 📮") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
