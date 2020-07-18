@@ -7085,7 +7085,7 @@ t = "\n⛔️┇قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
-t = t..i.."-  "..v.." \n"
+t = t..i.."-  `"..v.."` \n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -7876,7 +7876,7 @@ database:sadd(bot_id..'BaN:In:User',data.id_)
 return false  
 end 
 if text =='الغاء الحظر' then
-sendText(Id_Sudo,'??┇الشخص » ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n💢┇ تم الغاء حظره من التواصل ',msg.id_/2097152/0.5,'md')
+sendText(Id_Sudo,'👤┇الشخص » ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n💢┇ تم الغاء حظره من التواصل ',msg.id_/2097152/0.5,'md')
 database:srem(bot_id..'BaN:In:User',data.id_)  
 return false  
 end 
