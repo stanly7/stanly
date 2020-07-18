@@ -5632,7 +5632,7 @@ if text == "بوت" then
 Namebot = (database:get(bot_id.."BLACKBOTSS:Name:Bot") or "بلاك")
 send(msg.chat_id_, msg.id_,"اسمي القميل ["..Namebot.."] ") 
 end
-if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
+if text == "تغير اسم البوت" or text == "تغيير اسم البوت" or text == "حذف اسم البوت" then 
 if DevBLACKBOTSS(msg) then
 database:setex(bot_id.."BLACKBOTSS:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"📫┇ ارسل لي الاسم الان ")  
