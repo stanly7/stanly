@@ -7069,7 +7069,6 @@ os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/
 dofile('BLACKBOTSS.lua')  
 return false
 end
-
 if text == "تعطيل الزخرفه" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الزخرفه')
 database:set(bot_id.."moonsource:zhrf_Bots"..msg.chat_id_,"close")
@@ -7080,7 +7079,7 @@ database:set(bot_id.."moonsource:zhrf_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^زخرفه (.*)$") and database:get(bot_id.."moonsource:zhrf_Bots"..msg.chat_id_) == "open" then
 local TextZhrfa = text:match("^زخرفه (.*)$")
-zh = https.request(https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
+zh = https.request('https://bmwvip.ml/Api/Abi.php?en='..URL.escape(TextZhrfa)..'')
 zx = JSON.decode(zh)
 t = "\n⛔️┇قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 i = 0
