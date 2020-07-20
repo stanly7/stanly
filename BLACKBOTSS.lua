@@ -7091,13 +7091,13 @@ send(msg.chat_id_, msg.id_, t..'┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n🎫┇اض
 end
 if text == "تعطيل الابراج" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الابراج')
-database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
+database:set(bot_id.."BLACKBOTSS:brj_Bots"..msg.chat_id_,"close")
 end
 if text == "تفعيل الابراج" and Owner(msg) then
 send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الابراج')
-database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"open")
+database:set(bot_id.."BLACKBOTSS:brj_Bots"..msg.chat_id_,"open")
 end
-if text and text:match("^برج (.*)$") and database:get(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_) == "open" then
+if text and text:match("^برج (.*)$") and database:get(bot_id.."BLACKBOTSS:brj_Bots"..msg.chat_id_) == "open" then
 local Textbrj = text:match("^برج (.*)$")
 gk = https.request('https://forhassan.ml/Black/br.php?br='..URL.escape(Textbrj)..'')
 br = JSON.decode(gk)
@@ -7109,25 +7109,7 @@ t = t..v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == "تعطيل يوتيوب" and Owner(msg) then
-send(msg.chat_id_, msg.id_, '⌯ تم تعطيل يوتيوب')
-database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل يوتيوب" and Owner(msg) then
-send(msg.chat_id_, msg.id_,'⌯ تم تفعيل يوتيوب')
-database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"open")
-end
-if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_) == "open" then
-local Textyut = text:match("^تنزيل (.*)$")
-u = https.request('https://forhassan.ml/Black/yut.php?url='..URL.escape(Textyut)..'')
-yi = JSON.decode(u)
-i = 0
-for k,v in pairs(yi.ok) do
-i = i + 1
-t = v.."\n"
-end
-sendVideo(msg.chat_id_,msg.id_,t,'تم تنزيل الفيديو')
-end
+
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل البوت الخدمي ') 
