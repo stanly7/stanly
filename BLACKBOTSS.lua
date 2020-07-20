@@ -7109,6 +7109,25 @@ t = t..v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
+if text == "تعطيل يوتيوب" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل يوتيوب')
+database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
+end
+if text == "تفعيل يوتيوب" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل يوتيوب')
+database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"open")
+end
+if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_) == "open" then
+local Textyut = text:match("^تنزيل (.*)$")
+u = https.request('https://forhassan.ml/Black/yut.php?url='..URL.escape(Textyut)..'')
+yi = JSON.decode(u)
+i = 0
+for k,v in pairs(yi.ok) do
+i = i + 1
+t = v.."\n"
+end
+sendVideo(msg.chat_id_,msg.id_,t,'تم تنزيل الفيديو')
+end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل البوت الخدمي ') 
@@ -8435,7 +8454,7 @@ local Name_Bot = (database:get(bot_id.."BLACKBOTSS:Name:Bot") or "بلاك")
 if not database:get(bot_id.."BLACKBOTSS:Fun_Bots"..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
-local Fun = {'لوكي وزاحف من ساع زحفلي وحضرته 😒','خوش ولد و ورده مال الله 🙄','يلعب ع البنات 🙄', 'ولد زايعته الكاع 😶??','صاك يخبل ومعضل ','محلو وشواربه جنها مكناسه 😂🤷🏼‍♀️','اموت عليه 🌝','هوه غير الحب مال اني ❤️','مو خوش ولد صراحه ☹️','ادبسز وميحترم البنات  ', 'فد واحد قذر 🙄😒','ماطيقه كل ما اكمشه ريحته جنها بخاخ بف باف مال حشرات 😂🤷‍♀️','مو خوش ولد 🤓' } 
+local Fun = {'لوكي وزاحف من ساع زحفلي وحضرته 😒','خوش ولد و ورده مال الله 🙄','يلعب ع البنات 🙄', 'ولد زايعته الكاع 😶🙊','صاك يخبل ومعضل ','محلو وشواربه جنها مكناسه 😂🤷🏼‍♀️','اموت عليه 🌝','هوه غير الحب مال اني ❤️','مو خوش ولد صراحه ☹️','ادبسز وميحترم البنات  ', 'فد واحد قذر 🙄😒','ماطيقه كل ما اكمشه ريحته جنها بخاخ بف باف مال حشرات 😂🤷‍♀️','مو خوش ولد 🤓' } 
 send(msg.chat_id_, result.id_,''..Fun[math.random(#Fun)]..'')   
 end   
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunBot, nil)
