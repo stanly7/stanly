@@ -7109,7 +7109,25 @@ t = t..v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-
+if text == "تعطيل حساب العمر" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل حساب العمر')
+database:set(bot_id.."BLACKBOTSS:age_Bots"..msg.chat_id_,"close")
+end
+if text == "تفعيل حساب العمر" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل حساب العمر')
+database:set(bot_id.."BLACKBOTSS:age_Bots"..msg.chat_id_,"open")
+end
+if text and text:match("^احسب (.*)$") and database:get(bot_id.."BLACKBOTSS:age_Bots"..msg.chat_id_) == "open" then
+local Textage = text:match("^احسب (.*)$")
+ge = https.request('https://forhassan.ml/Black/age.php?age='..URL.escape(Textage)..'')
+ag = JSON.decode(ge)
+i = 0
+for k,v in pairs(ag.ok) do
+i = i + 1
+t = v.."\n"
+end
+send(msg.chat_id_, msg.id_, t)
+end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل البوت الخدمي ') 
