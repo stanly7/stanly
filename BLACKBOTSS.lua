@@ -7856,21 +7856,22 @@ if DevBLACKBOTSS(msg) then
 local Text = '⌔︙مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'الاحصائيات ⌔'},
+{'تفعيل البوت الخدمي ⌔','تعطيل البوت الخدمي ⌔'},
 {'تفعيل التواصل ⌔','تعطيل التواصل ⌔'},
 {'تنظيف الكروبات ⌔','تنظيف المشتركين ⌔'},
-{'تفعيل البوت الخدمي ⌔','تعطيل البوت الخدمي ⌔'},
 {'اذاعه خاص ⌔','المطورين ⌔','اذاعه ⌔'},
 {'اذاعه بالتوجيه ⌔','اذاعه بالتوجيه خاص ⌔'},
 {'تفعيل الاذاعه ⌔','تعطيل الاذاعه ⌔'},
+{'تفعيل المغادره ⌔','تعطيل المغادره ⌔'},
+{'قائمه العام ⌔'},
 {'مسح قائمه العام ⌔','مسح المطورين ⌔'},
 {'حذف كليشه ستارت ⌔','ضع كليشه ستارت ⌔'},
-{'- تعطيل الاشتراك الاجباري ⌔ .'},
-{'- تغير الاشتراك ⌔ .','حذف رساله الاشتراك ⌔ .'},
-{'- تفعيل الاشتراك الاجباري ⌔ .'},
-{'- الاشتراك الاجباري ⌔ .'},
-{'- تعين قناة الاشتراك ⌔ .','- تغير رساله الاشتراك ⌔ .'},
-{'تحديث السورس ⌔','تحديث ⌔'},
-{'قائمه العام ⌔'},
+{'تعطيل الاشتراك الاجباري ⌔'},
+{'تغير الاشتراك ⌔ ','حذف رساله الاشتراك ⌔'},
+{'تفعيل الاشتراك الاجباري ⌔ '},
+{'تعين قناة الاشتراك ⌔','تغير رساله الاشتراك ⌔'},
+{'الاشتراك الاجباري ⌔'},
+{'تحديث السورس ⌔','تحديث الملفات ⌔'},
 {'جلب نسخه احتياطيه ⌔'},
 {'الغاء ⌔'}
 }
@@ -8113,27 +8114,27 @@ if text == 'حذف كليشه ستارت ⌔' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'⌔︙تم حذف كليشه ستارت') 
 end
-if text and text:match("^- تغير الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
+if text and text:match("^تغير الاشتراك ⌔ $") and DevBLACKBOTSS(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي معرف القناة')
 return false  
 end
-if text and text:match("^- تغير رساله الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
+if text and text:match("^تغير رساله الاشتراك ⌔$") and DevBLACKBOTSS(msg) then  
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي النص الذي تريده')
 return false  
 end
-if text == "حذف رساله الاشتراك ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "حذف رساله الاشتراك ⌔" and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'text:ch:user')
 send(msg.chat_id_, msg.id_, "⌔︙تم مسح رساله الاشتراك ")
 return false  
 end
-if text and text:match("^- تعين قناة الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
+if text and text:match("^تعين قناة الاشتراك ⌔$") and DevBLACKBOTSS(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي معرف القناة')
 return false  
 end
-if text == "- تفعيل الاشتراك الاجباري ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "تفعيل الاشتراك الاجباري ⌔ " and DevBLACKBOTSS(msg) then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_,"⌔︙الاشتراك الاجباري مفعل \n⌔︙على القناة » ["..addchusername.."]")
@@ -8143,13 +8144,13 @@ send(msg.chat_id_, msg.id_,"⌔︙اهلا عزيزي المطور \n⌔︙ار�
 end
 return false  
 end
-if text == "- تعطيل الاشتراك الاجباري ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "تعطيل الاشتراك الاجباري ⌔" and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'add:ch:id')
 database:del(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "⌔︙تم تعطيل الاشتراك الاجباري ")
 return false  
 end
-if text == "- الاشتراك الاجباري ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "الاشتراك الاجباري ⌔" and DevBLACKBOTSS(msg) then  
 if database:get(bot_id..'add:ch:username') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "⌔︙تم تفعيل الاشتراك الاجباري \n⌔︙على القناة » ["..addchusername.."]")
@@ -8318,9 +8319,9 @@ os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/
 dofile('BLACKBOTSS.lua')  
 return false
 end
-if text == "تحديث ⌔" then
+if text == "تحديث الملفات ⌔" then
 dofile("BLACKBOTSS.lua")  
-send(msg.chat_id_, msg.id_, "⌔︙تم التحديث")
+send(msg.chat_id_, msg.id_, "⌔︙تم التحديث الملفات ")
 end
 end
 end --- Chat_Type = 'UserBot' 
