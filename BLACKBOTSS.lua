@@ -5632,7 +5632,7 @@ if text == "بوت" then
 Namebot = (database:get(bot_id.."BLACKBOTSS:Name:Bot") or "بلاك")
 send(msg.chat_id_, msg.id_,"اسمي القميل ["..Namebot.."] ") 
 end
-if text == "تغير اسم البوت ⌔" or text == "تغيير اسم البوت" or text == "تغير اسم البوت" or text == "حذف اسم البوت" then 
+if text == "تغيير اسم البوت" or text == "تغير اسم البوت" or text == "حذف اسم البوت" then 
 if DevBLACKBOTSS(msg) then
 database:setex(bot_id.."BLACKBOTSS:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
@@ -8109,6 +8109,23 @@ end
 if text == 'ضع كليشه ستارت ⌔' then
 database:set(bot_id..'Start:Bots',true) 
 send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
+return false
+end
+if text == "تغير اسم البوت ⌔" then 
+database:set(bot_id..'Set:Name:Bot',true) 
+send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
+end
+return false
+end 
+if text and database:get(bot_id..'Set:Name:Bot') then
+if text == 'الغاء ⌔' then   
+send(msg.chat_id_, msg.id_,"⌔︙تم الغاء حفظ اسم البوت") 
+database:del(bot_id..'Set:Name:Bot') 
+return false
+end
+database:set(bot_id.."Set:Name:Bot",text)  
+send(msg.chat_id_, msg.id_,'⌔︙تم حفظ اسم البوت') 
+database:del(bot_id..'Set:Name:Bot') 
 return false
 end
 if text == 'حذف كليشه ستارت ⌔' then
