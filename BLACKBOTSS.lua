@@ -7856,7 +7856,7 @@ if DevBLACKBOTSS(msg) then
 local Text = '⌔︙مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'الاحصائيات ⌔'},
-{'تغير اسم البوت ⌔'},
+{'ضع اسم البوت ⌔','حذف اسم البوت ⌔'},
 {'تفعيل التواصل ⌔','تعطيل التواصل ⌔'},
 {'تنظيف الكروبات ⌔','تنظيف المشتركين ⌔'},
 {'تفعيل البوت الخدمي ⌔','تعطيل البوت الخدمي ⌔'},
@@ -8111,23 +8111,6 @@ database:set(bot_id..'Start:Bots',true)
 send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
 return false
 end
-if text == "تغير اسم البوت ⌔" then 
-database:set(bot_id..'Set:Name:Bot',true) 
-send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
-end
-return false
-end 
-if text and database:get(bot_id..'Set:Name:Bot') then
-if text == 'الغاء ⌔' then   
-send(msg.chat_id_, msg.id_,"⌔︙تم الغاء حفظ اسم البوت") 
-database:del(bot_id..'Set:Name:Bot') 
-return false
-end
-database:set(bot_id.."Set:Name:Bot",text)  
-send(msg.chat_id_, msg.id_,'⌔︙تم حفظ اسم البوت') 
-database:del(bot_id..'Set:Name:Bot') 
-return false
-end
 if text == 'حذف كليشه ستارت ⌔' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'⌔︙تم حذف كليشه ستارت') 
@@ -8218,6 +8201,26 @@ database:del(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)
 local texxt = string.match(text, "(.*)") 
 database:set(bot_id..'text:ch:user',texxt)
 send(msg.chat_id_, msg.id_,'⌔︙تم تغيير رسالة الاشتراك ')
+end
+if text and database:get(bot_id..'Name:Bots') then
+if text == 'الغاء ⌔' then   
+send(msg.chat_id_, msg.id_,"⌔︙تم الغاء حفظ اسم البوت") 
+database:del(bot_id..'Name:Bots') 
+return false
+end
+database:set(bot_id.."Name:Bot",text)  
+send(msg.chat_id_, msg.id_,'⌔︙تم حفظ اسم البوت') 
+database:del(bot_id..'Name:Bots') 
+return false
+end
+if text == 'ضع اسم البوت ⌔' then
+database:set(bot_id..'Name:Bots',true) 
+send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
+return false
+end
+if text == 'حذف اسم البوت ⌔' then
+database:del(bot_id..'Name:Bot') 
+send(msg.chat_id_, msg.id_,'⌔︙تم حذف اسم البوت') 
 end
 if text == ("مسح قائمه العام ⌔") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
