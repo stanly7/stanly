@@ -8107,7 +8107,7 @@ database:del(bot_id..'Start:Bots')
 return false
 end
 if text == 'ضع كليشه ستارت ⌔' then
-database:set(bot_id..'BLACKBOTSS:Name:Bot',true) 
+database:set(bot_id..'Start:Bots',true) 
 send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
 return false
 end
