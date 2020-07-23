@@ -5145,20 +5145,20 @@ send(msg.chat_id_, msg.id_,"⌔︙ لا تستطيع تنزيل المطور ا�
 return false 
 end
 if database:sismember(bot_id.."BLACKBOTSS:Sudo:User",result.sender_user_id_) then
-dev = "المطور ،" else dev = "" end
+dev = "⌔︙مطور" else dev = "" end
 if database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, result.sender_user_id_) then
-crr = "منشئ اساسي ،" else crr = "" end
+crr = "⌔︙منشئ اساسي" else crr = "" end
 if database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, result.sender_user_id_) then
-cr = "منشئ ،" else cr = "" end
+cr = "⌔︙منشئ" else cr = "" end
 if database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_, result.sender_user_id_) then
-own = "مدير ،" else own = "" end
+own = "⌔︙مدير" else own = "" end
 if database:sismember(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_, result.sender_user_id_) then
-mod = "ادمن ،" else mod = "" end
+mod = "⌔︙ادمن" else mod = "" end
 if database:sismember(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_, result.sender_user_id_) then
-vip = "مميز ،" else vip = ""
+vip = "⌔︙مميز" else vip = ""
 end
 if Rank_Checking(result.sender_user_id_,msg.chat_id_) ~= false then
-send(msg.chat_id_, msg.id_,"\n⌔︙تم تنزيل الشخص من الرتب التاليه \n⌔︙ { "..dev..""..crr..""..cr..""..own..""..mod..""..vip.." } \n")
+send(msg.chat_id_, msg.id_,"⌔︙تم تنزيل الشخص من الرتب التاليه\n"..dev.."\n"..crr.."\n"..cr.."\n"..own.."\n"..mod.."\n"..vip.."\n")
 else
 send(msg.chat_id_, msg.id_,"\n⌔︙ليس لديه رتب حتى استطيع تنزيله \n")
 end
@@ -6328,7 +6328,7 @@ end
 database:set(bot_id.."Tshak:Set:Sma"..msg.chat_id_,true)
 return false
 end 
-if text == "الاسرع" or tect == "ترتيب" then
+if text == "الاسرع" or text == "ترتيب" then
 if database:get(bot_id.."Tshak:Lock:Games"..msg.chat_id_) then
 database:del(bot_id.."Tshak:Speed:Tr"..msg.chat_id_)
 KlamSpeed = {"سحور","سياره","استقبال","قنفه","ايفون","بزونه","مطبخ","كرستيانو","دجاجه","مدرسه","الوان","غرفه","ثلاجه","كهوه","سفينه","العراق","محطه","طياره","رادار","منزل","مستشفى","كهرباء","تفاحه","اخطبوط","سلمون","فرنسا","برتقاله","تفاح","مطرقه","بتيته","لهانه","شباك","باص","سمكه","ذباب","تلفاز","حاسوب","انترنيت","ساحه","جسر"};
