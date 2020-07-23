@@ -7370,15 +7370,16 @@ end
 return false
 end
 Text = [[
-- اهلا  بك  في سورس بلاك 📂 
-
-- [قناة السورس](t.me/II_II_II) 📑
-
-- [مطور السورس](t.me/UBBBB) 📮 
-
-- [بوتات الخدميه لتابعه الى السورس](t.me/G_G6G) 📁 
-
-- [تواصل السورس](t.me/Nveerbot) 🔖 
+- Black Team .
+ — — — — — — — — — 
+     
+[⌔︙ BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](t.me/II_II_II)
+     
+[⌔︙ ToolS BLacK .](2 https://t.me/joinchat/AAAAAFPp_oZNV4U3n91zRQ)
+     
+[⌔︙ 𝖳WSL Source BLacK .](t.me/TwSBlack_bot)
+     
+[⌔︙   𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖥𝗋𝗈𝗆 𝖸𝗈𝗎𝗍𝖾𝖻 .](t.me/YOOTBOT)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 end
