@@ -415,22 +415,22 @@ local UserName = (data.username_ or "BLACKBOTSSTEAM")
 for BLACKBOTSS in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = BLACKBOTSS
 end
-local NameUser = "⌔︙بواسطه ~⪼ ["..data.first_name_.."](T.me/"..UserName..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
-local NameUserr = "⌔︙الاسم ~⪼ ["..data.first_name_.."](T.me/"..UserName..")"
+local NameUser = "⌔︙بواسطه » ["..data.first_name_.."](T.me/"..UserName..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+local NameUserr = "⌔︙الاسم » ["..data.first_name_.."](T.me/"..UserName..")"
 if status == "lock" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية ~⪼ المسح\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية » المسح\n")
 return false
 end
 if status == "lockktm" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية ~⪼ الكتم\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية » الكتم\n")
 return false
 end
 if status == "lockkick" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية ~⪼ الطرد\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية » الطرد\n")
 return false
 end
 if status == "lockkid" then
-send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية ~⪼ التقييد\n")
+send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية » التقييد\n")
 return false
 end
 if status == "unlock" then
@@ -4154,7 +4154,7 @@ end
 return false
 end
 database:set(bot_id.."BLACKBOTSS:Change:Chat:Photo"..msg.chat_id_..":"..msg.sender_user_id_,true) 
-send(msg.chat_id_, msg.id_,"🎇︙ارسل لي الصوره") 
+send(msg.chat_id_, msg.id_,"⌔︙ارسل لي الصوره") 
 return false
 end
 if text == "حذف الصوره" or text == "مسح الصوره" then 
@@ -4727,7 +4727,7 @@ db = "ملصق ⌔"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Manager:Text"..v..msg.chat_id_) then
 db = "رساله ✉"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Manager:Photo"..v..msg.chat_id_) then
-db = "صوره 🎇"
+db = "صوره ⌔"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Manager:Video"..v..msg.chat_id_) then
 db = "فيديو 📹"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Manager:File"..v..msg.chat_id_) then
@@ -4935,7 +4935,7 @@ db = "ملصق ⌔"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Sudo:Text"..v) then
 db = "رساله ✉"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Sudo:Photo"..v) then
-db = "صوره 🎇"
+db = "صوره ⌔"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Sudo:Video"..v) then
 db = "فيديو 📹"
 elseif database:get(bot_id.."BLACKBOTSS:Add:Rd:Sudo:File"..v) then
@@ -6209,10 +6209,10 @@ local get_id = get_id:gsub('#game',Num_Games)
 local get_id = get_id:gsub('#photos',Total_Photp) 
 sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,get_id)
 else
-sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,'📸︙'..Description..'\n💳︙ايديك ~⪼ '..Id..'\n⌔︙معرفك ~⪼ '..UserName_User..'\n👨‍✈️︙رتبتك ~⪼ '..Status_Gps..'\n⌔︙رسائلك ~⪼ '..NumMsg..'\n⌔︙السحكات ~⪼ '..message_edit..' \n⌨️︙تتفاعلك ~⪼ '..TotalMsg..'\n💎︙ مجوهراتك ~⪼ '..Num_Games)
+sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,'⌔︙'..Description..'\n⌔︙ايديك » '..Id..'\n⌔︙معرفك » '..UserName_User..'\n⌔︙رتبتك » '..Status_Gps..'\n⌔︙رسائلك » '..NumMsg..'\n⌔︙السحكات » '..message_edit..' \n⌔︙تتفاعلك » '..TotalMsg..'\n⌔︙ مجوهراتك » '..Num_Games)
 end
 else
-send(msg.chat_id_, msg.id_,'🎇︙ليس لديك صوره \n'..'\n*💳︙ايديك ~⪼ '..Id..'\n⌔︙معرفك ~⪼* ['..UserName_User..']*\n👨‍✈️︙رتبتك ~⪼ '..Status_Gps..'\n⌔︙رسائلك ~⪼ '..NumMsg..'\n⌔︙السحكات ~⪼ '..message_edit..' \n⌨️︙تتفاعلك ~⪼ '..TotalMsg..'\n💎︙ مجوهراتك ~⪼ '..Num_Games..'*') 
+send(msg.chat_id_, msg.id_,'⌔︙ليس لديك صوره \n'..'\n*⌔︙ايديك » '..Id..'\n⌔︙معرفك »* ['..UserName_User..']*\n⌔︙رتبتك » '..Status_Gps..'\n⌔︙رسائلك » '..NumMsg..'\n⌔︙السحكات » '..message_edit..' \n⌔︙تتفاعلك » '..TotalMsg..'\n⌔︙ مجوهراتك » '..Num_Games..'*') 
 end
 else
 if get_id then
@@ -6228,7 +6228,7 @@ local get_id = get_id:gsub('#game',Num_Games)
 local get_id = get_id:gsub('#photos',Total_Photp) 
 send(msg.chat_id_, msg.id_,'['..get_id..']') 
 else
-send(msg.chat_id_, msg.id_,'\n*💳︙ايديك ~⪼ '..Id..'\n⌔︙معرفك ~⪼* ['..UserName_User..']*\n👨‍✈️︙رتبتك ~⪼ '..Status_Gps..'\n⌔︙رسائلك ~⪼ '..NumMsg..'\n⌔︙السحكات ~⪼ '..message_edit..' \n⌨️︙تتفاعلك ~⪼ '..TotalMsg..'\n💎︙ مجوهراتك ~⪼ '..Num_Games..'*') 
+send(msg.chat_id_, msg.id_,'\n*⌔︙ايديك » '..Id..'\n⌔︙معرفك »* ['..UserName_User..']*\n⌔︙رتبتك » '..Status_Gps..'\n⌔︙رسائلك » '..NumMsg..'\n⌔︙السحكات » '..message_edit..' \n⌔︙تتفاعلك » '..TotalMsg..'\n⌔︙ مجوهراتك » '..Num_Games..'*') 
 end
 end
 end,nil)   
@@ -7254,7 +7254,7 @@ else
 CeckFile = "(⌔)"
 end
 NumFile = NumFile + 1
-TextS = TextS..'*'..NumFile.."~⪼* {`"..name..'`} » '..CeckFile..'\n[-  About to the file]('..Info..')\n'
+TextS = TextS..'*'..NumFile.."»* {`"..name..'`} » '..CeckFile..'\n[-  About to the file]('..Info..')\n'
 end
 send(msg.chat_id_, msg.id_,TextS..TextE) 
 end
@@ -7409,11 +7409,11 @@ end
 Text = [[
 ⌔︙ هناك {5} اوامر لعرضها
  — — — — — — — — —
-⌔︙ م1 ~⪼ لعرض اوامر الحمايه
-⌔︙ م2 ~⪼ لعرض اوامر الادمنيه
-⌔︙ م3 ~⪼ لعرض اوامر المدراء
-⌔︙ م4 ~⪼ لعرض اوامر المنشئين
-⌔︙ م5 ~⪼ لعرض اوامر المطورين
+⌔︙ م1 » لعرض اوامر الحمايه
+⌔︙ م2 » لعرض اوامر الادمنيه
+⌔︙ م3 » لعرض اوامر المدراء
+⌔︙ م4 » لعرض اوامر المنشئين
+⌔︙ م5 » لعرض اوامر المطورين
  — — — — — — — — — 
 [⌔︙Ch Source](t.me/II_II_II)
 ]]
