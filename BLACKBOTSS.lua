@@ -5632,13 +5632,14 @@ if text == "بوت" then
 Namebot = (database:get(bot_id.."BLACKBOTSS:Name:Bot") or "بلاك")
 send(msg.chat_id_, msg.id_,"اسمي القميل ["..Namebot.."] ") 
 end
-if text == "تغيير اسم البوت" or text == "تغير اسم البوت" or text == "حذف اسم البوت" then 
+
+if text == "تغير اسم البوت" or text == "تغيير اسم البوت" or text == "حذف اسم البوت" then 
 if DevBLACKBOTSS(msg) then
 database:setex(bot_id.."BLACKBOTSS:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
 end
 return false
-end 
+end
 
 if text ==("مسح المطرودين") and Addictive(msg) then    
 local function delbans(extra, result)  
@@ -7856,7 +7857,6 @@ if DevBLACKBOTSS(msg) then
 local Text = '⌔︙مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'الاحصائيات ⌔'},
-{'ضع اسم البوت ⌔','حذف اسم البوت ⌔'},
 {'تفعيل التواصل ⌔','تعطيل التواصل ⌔'},
 {'تنظيف الكروبات ⌔','تنظيف المشتركين ⌔'},
 {'تفعيل البوت الخدمي ⌔','تعطيل البوت الخدمي ⌔'},
@@ -8202,7 +8202,6 @@ local texxt = string.match(text, "(.*)")
 database:set(bot_id..'text:ch:user',texxt)
 send(msg.chat_id_, msg.id_,'⌔︙تم تغيير رسالة الاشتراك ')
 end
-
 if text == ("مسح قائمه العام ⌔") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح قائمه العام")
