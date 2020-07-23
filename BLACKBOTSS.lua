@@ -8115,6 +8115,26 @@ if text == 'حذف كليشه ستارت ⌔' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'⌔︙تم حذف كليشه ستارت') 
 end
+if text and text:match("^ضع اسم البوت ⌔$") and DevBLACKBOTSS(msg) then  
+database:set(bot_id.."BLACKBOTSS:Name:Bot",true) 
+send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
+return false
+end
+database:set(bot_id.."BLACKBOTSS:Name:Bot",text)  
+send(msg.chat_id_, msg.id_,'⌔︙تم حفظ اسم البوت') 
+database:del(bot_id.."BLACKBOTSS:Name:Bot") 
+return false
+end
+if text == 'حذف اسم البوت ⌔' then
+database:del(bot_id.."BLACKBOTSS:Name:Bot") 
+send(msg.chat_id_, msg.id_,'⌔︙تم حذف اسم البوت') 
+end
+if text and database:get(bot_id.."BLACKBOTSS:Name:Bot") then
+if text == 'الغاء ⌔' then   
+send(msg.chat_id_, msg.id_,"⌔︙تم الغاء حفظ اسم البوت") 
+database:del(bot_id.."BLACKBOTSS:Name:Bot") 
+return false
+end
 if text and text:match("^- تغير الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي معرف القناة')
@@ -8202,26 +8222,7 @@ local texxt = string.match(text, "(.*)")
 database:set(bot_id..'text:ch:user',texxt)
 send(msg.chat_id_, msg.id_,'⌔︙تم تغيير رسالة الاشتراك ')
 end
-if text and database:get(bot_id.."BLACKBOTSS:Name:Bot") then
-if text == 'الغاء ⌔' then   
-send(msg.chat_id_, msg.id_,"⌔︙تم الغاء حفظ اسم البوت") 
-database:del(bot_id.."BLACKBOTSS:Name:Bot") 
-return false
-end
-database:set(bot_id.."BLACKBOTSS:Name:Bot",text)  
-send(msg.chat_id_, msg.id_,'⌔︙تم حفظ اسم البوت') 
-database:del(bot_id.."BLACKBOTSS:Name:Bot") 
-return false
-end
-if text == 'ضع اسم البوت ⌔' then
-database:set(bot_id.."BLACKBOTSS:Name:Bot",true) 
-send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
-return false
-end
-if text == 'حذف اسم البوت ⌔' then
-database:del(bot_id.."BLACKBOTSS:Name:Bot") 
-send(msg.chat_id_, msg.id_,'⌔︙تم حذف اسم البوت') 
-end
+
 if text == ("مسح قائمه العام ⌔") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح قائمه العام")
