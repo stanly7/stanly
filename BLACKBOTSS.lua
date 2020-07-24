@@ -4074,43 +4074,74 @@ return false
 end
 end
 if text == "تفعيل جلب الرابط" or text == 'تفعيل الرابط' then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if Addictive(msg) then  
 database:set(bot_id.."BLACKBOTSS:Link_Group"..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_,"⌔︙تم تفعيل الرابط") 
+send(msg.chat_id_, msg.id_,"⌔︙تم تفعيل جلب الرابط المجموعه") 
 return false  
 end
 end
 if text == "تعطيل جلب الرابط" or text == 'تعطيل الرابط' then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 if Addictive(msg) then  
 database:del(bot_id.."BLACKBOTSS:Link_Group"..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,"⌔︙تم تعطيل الرابط") 
+send(msg.chat_id_, msg.id_,"⌔︙تم تعطيل جلب رابط المجموعه") 
 return false end
 end
-if text == "الرابط" or text == "رابط الكروب" then 
+if text == "الرابط" then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 local status_Link = database:get(bot_id.."BLACKBOTSS:Link_Group"..msg.chat_id_)
 if not status_Link then
-send(msg.chat_id_, msg.id_,"⌔︙المدراء قاموا بتعطيل الرابط") 
+send(msg.chat_id_, msg.id_,"⌔︙جلب الرابط معطل") 
 return false  
 end
 local link = database:get(bot_id.."BLACKBOTSS:Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'⌔︙*Link group* -\n ['..link..']')                          
+send(msg.chat_id_,msg.id_,"⌔︙رابط المجموعة ~\n ["..link.."]")                          
 else                
-local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
-if linkgpp.ok == true then 
-linkgp = '⌔︙ *Link group* - \n ['..linkgpp.result..']'
-else
-linkgp = '⌔︙ لا يوجد رابط ارسل ضع رابط'
-end  
-send(msg.chat_id_, msg.id_,linkgp)              
+send(msg.chat_id_, msg.id_,"⌔︙لا يوجد رابط ارسل ضع رابط")              
 end            
 end
-if text == 'مسح الرابط' or text == 'حذف الرابط' then
-if Addictive(msg) then
-send(msg.chat_id_,msg.id_,"⌔︙ تم مسح الرابط ")           
+if text == "مسح الرابط" or text == "حذف الرابط" then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+if Addictive(msg) then     
+send(msg.chat_id_,msg.id_,"⌔︙تم مسح الرابط ")           
 database:del(bot_id.."BLACKBOTSS:Private:Group:Link"..msg.chat_id_) 
 return false      
 end
+return false  
 end
 if text and text:match("^ضع صوره") and Addictive(msg) and msg.reply_to_message_id_ == 0 or text and text:match("^وضع صوره") and Addictive(msg) and msg.reply_to_message_id_ == 0 then  
 if AddChannel(msg.sender_user_id_) == false then
