@@ -8035,7 +8035,6 @@ if text == "⌔ تغير اسم البوت" then
 database:setex(bot_id.."BLACKBOTSS:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
 return false
-end
 if text == 'تفعيل البوت الخدمي ⌔' then
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'\n⌔︙تم تفعيل البوت الخدمي ') 
