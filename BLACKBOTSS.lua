@@ -8030,27 +8030,6 @@ end
 end,nil)
 end
 return false
-
-if text and database:get(bot_id..'BLACKBOTSS:Set:Name:Bot') then
-if text == 'الغاء ⌔' then   
-send(msg.chat_id_, msg.id_,"⌔︙تم الغاء حفظ اسم البوت") 
-database:del(bot_id..'BLACKBOTSS:Set:Name:Bot') 
-return false
-end
-database:set(bot_id.."BLACKBOTSS:Set:Name:Bot",text)  
-send(msg.chat_id_, msg.id_,'⌔︙تم حفظ اسم البوت') 
-database:del(bot_id..'BLACKBOTSS:Set:Name:Bot') 
-return false
-end
-if text == 'ضع اسم البوت ⌔' then
-database:set(bot_id..'BLACKBOTSS:Set:Name:Bot',true) 
-send(msg.chat_id_, msg.id_,'⌔︙ارسل لي الكليشه الان') 
-return false
-end
-if text == 'حذف اسم البوت ⌔' then
-database:del(bot_id..'BLACKBOTSS:Set:Name:Bot') 
-send(msg.chat_id_, msg.id_,'⌔︙تم حذف اسم البوت') 
-end
 if text == 'تفعيل البوت الخدمي ⌔' then
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'\n⌔︙تم تفعيل البوت الخدمي ') 
