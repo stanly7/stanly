@@ -7856,6 +7856,7 @@ if DevBLACKBOTSS(msg) then
 local Text = '⌔︙مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'الاحصائيات ⌔'},
+{'⌔ تغير اسم البوت'},
 {'تفعيل التواصل ⌔','تعطيل التواصل ⌔'},
 {'تنظيف الكروبات ⌔','تنظيف المشتركين ⌔'},
 {'تفعيل البوت الخدمي ⌔','تعطيل البوت الخدمي ⌔'},
@@ -8028,6 +8029,11 @@ end
 end
 end,nil)
 end
+return false
+
+if text == "⌔ تغير اسم البوت" then 
+database:setex(bot_id.."BLACKBOTSS:Set:Name:Bot"..msg.sender_user_id_,300,true) 
+send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
 return false
 end
 if text == 'تفعيل البوت الخدمي ⌔' then
