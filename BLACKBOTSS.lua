@@ -7101,11 +7101,10 @@ if text and text:match("^برج (.*)$") and database:get(bot_id.."BLACKBOTSS:brj
 local Textbrj = text:match("^برج (.*)$")
 gk = https.request('https://forhassan.ml/Black/br.php?br='..URL.escape(Textbrj)..'')
 br = JSON.decode(gk)
-t = "\n⌔️︙معلومات البرج والتاريخ  \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 i = 0
 for k,v in pairs(br.ok) do
 i = i + 1
-t = t..v.."\n"
+t = v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
