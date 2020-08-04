@@ -2235,7 +2235,7 @@ if text == ("مسح المطورين") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:Sudo:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين  ")
 end
-if text == "مسح المنشئين الاساسين" and DevBot(msg) then
+if text == "مسح المنشئين الاساسين" and Basic:Hassan(msg) then
 database:del(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_)
 texts = "⌔︙ تم مسح المنشئين الاساسيين"
 send(msg.chat_id_, msg.id_, texts)
