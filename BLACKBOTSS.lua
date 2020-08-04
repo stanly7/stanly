@@ -66,6 +66,14 @@ else
 return false  
 end  
 end
+function BasicHassan(msg)
+local hash = database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..msg.chat_id_, msg.sender_user_id_) 
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) then 
+return true 
+else 
+return false 
+end 
+end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, msg.sender_user_id_) 
 if hash or DevBLACKBOTSS(msg) or DevBot(msg) then 
@@ -116,6 +124,8 @@ elseif tonumber(user_id) == tonumber(bot_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = true  
+elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..chat_id, user_id) then
+var = true
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
 var = true
 elseif database:sismember(bot_id.."BLACKBOTSS:Constructor"..chat_id, user_id) then
@@ -140,6 +150,8 @@ elseif tonumber(user_id) == tonumber(bot_id) then
 var = "البوت"
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = database:get(bot_id.."BLACKBOTSS:Sudo:Rd"..chat_id) or "المطور"  
+elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..chat_id, user_id) then
+var = database:get(bot_id.."BLACKBOTSS:BasicHassan:Rd"..chat_id) or "المالك"
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
 var = database:get(bot_id.."BLACKBOTSS:BasicConstructor:Rd"..chat_id) or "المنشئ اساسي"
 elseif database:sismember(bot_id.."BLACKBOTSS:Constructor"..chat_id, user_id) then
@@ -2644,7 +2656,7 @@ Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من المطورين")
 return false 
 end
 
-if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and BasicConstructor(msg) then  
+if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and BasicHassan(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2661,7 +2673,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي @(.*)$") and BasicConstructor(msg) then  
+if text and text:match("^رفع منشئ اساسي @(.*)$") and BasicHassan(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2687,7 +2699,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي (%d+)$") and BasicConstructor(msg) then  
+if text and text:match("^رفع منشئ اساسي (%d+)$") and BasicHassan(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2719,7 +2731,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and BasicConstructor(msg) then  
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and BasicHassan(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2742,7 +2754,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and BasicConstructor(msg) then  
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and BasicHassan(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7803,7 +7815,7 @@ return false
 end
 Reply_Status(msg,result.id_,'reply_Add','⌔︙تم تفعيل المجموعه ~ '..chat.title_..'')
 database:sadd(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_)  
-database:sadd(bot_id..'BLACKBOTSS:Basic:Constructor'..msg.chat_id_, msg.sender_user_id_)
+database:sadd(bot_id..'BLACKBOTSS:Basic:Hassan'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NumMember = data.member_count_
 local NameChat = chat.title_
