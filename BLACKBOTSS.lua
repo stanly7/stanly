@@ -6800,14 +6800,24 @@ database:del(bot_id..'BLACKBOTSS:messageUser'..msg.chat_id_..':'..msg.sender_use
 local Text = '⌔︙تم مسح جميع رسائلك '
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'سحكاتي' or text == 'تعديلاتي' then
+if text == 'سحكاتي' then
 local nued = database:get(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..':'..msg.sender_user_id_) or 1
 local Text = '⌔︙عدد سحكاتك هنا *~ '..nued..'*'
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' then
+if text == 'مسح سحكاتي' then
 database:del(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..':'..msg.sender_user_id_)
 local Text = '⌔︙تم مسح جميع سحكاتك '
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعديلاتي' then
+local edit = database:get(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..msg.sender_user_id_) or 0
+local Text = '⌔︙عدد التعديلات هنا *~ '..edit..'*'
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'مسح تعديلاتي' then
+database:del(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..':'..msg.sender_user_id_)
+local Text = '⌔︙تم مسح جميع تعديلاتك '
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'جهاتي' then
