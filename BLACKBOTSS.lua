@@ -6800,6 +6800,16 @@ database:del(bot_id..'BLACKBOTSS:messageUser'..msg.chat_id_..':'..msg.sender_use
 local Text = '⌔︙تم مسح جميع رسائلك '
 send(msg.chat_id_, msg.id_,Text) 
 end
+if text == 'رس' then
+local nued = database:get(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..':'..msg.sender_user_id_) or 1
+local Text = '⌔︙عدد رسائلك هنا *~ '..nued..'*'
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'مس' then
+database:del(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..':'..msg.sender_user_id_)
+local Text = '⌔︙تم مسح جميع سحكاتك '
+send(msg.chat_id_, msg.id_,Text) 
+end
 if text == 'سحكاتي' or text == 'تعديلاتي' then
 local edit = database:get(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..msg.sender_user_id_) or 0
 local Text = '⌔︙عدد التعديلات هنا *~ '..edit..'*'
