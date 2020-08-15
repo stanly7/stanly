@@ -8,9 +8,9 @@ chmod +x ts
 ./ts
 }
 get() {
-rm -fr BLACK.lua
+rm -fr BLACKBOTSS.lua
 rm -fr sudo.lua
-wget "https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/BLACK.lua"
+wget "https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/BLACKBOTSS.lua"
 lua start.lua
 }
 installall(){
