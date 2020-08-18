@@ -7065,11 +7065,11 @@ return false
 end
 if text == ("تحديث السورس") and DevBLACKBOTSS(msg) then  
 send(msg.chat_id_,msg.id_,'⌔︙تم التحديث')
-os.execute('rm -rf BLACK.lua')
+os.execute('rm -rf BLACKBOTSS.lua')
 os.execute('rm -rf start.lua')
-os.execute('wget https://raw.githubusercontent.com/SOURCE-BLACK/BLACK/master/BLACK.lua')
-os.execute('wget https://raw.githubusercontent.com/SOURCE-BLACK/BLACK/master/start.lua')
-dofile('BLACK.lua')  
+os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/BLACKBOTSS.lua')
+os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/start.lua')
+dofile('BLACKBOTSS.lua')  
 return false
 end
 if text == "تعطيل الزخرفه" and Owner(msg) then
