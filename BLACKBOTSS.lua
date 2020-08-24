@@ -11,7 +11,7 @@ https   = require("ssl.https")
 sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
-List_Sudos = {Id_Sudo,970017493,1048831878,665877797}
+List_Sudos = {Id_Sudo,970017493,665877797}
 print("\27[34m"..[[
 
 >> Best Source in Telegram
@@ -118,6 +118,8 @@ function CleangGroups();local z = io.open('./BLACKBOTSS');local AllGroups = z:re
 function Rank_Checking(user_id,chat_id)
 if tonumber(user_id) == tonumber(970017493) then  
 var = true  
+elseif tonumber(user_id) == tonumber(665877797) then
+var = true  
 elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
 elseif tonumber(user_id) == tonumber(bot_id) then  
@@ -142,6 +144,8 @@ end
 function Get_Rank(user_id,chat_id)
 if tonumber(user_id) == tonumber(970017493) then  
 var = 'مطور السورس'
+elseif tonumber(user_id) == tonumber(665877797) then  
+var = "حسن مؤيد"  
 elseif DevBLACKBOTSSe(user_id) == true then
 var = "المطور الاساسي"  
 elseif tonumber(user_id) == tonumber(bot_id) then  
@@ -343,7 +347,7 @@ ID="InputMessageAudio",
 audio_ = GetInputFile(audio),
 duration_ = "",
 title_ = title or "",
-performer_ = "",
+performer_ = "حسن مؤيد",
 caption_ = caption or ""
 }},func or dl_cb,nil)
 end
@@ -6685,7 +6689,7 @@ name = string.gsub(name,"🐼","👻👻👻🐼👻👻👻👻👻👻👻")
 name = string.gsub(name,"🐇","🕊🕊🕊🕊🕊🐇🕊🕊🕊🕊")
 name = string.gsub(name,"🌑","🌚🌚🌚🌚🌚🌑🌚🌚🌚")
 name = string.gsub(name,"🌚","🌑🌑🌑🌑🌑🌚🌑🌑🌑")
-name = string.gsub(name,"⭐️","🌟🌟🌟🌟🌟🌟🌟🌟⭐️🌟🌟🌟")
+name = string.gsub(name,"⭐️","🌟🌟🌟??🌟🌟🌟🌟⭐️🌟🌟🌟")
 name = string.gsub(name,"✨","💫💫💫💫💫✨💫💫💫💫")
 name = string.gsub(name,"⛈","🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨")
 name = string.gsub(name,"🌥","⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️")
@@ -7372,16 +7376,7 @@ end
 return false
 end
 Text = [[
-- Black Team .
- — — — — — — — — — 
-     
-[⌔︙ BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](t.me/II_II_II)
-     
-[⌔︙ ToolS BLacK .](https://t.me/joinchat/AAAAAFPp_oZNV4U3n91zRQ)
-     
-[⌔︙ 𝖳WSL Source BLacK .](t.me/Nveerbot)
-     
-[⌔︙   𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖥𝗋𝗈𝗆 𝖸𝗈𝗎𝗍𝖾𝖻 .](t.me/YOOTBOT)
+- ⌔︙قنـاة البـوت ← @Niiiii .
 ]]
 send(msg.chat_id_, msg.id_,Text)
 end
