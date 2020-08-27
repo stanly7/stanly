@@ -7134,6 +7134,25 @@ t = v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
+if text == "تعطيل الانستا" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الانستا')
+database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"close")
+end
+if text == "تفعيل الانستا" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الانستا')
+database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
+end
+if text and text:match("^معلومات (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
+local Textni = text:match("^معلومات (.*)$")
+innn = https.request('https://forhassan.ml/Black/insta.php?user='..URL.escape(Textni)..'')
+fff = JSON.decode(innn)
+i = 0
+for k,v in pairs(fff.ok) do
+i = i + 1
+t = "*"..v.."* \n"
+end
+send(msg.chat_id_, msg.id_, t..'')
+end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'⌔︙تم تفعيل البوت الخدمي ') 
@@ -7376,7 +7395,16 @@ end
 return false
 end
 Text = [[
-- ⌔︙قنـاة البـوت ← @Niiiii .
+*- Black Team .*
+ — — — — — — — — — 
+     
+[⌔︙ BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](http://t.me/II_II_II)
+     
+[⌔︙ ToolS BLacK .](https://t.me/joinchat/AAAAAFPp_oZNV4U3n91zRQ)
+     
+[⌔︙ 𝖳WSL Source BLacK .](http://t.me/TwSLBlackBot)
+     
+[⌔︙   𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖥𝗋𝗈𝗆 𝖸𝗈𝗎𝗍𝖾𝖻 .](http://t.me/YOOTBOT)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 end
