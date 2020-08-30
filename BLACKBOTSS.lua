@@ -127,6 +127,8 @@ var = true
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
+var = true                 
+elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..chat_id, user_id) then
 var = true
 elseif database:sismember(bot_id.."BLACKBOTSS:Constructor"..chat_id, user_id) then
 var = true  
