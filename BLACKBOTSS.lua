@@ -4808,10 +4808,10 @@ if text == "اضف رد" and Owner(msg) then
 local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
 if data.Ch_Member.infoo ~= true then
-send(msg.chat_id_,msg.id_,'👥┇ عذراً عليك الاشتراك في القناة .\n📡┇قناة الاشتراك :  [@G_G6G]  .')   
+send(msg.chat_id_,msg.id_,'👥┇ عذراً عليك الاشتراك في القناة\n📡┇قناة الاشتراك :  [@G_G6G]')   
 return false 
 end
-send(msg.chat_id_, msg.id_,"⌔︙ارسل الكلمه التري تريد اضافتها")
+send(msg.chat_id_, msg.id_,"⌔︙ارسل  التري تريد اضافتها")
 database:set(bot_id.."BLACKBOTSS:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
 end
@@ -4819,7 +4819,7 @@ if text == "حذف رد" and Owner(msg) then
 local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
 if data.Ch_Member.infoo ~= true then
-send(msg.chat_id_,msg.id_,'👥┇ عذراً عليك الاشتراك في القناة .\n📡┇قناة الاشتراك :  [@G_G6G]  .')   
+send(msg.chat_id_,msg.id_,'👥┇ عذراً عليك الاشتراك في القناة\n📡┇قناة الاشتراك :  [@G_G6G]')   
 return false 
 end
 send(msg.chat_id_, msg.id_,"⌔︙ارسل الكلمه التري تريد حذفها")
