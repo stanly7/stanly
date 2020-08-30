@@ -4811,6 +4811,7 @@ if data.Ch_Member.info ~= true then
 send(msg.chat_id_,msg.id_,'👤┇لا يمكنك استخدام البوت\n📛┇عليك الاشتراك في قناة السورس\n📤┇لتتمكن من استخدام الاوامر \n🔰┇CH ~ [@G_G6G]')   
 return false 
 end
+end
 send(msg.chat_id_, msg.id_,"⌔︙ارسل الكلمه التري تريد اضافتها")
 database:set(bot_id.."BLACKBOTSS:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
@@ -4821,6 +4822,7 @@ data = JSON.decode(url)
 if data.Ch_Member.info ~= true then
 send(msg.chat_id_,msg.id_,'👤┇لا يمكنك استخدام البوت\n📛┇عليك الاشتراك في قناة السورس\n📤┇لتتمكن من استخدام الاوامر \n🔰┇CH ~ [@G_G6G]')   
 return false 
+end
 end
 send(msg.chat_id_, msg.id_,"⌔︙ارسل الكلمه التري تريد حذفها")
 database:set(bot_id.."BLACKBOTSS:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"true2")
@@ -6509,7 +6511,7 @@ name = string.gsub(name,"ذئب","🐺")
 name = string.gsub(name,"فراشه","🦋")
 name = string.gsub(name,"عقرب","🦂")
 name = string.gsub(name,"زرافه","🦒")
-name = string.gsub(name,"قنفذ","??")
+name = string.gsub(name,"قنفذ","🦔")
 name = string.gsub(name,"تفاحه","🍎")
 name = string.gsub(name,"باذنجان","🍆")
 send(msg.chat_id_, msg.id_,"⌔︙اسرع واحد يدز معنى السمايل ~ {"..name.."}")
@@ -6684,7 +6686,7 @@ name = string.gsub(name,"🐇","🕊🕊🕊🕊🕊🐇🕊🕊🕊🕊")
 name = string.gsub(name,"🌑","🌚🌚🌚🌚🌚🌑🌚🌚🌚")
 name = string.gsub(name,"🌚","🌑🌑🌑🌑🌑🌚🌑🌑🌑")
 name = string.gsub(name,"⭐️","🌟🌟🌟??🌟🌟🌟🌟⭐️🌟🌟🌟")
-name = string.gsub(name,"✨","💫??💫💫💫✨💫💫💫💫")
+name = string.gsub(name,"✨","💫💫💫💫💫✨💫💫💫💫")
 name = string.gsub(name,"⛈","🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨")
 name = string.gsub(name,"🌥","⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️")
 name = string.gsub(name,"⛄️","☃☃☃☃☃☃⛄️☃☃☃☃")
