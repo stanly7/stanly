@@ -4807,7 +4807,7 @@ end
 if text == "اضف رد" and Owner(msg) then
 local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.info ~= true then
+if data.Ch_Member.infoo ~= true then
 send(msg.chat_id_,msg.id_,'👤┇لا يمكنك استخدام البوت\n📛┇عليك الاشتراك في قناة السورس\n📤┇لتتمكن من استخدام الاوامر \n🔰┇CH ~ [@G_G6G]')   
 return false 
 end
@@ -4819,7 +4819,7 @@ end
 if text == "حذف رد" and Owner(msg) then
 local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.info ~= true then
+if data.Ch_Member.infoo ~= true then
 send(msg.chat_id_,msg.id_,'👤┇لا يمكنك استخدام البوت\n📛┇عليك الاشتراك في قناة السورس\n📤┇لتتمكن من استخدام الاوامر \n🔰┇CH ~ [@G_G6G]')   
 return false 
 end
