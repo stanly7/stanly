@@ -4805,21 +4805,21 @@ return false
 end  
 end
 if text == "اضف رد" and Owner(msg) then
-local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..Id)
+local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.infoo ~= true then
-send(msg.chat_id_,msg.id_,'👥┇ عذراً عليك الاشتراك في القناة\n📡┇قناة الاشتراك :  [@G_G6G]')   
+if data.Ch_Member.info ~= true then
+send(msg.chat_id_,msg.id_,'👤┇لا يمكنك استخدام البوت\n📛┇عليك الاشتراك في قناة السورس\n📤┇لتتمكن من استخدام الاوامر \n🔰┇CH ~ [@G_G6G]')   
 return false 
 end
-send(msg.chat_id_, msg.id_,"⌔︙ارسل  التري تريد اضافتها")
+send(msg.chat_id_, msg.id_,"⌔︙ارسل الكلمه التري تريد اضافتها")
 database:set(bot_id.."BLACKBOTSS:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
 end
 if text == "حذف رد" and Owner(msg) then
-local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..Id)
+local url,res = http.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
-if data.Ch_Member.infoo ~= true then
-send(msg.chat_id_,msg.id_,'👥┇ عذراً عليك الاشتراك في القناة\n📡┇قناة الاشتراك :  [@G_G6G]')   
+if data.Ch_Member.info ~= true then
+send(msg.chat_id_,msg.id_,'👤┇لا يمكنك استخدام البوت\n📛┇عليك الاشتراك في قناة السورس\n📤┇لتتمكن من استخدام الاوامر \n🔰┇CH ~ [@G_G6G]')   
 return false 
 end
 send(msg.chat_id_, msg.id_,"⌔︙ارسل الكلمه التري تريد حذفها")
@@ -6197,7 +6197,7 @@ local Texting = {
 "صارلك شكد مخليه ",
 "وفالله 😔💘",
 "كشخه برب 😉💘",
-"دغيره شبي هذ ??",
+"دغيره شبي هذ 😒",
 "عمري الحلوين 💘",
 }
 local Description = Texting[math.random(#Texting)]
@@ -6509,7 +6509,7 @@ name = string.gsub(name,"ذئب","🐺")
 name = string.gsub(name,"فراشه","🦋")
 name = string.gsub(name,"عقرب","🦂")
 name = string.gsub(name,"زرافه","🦒")
-name = string.gsub(name,"قنفذ","🦔")
+name = string.gsub(name,"قنفذ","??")
 name = string.gsub(name,"تفاحه","🍎")
 name = string.gsub(name,"باذنجان","🍆")
 send(msg.chat_id_, msg.id_,"⌔︙اسرع واحد يدز معنى السمايل ~ {"..name.."}")
@@ -6684,7 +6684,7 @@ name = string.gsub(name,"🐇","🕊🕊🕊🕊🕊🐇🕊🕊🕊🕊")
 name = string.gsub(name,"🌑","🌚🌚🌚🌚🌚🌑🌚🌚🌚")
 name = string.gsub(name,"🌚","🌑🌑🌑🌑🌑🌚🌑🌑🌑")
 name = string.gsub(name,"⭐️","🌟🌟🌟??🌟🌟🌟🌟⭐️🌟🌟🌟")
-name = string.gsub(name,"✨","💫💫💫💫💫✨💫💫💫💫")
+name = string.gsub(name,"✨","💫??💫💫💫✨💫💫💫💫")
 name = string.gsub(name,"⛈","🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨")
 name = string.gsub(name,"🌥","⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️")
 name = string.gsub(name,"⛄️","☃☃☃☃☃☃⛄️☃☃☃☃")
