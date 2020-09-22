@@ -7081,13 +7081,12 @@ end
 if text == 'السيرفر' and DevBot(msg) then
 send(msg.chat_id_, msg.id_, io.popen([[
 Lx_Sn=`lsb_release -ds`
-MUC=`free -m | awk 'NR==2{
-printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
-hard=`df -lh | awk '{
+MUC=`free -m | awk 'NR==2{printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
+HK=`df -lh | awk '{
 if ($6 == "/") {
 print $3"/"$2" ~ {"$5"}" }}'`
-cpu=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
-time=`time | awk -F'( |,|:)+' '{
+CuP=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
+TimE=`uptime | awk -F'( |,|:)+' '{
 if ($7=="min") 
 m=$6;
 else{
@@ -7102,11 +7101,11 @@ m=$7
 print d+0,"days,",h+0,"hours,",m+0,"minutes."
 }'`
 echo '⌔︙ { نظام التشغيل } \n*»» '"$Lx_Sn"'*' 
-echo '* — — — — — — — — —*\n⌔︙ { الذاكره العشوائيه } \n*»» '"$MUC"'*'
-echo '* — — — — — — — — —*\n⌔︙⊱ { وحـده الـتـخـزيـن } \n*»» '"$hard"'*'
-echo '* — — — — — — — — —*\n⌔︙ { الـمــعــالــج } \n*»» '"`grep -c processor /proc/cpuinfo`""Core ~ {$cpu%} "'*'
-echo '* — — — — — — — — —*\n⌔︙ { الــدخــول } \n*»» '`whoami`'*'
-echo '* — — — — — — — — —*\n⌔︙{ مـده تـشغيـل الـسـيـرفـر }\n*»» '"$time"'*'
+echo '* — — — — — — — — —*\n⌔︙ { الذاكره العشوائيه } \n*» '"$MUC"'*'
+echo '* — — — — — — — — —*\n⌔︙ { وحـده الـتـخـزيـن } \n*» '"$HK"'*'
+echo '* — — — — — — — — —*\n⌔︙ { الـمــعــالــج } \n*» '"`grep -c processor /proc/cpuinfo`""Core ~ {$CuP%} "'*'
+echo '* — — — — — — — — —*\n⌔︙ { الــدخــول } \n*» '`whoami`'*'
+echo '* — — — — — — — — —*\n⌔︙{ مـده تـشغيـل الـسـيـرفـر }\n*» '"$TimE"'*'
 ]]):read('*all'))  
 end
 if text == "تعطيل الزخرفه" and Owner(msg) then
