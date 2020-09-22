@@ -7100,7 +7100,7 @@ m=$7
 }}}{
 print d+0,"days,",h+0,"hours,",m+0,"minutes."
 }'`
-echo '⌔︙ { نظام التشغيل } \n*»» '"$Lx_Sn"'*' 
+echo '⌔︙ { نظام التشغيل } \n*» '"$Lx_Sn"'*' 
 echo '* — — — — — — — — —*\n⌔︙ { الذاكره العشوائيه } \n*» '"$MUC"'*'
 echo '* — — — — — — — — —*\n⌔︙ { وحـده الـتـخـزيـن } \n*» '"$HK"'*'
 echo '* — — — — — — — — —*\n⌔︙ { الـمــعــالــج } \n*» '"`grep -c processor /proc/cpuinfo`""Core ~ {$CuP%} "'*'
@@ -7174,16 +7174,16 @@ if text == "تفعيل الانستا" and Owner(msg) then
 send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الانستا')
 database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
 end
-if text and text:match("^معلومات (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
-local Textni = text:match("^معلومات (.*)$")
-innn = https.request('https://forhassan.ml/Black/insta.php?user='..URL.escape(Textni)..'')
-fff = JSON.decode(innn)
-i = 0
-for k,v in pairs(fff.ok) do
-i = i + 1
-t = "*"..v.."* \n"
+if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
+local Textni = text:match("^تنزيل (.*)$")
+data = https.request('https://forhassan.ml/my_ip/post.php?post='..URL.escape(Textni)..'')
+if res == 200 then
+get = json:decode(data)
+if get.jpg == true then
+local file = download_to_file(get.jpg.0.url,'instagram.jpg')
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,file,"تم")     
 end
-send(msg.chat_id_, msg.id_, t..'')
+end
 end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
