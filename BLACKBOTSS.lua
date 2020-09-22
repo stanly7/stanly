@@ -7181,6 +7181,7 @@ get = JSON.decode(data)
 local file = download_to_file(get.jpg.0.url,'instagram.jpg')
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,file,"تم")     
 end
+end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'⌔︙تم تفعيل البوت الخدمي ') 
