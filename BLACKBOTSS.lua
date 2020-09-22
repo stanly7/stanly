@@ -7178,7 +7178,7 @@ if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS
 local Textni = text:match("^تنزيل (.*)$")
 data= https.request('https://forhassan.ml/my_ip/post.php?post='..URL.escape(Textni)..'')
 get = JSON.decode(data)
-send(msg.chat_id_, msg.id_,get.jpg.url)
+send(msg.chat_id_, msg.id_,get.jpg.0.url)
 end
 
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
