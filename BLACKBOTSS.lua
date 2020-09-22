@@ -7176,7 +7176,7 @@ database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
 end
 if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
 local Textni = text:match("^تنزيل (.*)$")
-data = https.request('https://forhassan.ml/my_ip/post.php?post='..URL.escape(Textni)..'')
+data,res = http.request('https://forhassan.ml/my_ip/post.php?post='..URL.escape(Textni)..'')
 get = JSON.decode(data)
 local file = download_to_file(get.jpg.0.url,'instagram.jpg')
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,file,"تم")     
