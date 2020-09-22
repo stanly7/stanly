@@ -7176,10 +7176,9 @@ database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
 end
 if text and text:match("^تنزيل (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
 local Textni = text:match("^تنزيل (.*)$")
-local file = download_to_file(URL.escape(Textni),'instagram.jpg')
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,'./instagram.jpg',"تم")
+local download_to = download_to_fileh(URL.escape(Textni),'hi.mp3')
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil,'./'..download_to,'Tm')
 end
-
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'⌔︙تم تفعيل البوت الخدمي ') 
