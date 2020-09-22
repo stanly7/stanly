@@ -301,24 +301,7 @@ caption_ = caption or ""
 }
 },func or dl_cb,nil)
 end
-
-function download_to_fileh(url, file_path) 
-    local respbody = {} 
-    local options = { url = url, sink = ltn12.sink.table(respbody), redirect = true } 
-    local response = nil 
-    options.redirect = false 
-    response = {https.request(options)} 
-    local code = response[2] 
-    local headers = response[3] 
-    local status = response[4] 
-    if code ~= 200 then return false, code 
-    end 
-    file = io.open(file_path, "w+") 
-    file:write(table.concat(respbody)) 
-    file:close() 
-    return file_path 
-    end 
-    
+	
 function sendVoice(chat_id,reply_id,voice,caption,func)
 tdcli_function({
 ID="SendMessage",
@@ -7183,7 +7166,25 @@ t = v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-
+if text == "تعطيل الانستا" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الانستا')
+database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"close")
+end
+if text == "تفعيل الانستا" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الانستا')
+database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
+end
+if text and text:match("^معلومات (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
+local Textni = text:match("^معلومات (.*)$")
+innn = https.request('https://forhassan.ml/Black/insta.php?user='..URL.escape(Textni)..'')
+fff = JSON.decode(innn)
+i = 0
+for k,v in pairs(fff.ok) do
+i = i + 1
+t = "*"..v.."* \n"
+end
+send(msg.chat_id_, msg.id_, t..'')
+end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'⌔︙تم تفعيل البوت الخدمي ') 
