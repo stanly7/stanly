@@ -74,14 +74,6 @@ else
 return false 
 end 
 end
-function BasicHassan(msg)
-local hash = database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) then 
-return true 
-else 
-return false 
-end 
-end
 function Constructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, msg.sender_user_id_) 
 if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) then    
@@ -128,7 +120,7 @@ elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
 var = true                 
-elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..chat_id, user_id) then
+elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
 var = true
 elseif database:sismember(bot_id.."BLACKBOTSS:Constructor"..chat_id, user_id) then
 var = true  
@@ -156,8 +148,6 @@ elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = database:get(bot_id.."BLACKBOTSS:Sudo:Rd"..chat_id) or "المطور"  
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
 var = database:get(bot_id.."BLACKBOTSS:BasicConstructor:Rd"..chat_id) or "المنشئ اساسي"
-elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Hassan"..chat_id, user_id) then
-var = database:get(bot_id.."BLACKBOTSS:BasicHassan:Rd"..chat_id) or "المالك"
 elseif database:sismember(bot_id.."BLACKBOTSS:Constructor"..chat_id, user_id) then
 var = database:get(bot_id.."BLACKBOTSS:Constructor:Rd"..chat_id) or "المنشئ"  
 elseif database:sismember(bot_id.."BLACKBOTSS:Manager"..chat_id, user_id) then
@@ -1718,19 +1708,16 @@ Reply_Status(msg,msg.sender_user_id_,"unlock","⌔️︙تم فتح الفيدي
 return false
 end 
 if text == "قفل المتحركه" and Addictive(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
+local url,res = https.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
+data = JSON.decode(url)
+if data.Ch_Member.info ~= true then
+send(msg.chat_id_,msg.id_,'- شترك في قناة البوت اولآ @tenntime .')   
+return false 
 end
 database:set(bot_id.."BLACKBOTSS:Lock:Animation"..msg.chat_id_,"del")  
 Reply_Status(msg,msg.sender_user_id_,"lock","⌔️︙تم قفـل المتحركه")  
 return false
-end 
+end
 if text == "قفل المتحركه بالتقيد" and Addictive(msg) then
 database:set(bot_id.."BLACKBOTSS:Lock:Animation"..msg.chat_id_,"ked")  
 Reply_Status(msg,msg.sender_user_id_,"lockkid","⌔️︙تم قفـل المتحركه")  
@@ -2239,7 +2226,7 @@ if text == ("مسح المطورين") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:Sudo:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين  ")
 end
-if text == "مسح المنشئين الاساسين" and BasicHassan(msg) then
+if text == "مسح المنشئين الاساسين" and DevBot(msg) then
 database:del(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_)
 texts = "⌔︙ تم مسح المنشئين الاساسيين"
 send(msg.chat_id_, msg.id_, texts)
@@ -2357,7 +2344,7 @@ t = "⌔︙لا يوجد مطورين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == "المنشئين الاساسين" and BasicHassan(msg) then
+if text == "المنشئين الاساسين" and DevBot(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_)
 t = "\n⌔︙قائمة المنشئين الاساسين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
@@ -2660,7 +2647,7 @@ Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من المطورين")
 return false 
 end
 
-if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and BasicHassan(msg) then  
+if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2677,7 +2664,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي @(.*)$") and BasicHassan(msg) then  
+if text and text:match("^رفع منشئ اساسي @(.*)$") and DevBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2703,7 +2690,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي (%d+)$") and BasicHassan(msg) then  
+if text and text:match("^رفع منشئ اساسي (%d+)$") and DevBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2718,7 +2705,7 @@ database:sadd(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","⌔︙تم ترقيته منشئ اساسي")  
 return false
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and BasicHassan(msg) then  
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2735,7 +2722,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and BasicHassan(msg) then  
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and DevBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2758,7 +2745,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and BasicHassan(msg) then  
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and DevBot(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4121,14 +4108,11 @@ send(msg.chat_id_, msg.id_,"⌔︙تم تعطيل جلب رابط المجموع
 return false end
 end
 if text == "الرابط" then 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
+local url,res = https.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
+data = JSON.decode(url)
+if data.Ch_Member.info ~= true then
+send(msg.chat_id_,msg.id_,'- شترك في قناة البوت اولآ @tenntime .')   
+return false 
 end
 local status_Link = database:get(bot_id.."BLACKBOTSS:Link_Group"..msg.chat_id_)
 if not status_Link then
@@ -7831,7 +7815,7 @@ return false
 end
 Reply_Status(msg,result.id_,'reply_Add','⌔︙تم تفعيل المجموعه ~ '..chat.title_..'')
 database:sadd(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_)  
-database:sadd(bot_id..'BLACKBOTSS:Basic:Hassan'..msg.chat_id_, msg.sender_user_id_)
+database:sadd(bot_id..'BLACKBOTSS:Basic:Constructor'..msg.chat_id_, msg.sender_user_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NumMember = data.member_count_
 local NameChat = chat.title_
