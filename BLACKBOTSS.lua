@@ -7130,14 +7130,40 @@ database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
 end
 if text and text:match("^معلومات (.*)$") and database:get(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_) == "open" then
 local Textni = text:match("^معلومات (.*)$")
-innn = https.request('https://forhassan.ml/Black/insta.php?user='..URL.escape(Textni)..'')
-fff = JSON.decode(innn)
-i = 0
-for k,v in pairs(fff.ok) do
-i = i + 1
-t = "*"..v.."* \n"
+data,res = https.request('https://forhassan.ml/Black/insta.php?username='..URL.escape(Textni)..'')
+if res == 200 then
+muaed = json:decode(data)
+if muaed.Info == true then
+local filee = download_to_file(muaed.ph,msg.sender_user_id_..'.jpg')
+sendPhoto(msg.chat_id_, msg.id_,'./'..msg.sender_user_id_..'.jpg',muaed.info)     
+os.execute('rm -rf ./'..msg.sender_user_id_..'.jpg') 
 end
-send(msg.chat_id_, msg.id_, t..'')
+end
+end
+if text == "تعطيل الافلام" and Owner(msg) then
+send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الافلام')
+database:set(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_,"close")
+end
+if text == "تفعيل الافلام" and Owner(msg) then
+send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الافلام')
+database:set(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_,"open")
+end
+if text and text:match("^فلم (.*)$") and database:get(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_) == "open" then
+local Textm = text:match("^فلم (.*)$")
+data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
+if res == 200 then
+getmo = json:decode(data)
+if getmo.Info == true then
+local Text ='قصه الفلم'..getmo.info
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = 'مشاهده الفلم بجوده 240',url=getmo.sd}},
+{{text = 'مشاهده الفلم بجوده 480', url=getmo.Web},{text = 'مشاهده الفلم بجوده 1080', url=getmo.hd}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+end
 end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
