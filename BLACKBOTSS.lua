@@ -339,7 +339,7 @@ ID="InputMessageAudio",
 audio_ = GetInputFile(audio),
 duration_ = "",
 title_ = title or "",
-performer_ = "حسن مؤيد",
+performer_ = "سورس بلاك الرسمي",
 caption_ = caption or ""
 }},func or dl_cb,nil)
 end
@@ -3389,6 +3389,10 @@ send(msg.chat_id_, msg.id_,'⌔︙لقد تم تعطيل الحظر و الطر�
 return false
 end
 function Function_BLACKBOTSS(extra, result, success)
+if result.sender_user_id_ == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+return false 
+end
 if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
 else
@@ -3428,6 +3432,10 @@ return false
 end
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
+if result.id_ == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+return false 
+end
 if Rank_Checking(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
 else
@@ -3471,6 +3479,10 @@ local userid = text:match("^حظر (%d+)$")
 if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌔︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
+end
+if userid == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+return false 
 end
 if Rank_Checking(userid, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
@@ -3574,6 +3586,10 @@ end
 return false
 end
 function Function_BLACKBOTSS(extra, result, success)
+if result.sender_user_id_ == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+return false 
+end
 if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
 return false 
@@ -3605,6 +3621,10 @@ return false
 end
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
+if result.id_ == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+return false 
+end
 if Rank_Checking(result.id_, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
 return false 
@@ -3633,6 +3653,10 @@ end
 return false
 end
 local userid = text:match("^كتم (%d+)$")
+if userid == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+return false 
+end
 if Rank_Checking(userid, msg.chat_id_) == true then
 send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
 else
@@ -6253,7 +6277,7 @@ Text = '\n⌔︙بالتاكيد تم تفعيل التنظيف'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^تنظيف (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
+if text and text:match('^تنظيف (%d+)$') and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
 local Number = tonumber(text:match('^تنظيف (%d+)$')) 
 if Number > 1000 then 
 send(msg.chat_id_, msg.id_,'⌔︙لا تستطيع تنضيف اكثر من *~ 1000* رساله') 
@@ -7164,6 +7188,21 @@ local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 end
+end
+if text == "غنيلي" then
+data,res = https.request('https://forhassan.ml/Black/audios.php')
+if res == 200 then
+audios = json:decode(data)
+if audios.Info == true then
+local done = download_to_file(audios.info,msg.sender_user_id_..'.mp3')
+sendAudio(msg.chat_id_,msg.id_,'./'..msg.sender_user_id_..'.mp3','اهداء من البوت لك💗','تم اختيار المقطع الصوتي خصيصا لك','end')
+os.execute('rm -rf ./'..msg.sender_user_id_..'.mp3') 
+end
+end
+end
+if text and text:match("^كول (.*)$") then
+local Textxt = text:match("^كول (.*)$")
+send(msg.chat_id_, msg.id_, Textxt)
 end
 if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
