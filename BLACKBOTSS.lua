@@ -2506,7 +2506,7 @@ end
 
 if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
 function Function_BLACKBOTSS(extra, result, success)
-if result.sender_user_id_ == tonumber(SUDO) then
+if result.sender_user_id_ == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
@@ -2533,7 +2533,7 @@ if tonumber(result.id_) == tonumber(bot_id) then
 send(msg.chat_id_, msg.id_, "⌔︙لا تسطيع حظر البوت عام")
 return false 
 end
-if result.id_ == tonumber(SUDO) then
+if result.id_ == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
@@ -2548,7 +2548,7 @@ return false
 end
 if text and text:match("^حظر عام (%d+)$") and DevBLACKBOTSS(msg) then
 local userid = text:match("^حظر عام (%d+)$")
-if userid == tonumber(SUDO) then
+if userid == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
@@ -4182,9 +4182,7 @@ return false
 end
 local link = database:get(bot_id.."BLACKBOTSS:Private:Group:Link"..msg.chat_id_)            
 if link then                              
-local done = download_to_file(link,msg.chat_id_..'.jpg')
-sendPhoto(msg.chat_id_, msg.id_,'./'..msg.chat_id_..'.jpg','⌔︙رابط مجموعه ال'.. ta.title_)     
-os.execute('rm -rf ./'..msg.chat_id_..'.jpg') 
+send(msg.chat_id_,msg.id_,"⌔︙رابط المجموعة ~\n ["..link.."]")                          
 else                
 send(msg.chat_id_, msg.id_,"⌔︙لا يوجد رابط ارسل ضع رابط")              
 end            
@@ -5203,22 +5201,39 @@ end
 return false
 end
 function Function_BLACKBOTSS(extra, result, success)
-if tonumber(SUDO) == tonumber(result.sender_user_id_) then
+if tonumber(Id_Sudo) == tonumber(result.sender_user_id_) then
 send(msg.chat_id_, msg.id_,"⌔︙ لا تستطيع تنزيل المطور الاساسي")
 return false 
 end
 if database:sismember(bot_id.."BLACKBOTSS:Sudo:User",result.sender_user_id_) then
-dev = "⌔︙مطور" else dev = "" end
+dev = "⌔︙تم تنزيله من المطورين"
+else 
+dev = "⌔︙هو ليس مطور" 
+end
 if database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, result.sender_user_id_) then
-crr = "⌔︙منشئ اساسي" else crr = "" end
+crr = "⌔︙تم تنزيل من الاساسيين" 
+else 
+crr = "⌔︙هو ليس منشئ اساسي" 
+end
 if database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, result.sender_user_id_) then
-cr = "⌔︙منشئ" else cr = "" end
+cr = "⌔︙تم تنزيله من المنشئين" 
+else 
+cr = "⌔︙هو ليس منشئ" 
+end
 if database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_, result.sender_user_id_) then
-own = "⌔︙مدير" else own = "" end
+own = "⌔︙تم تنظيله من المدراء" 
+else 
+own = "⌔︙هو ليس مدير" 
+end
 if database:sismember(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_, result.sender_user_id_) then
-mod = "⌔︙ادمن" else mod = "" end
+mod = "⌔︙تم تنزيله من الادميه"
+ else 
+mod = "⌔︙هو ليس ادمن" 
+end
 if database:sismember(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_, result.sender_user_id_) then
-vip = "⌔︙مميز" else vip = ""
+vip = "⌔︙تم تنزيل من المميزين"
+else
+vip = "⌔︙هو ليس مميز"
 end
 if Rank_Checking(result.sender_user_id_,msg.chat_id_) ~= false then
 send(msg.chat_id_, msg.id_,"⌔︙تم تنزيل الشخص من الرتب التاليه\n"..dev.."\n"..crr.."\n"..cr.."\n"..own.."\n"..mod.."\n"..vip.."\n")
