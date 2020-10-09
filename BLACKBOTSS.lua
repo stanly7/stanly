@@ -4145,7 +4145,9 @@ return false
 end
 local link = database:get(bot_id.."BLACKBOTSS:Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,"⌔︙رابط المجموعة ~\n ["..link.."]")                          
+local done = download_to_file(link,msg.chat_id_..'.jpg')
+sendPhoto(msg.chat_id_, msg.id_,'./'..msg.chat_id_..'.jpg','⌔︙رابط مجموعه ال'.. ta.title_)     
+os.execute('rm -rf ./'..msg.chat_id_..'.jpg') 
 else                
 send(msg.chat_id_, msg.id_,"⌔︙لا يوجد رابط ارسل ضع رابط")              
 end            
@@ -5298,7 +5300,7 @@ local taha = "⌔︙ عدد الادمنيه : "..data.administrator_count_..
 "\n\n⌔︙ عدد المطرودين : "..data.kicked_count_..
 "\n\n⌔︙ عدد الاعضاء : "..data.member_count_..
 "\n\n⌔︙ عدد رسائل الكروب : "..(msg.id_/2097152/0.5)..
-"\n\n📯︙ اسم المجموعه : ["..ta.title_.."]"
+"\n\n⌔︙ اسم المجموعه : ["..ta.title_.."]"
 send(msg.chat_id_, msg.id_, taha) 
 end,nil)
 end,nil)
@@ -7086,6 +7088,51 @@ os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/
 dofile('BLACKBOTSS.lua')  
 return false
 end
+if text == 'فحص البوت' and Owners(msg) then
+local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. bot_id..'')
+local getInfo = JSON.decode(chek)
+if getInfo.ok == true then
+if getInfo.result.status == "administrator" then
+if getInfo.result.can_change_info == true then
+INf = 'مفعله' 
+else 
+INf = 'غير مفعله' 
+end
+if getInfo.result.can_delete_messages == true then
+DEL = 'مفعله' 
+else 
+DEL = 'غير مفعله' 
+end
+if getInfo.result.can_invite_users == true then
+INv = 'مفعله' 
+else
+INv = 'غير مفعله' 
+end
+if getInfo.result.can_pin_messages == true then
+Pin = 'مفعله' 
+else
+Pin = 'غير مفعله' 
+end
+if getInfo.result.can_restrict_members == true then
+REs = 'مفعله' 
+else 
+REs = 'غير مفعله' 
+end
+if getInfo.result.can_promote_members == true then
+PRo = 'مفعله'
+else
+PRo = 'غير مفعله'
+end 
+send(msg.chat_id_,msg.id_,'\n ⌔︙صلاحيات البوت هي \n— — — — — — — — —\n⌔︙تغير معلومات المجموعة : '..INf..'\n⌔︙حذف الرسائل : '..DEL..'\n⌔︙حظر المستخدمين : '..REs..'\n⌔︙دعوة المستخدمين : '..INv..'\n⌔︙ثتبيت الرسالة : '..Pin..'\n⌔︙اضافة مشرفين : '..PRo)   
+end
+end
+end
+if text == "راسلني" then
+rpl = {"ها هلاو","انطق","كول"};
+sender = rpl[math.random(#rpl)]
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendmessage?chat_id=' .. msg.sender_user_id_ .. '&text=' .. URL.escape(sender))
+end
 if text == "تعطيل الزخرفه" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الزخرفه')
 database:set(bot_id.."BLACKBOTSS:zhrf_Bots"..msg.chat_id_,"close")
@@ -7435,6 +7482,7 @@ if text == "تحديث" and DevBLACKBOTSS(msg) then
 dofile("BLACKBOTSS.lua")  
 send(msg.chat_id_, msg.id_, "⌔︙تم التحديث")
 end
+
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
