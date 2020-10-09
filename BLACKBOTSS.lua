@@ -4023,6 +4023,45 @@ send(msg.chat_id_, msg.id_, '⌔︙تم تفعيل رفع » الادمن ~ ال
 return false
 end
 end
+if text == "فحص البوت" and Owner(msg) then
+local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..bot_id)
+local getInfo = JSON.decode(chek)
+if getInfo.ok == true then
+if getInfo.result.status == "administrator" then
+if getInfo.result.can_change_info == true then
+INf = 'مفعله' 
+else 
+INf = 'غير مفعله' 
+end
+if getInfo.result.can_delete_messages == true then
+DEL = 'مفعله' 
+else 
+DEL = 'غير مفعله' 
+end
+if getInfo.result.can_invite_users == true then
+INv = 'مفعله' 
+else
+INv = 'غير مفعله' 
+end
+if getInfo.result.can_pin_messages == true then
+Pin = 'مفعله' 
+else
+Pin = 'غير مفعله' 
+end
+if getInfo.result.can_restrict_members == true then
+REs = 'مفعله' 
+else 
+REs = 'غير مفعله' 
+end
+if getInfo.result.can_promote_members == true then
+PRo = 'مفعله'
+else
+PRo = 'غير مفعله'
+end 
+send(msg.chat_id_, msg.id_,'\n ⌔︙صلاحيات البوت هي \n— — — — — — — — —\n⌔︙تغير معلومات المجموعة : '..INf..'\n⌔︙حذف الرسائل : '..DEL..'\n⌔︙حظر المستخدمين : '..REs..'\n⌔︙دعوة المستخدمين : '..INv..'\n⌔︙ثتبيت الرسالة : '..Pin..'\n⌔︙اضافة مشرفين : '..PRo)   
+end
+end
+end
 if text ==("تثبيت") and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7087,45 +7126,6 @@ os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/
 os.execute('wget https://raw.githubusercontent.com/BLACKBOTSS/BLACKBOTSS/master/start.lua')
 dofile('BLACKBOTSS.lua')  
 return false
-end
-if text == 'فحص البوت' and Owners(msg) then
-local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='.. msg.chat_id_ ..'&user_id='.. bot_id..'')
-local getInfo = JSON.decode(chek)
-if getInfo.ok == true then
-if getInfo.result.status == "administrator" then
-if getInfo.result.can_change_info == true then
-INf = 'مفعله' 
-else 
-INf = 'غير مفعله' 
-end
-if getInfo.result.can_delete_messages == true then
-DEL = 'مفعله' 
-else 
-DEL = 'غير مفعله' 
-end
-if getInfo.result.can_invite_users == true then
-INv = 'مفعله' 
-else
-INv = 'غير مفعله' 
-end
-if getInfo.result.can_pin_messages == true then
-Pin = 'مفعله' 
-else
-Pin = 'غير مفعله' 
-end
-if getInfo.result.can_restrict_members == true then
-REs = 'مفعله' 
-else 
-REs = 'غير مفعله' 
-end
-if getInfo.result.can_promote_members == true then
-PRo = 'مفعله'
-else
-PRo = 'غير مفعله'
-end 
-send(msg.chat_id_,msg.id_,'\n ⌔︙صلاحيات البوت هي \n— — — — — — — — —\n⌔︙تغير معلومات المجموعة : '..INf..'\n⌔︙حذف الرسائل : '..DEL..'\n⌔︙حظر المستخدمين : '..REs..'\n⌔︙دعوة المستخدمين : '..INv..'\n⌔︙ثتبيت الرسالة : '..Pin..'\n⌔︙اضافة مشرفين : '..PRo)   
-end
-end
 end
 if text == "راسلني" then
 rpl = {"ها هلاو","انطق","كول"};
