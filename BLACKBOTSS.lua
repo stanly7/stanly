@@ -5185,10 +5185,10 @@ database:del(bot_id.."BLACKBOTSS:Reply:Sudo"..msg.chat_id_)
 send(msg.chat_id_, msg.id_,"⌔︙تم تفعيل ردود المطور" ) 
 end
 if text == "تعطيل ردود المطور" and Owner(msg) then  
-
 database:set(bot_id.."BLACKBOTSS:Reply:Sudo"..msg.chat_id_,true)   
 send(msg.chat_id_, msg.id_,"⌔︙تم تعطيل ردود المطور" ) 
 end
+
 
 if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Owner(msg) then
 if AddChannel(msg.sender_user_id_) == false then
@@ -5221,7 +5221,7 @@ else
 cr = "⌔︙هو ليس منشئ" 
 end
 if database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_, result.sender_user_id_) then
-own = "⌔︙تم تنظيله من المدراء" 
+own = "⌔︙تم تنزيله من المدراء" 
 else 
 own = "⌔︙هو ليس مدير" 
 end
@@ -7232,6 +7232,7 @@ if text == "تفعيل الافلام" and Owner(msg) then
 send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الافلام')
 database:set(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_,"open")
 end
+
 if text and text:match("^فلم (.*)$") and database:get(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_) == "open" then
 local Textm = text:match("^فلم (.*)$")
 data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
@@ -7361,7 +7362,7 @@ end,nil)
 end
 end
 if text == 'الملفات' and DevBLACKBOTSS(msg) then
-t = '⌔︙جميع الملفات : \n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n'
+t = '⌔︙جميع الملفات : \n — — — — — — — — — \n'
 i = 0
 for v in io.popen('ls BLACKBOTSS_Files'):lines() do
 if v:match(".lua$") then
@@ -7378,8 +7379,8 @@ if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
-local TextS = "\n⌔︙اهلا بك في متجر ملفات بلاك\n⌔︙يوجد في المتجر ملف الردود\n⚙︙يتم ادراج الملفات في التحديثات القادمه \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
-local TextE = "\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌔︙تدل علامة (✔) الملف مفعل\n".."⌔︙تدل علامة (⌔) الملف معطل\n"
+local TextS = "\n⌔︙اهلا بك في متجر ملفات بلاك\n⌔︙يوجد في المتجر ملف الردود\n⌔︙يتم ادراج الملفات في التحديثات القادمه \n — — — — — — — — — \n"
+local TextE = "\n — — — — — — — — — \n⌔︙تدل علامة (✔) الملف مفعل\n".."⌔︙تدل علامة (✖) الملف معطل\n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
 local Check_File_is_Found = io.open("BLACKBOTSS_Files/"..name,"r")
@@ -7387,7 +7388,7 @@ if Check_File_is_Found then
 io.close(Check_File_is_Found)
 CeckFile = "(✔)"
 else
-CeckFile = "(⌔)"
+CeckFile = "(✖)"
 end
 NumFile = NumFile + 1
 TextS = TextS..'*'..NumFile.."»* {`"..name..'`} » '..CeckFile..'\n[-  About to the file]('..Info..')\n'
@@ -8617,7 +8618,20 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 database:incr(bot_id..'BLACKBOTSS:message_edit'..result.chat_id_..result.sender_user_id_)
 local Text = result.content_.text_
 if database:get(bot_id.."BLACKBOTSS:Lock:edit"..msg.chat_id_) and not Text and not BasicConstructor(result) then
-Reply_Status(result,result.sender_user_id_,"reply","⌔︙قام بالتعديل على الميديا")  
+local list = database:smembers(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_)
+t = "\n⌔︙ المنشئين الاساسين تعالو مخرب \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+for k,v in pairs(list) do
+local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
+if username then
+t = t..""..k.."- ([@"..username.."])\n"
+else
+t = t..""..k.."- (`"..v.."`)\n"
+end
+end
+if #list == 0 then
+t = "⌔︙ماكو منششئين يشوفولك جاره"
+end
+Reply_Status(result,result.sender_user_id_,"reply","⌔︙قام بالتعديل على الميديا"..t)  
 DeleteMessage(result.chat_id_,{[0] = data.message_id_}) 
 end
 local text = result.content_.text_
