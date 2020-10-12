@@ -6352,7 +6352,7 @@ Text = '\n⌔︙بالتاكيد تم تفعيل التنظيف'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^تنظيف (%d+)$') and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then   
+if text and text:match('^تنظيف (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then   
 if not database:get(bot_id..'BLACKBOTSS:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
 local Number = tonumber(text:match('^تنظيف (%d+)$')) 
 if Number > 1000 then 
@@ -7202,11 +7202,7 @@ if text and text:match("^برج (.*)$") and database:get(bot_id.."BLACKBOTSS:brj
 local Textbrj = text:match("^برج (.*)$")
 gk = https.request('https://forhassan.ml/Black/br.php?br='..URL.escape(Textbrj)..'')
 br = JSON.decode(gk)
-i = 0
-for k,v in pairs(br.ok) do
-i = i + 1
-t = v.."\n"
-end
+t = br.ok.do
 send(msg.chat_id_, msg.id_, t)
 end
 if text == "تعطيل حساب العمر" and Owner(msg) then
@@ -7221,11 +7217,7 @@ if text and text:match("^احسب (.*)$") and database:get(bot_id.."BLACKBOTSS:a
 local Textage = text:match("^احسب (.*)$")
 ge = https.request('https://forhassan.ml/Black/age.php?age='..URL.escape(Textage)..'')
 ag = JSON.decode(ge)
-i = 0
-for k,v in pairs(ag.ok) do
-i = i + 1
-t = v.."\n"
-end
+t = ag.ok.do
 send(msg.chat_id_, msg.id_, t)
 end
 if text == "تعطيل الانستا" and Owner(msg) then
