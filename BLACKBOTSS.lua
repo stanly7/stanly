@@ -6352,7 +6352,8 @@ Text = '\n⌔︙بالتاكيد تم تفعيل التنظيف'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^تنظيف (%d+)$') and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
+if text and text:match('^تنظيف (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
+if not database:get(bot_id..'BLACKBOTSS:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
 local Number = tonumber(text:match('^تنظيف (%d+)$')) 
 if Number > 1000 then 
 send(msg.chat_id_, msg.id_,'⌔︙لا تستطيع تنضيف اكثر من *~ 1000* رساله') 
@@ -6364,7 +6365,10 @@ DeleteMessage(msg.chat_id_,{[0]=Message})
 Message = Message - 1048576
 end
 send(msg.chat_id_, msg.id_,'⌔︙تم تنظيف *~ '..Number..'* رساله .')  
+database:setex(bot_id..'BLACKBOTSS:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
+end
+
 
 if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 and not database:get(bot_id..'BLACKBOTSS:Lock:ID:Bot'..msg.chat_id_) then
 function Function_BLACKBOTSS(extra, result, success)
