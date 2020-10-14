@@ -3414,7 +3414,29 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-
+if text == "هينه" or text == "هينها" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
+function start_function(extra, result, success)
+if msg.can_be_deleted_ == false then 
+send(msg.chat_id_, msg.id_,' البوت ليس مشرف يرجى ترقيتي !') 
+return false  
+end
+heen = {
+"- حبيبي علاج الجاهل التجاهل ."
+,"- مالي خلك زبايل التلي . "
+,"- كرامتك صارت بزبل פَــبي ."
+,"- مو صوجك صوج الكواد الزمك جهاز ."
+,"- لفارغ استجن . "
+,"- ڪِݪك واحد لوكي كس ."
+,"- ملطلط دي ."
+};
+sendheen = heen[math.random(#heen)]
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
+send(msg.chat_id_, msg.reply_to_message_id_,sendheen)
+end,nil)
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
+return false
+end
 if text and text:match("^حظر @(.*)$") and Addictive(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
