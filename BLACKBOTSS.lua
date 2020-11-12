@@ -4546,9 +4546,9 @@ if result.members_[i].status_.ID == "ChatMemberStatusMember" then
 tr = ""
 elseif result.members_[i].status_.ID == "ChatMemberStatusEditor" then  
 t = t + 1
-tr = " {✯}"
+tr = " {✯}"
 end
-text = text..">> [@"..ta.username_.."]"..tr.."\n"
+text = text..">> [@"..ta.username_.."]"..tr.."\n"
 if #admins == 0 then
 send(msg.chat_id_, msg.id_, "⌔︙لا توجد بوتات في المجموعه")
 return false 
@@ -7731,13 +7731,13 @@ Text = [[
 *- Black Team .*
  — — — — — — — — — 
      
-[⌔︙ BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](http://t.me/II_II_II)
+[⌔︙BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](http://t.me/Fbbbbb)
      
-[⌔︙ ToolS BLacK .](https://t.me/joinchat/AAAAAFPp_oZNV4U3n91zRQ)
+[⌔︙ToolS BLacK .](https://t.me/joinchat/AAAAAFPp_oZNV4U3n91zRQ)
      
-[⌔︙ 𝖳WSL Source BLacK .](http://t.me/TwSLBlackBot)
+[⌔︙𝖳WSL Source BLacK .](http://t.me/TwSLBlackBot)
      
-[⌔︙   𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖥𝗋𝗈𝗆 𝖸𝗈𝗎𝗍𝖾𝖻 .](http://t.me/YOOTBOT)
+[⌔︙𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽 𝖥𝗋𝗈𝗆 𝖸𝗈𝗎𝗍𝖾𝖻 .](http://t.me/YOOTBOT)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 end
@@ -7773,7 +7773,7 @@ Text = [[
 ⌔︙ م4 » لعرض اوامر المنشئين
 ⌔︙ م5 » لعرض اوامر المطورين
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7820,7 +7820,7 @@ Text = [[
 ⌔︙الكلايش
 ⌔︙السيلفي
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7892,7 +7892,7 @@ Text = [[
 ⌔︙مسح الصلاحيات
 ⌔︙مسح الرابط
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7939,7 +7939,7 @@ Text = [[
 ⌔︙تفعيل/تعطيل اوامر التحشيش
 ⌔︙تفعيل/تعطيل الرابط/جلب الرابط
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7975,7 +7975,7 @@ Text = [[
 ⌔︙اضف رسائل + العدد بالرد
 ⌔︙اضف مجوهرات + العدد بالرد
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -8025,7 +8025,7 @@ Text = [[
 ⌔︙رفع/تنزيل منشئ اساسي
 ⌔︙مسح المنشئين الاساسين
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
