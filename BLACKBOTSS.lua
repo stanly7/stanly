@@ -136,6 +136,8 @@ elseif database:sismember(bot_id.."BLACKBOTSS:Manager"..chat_id, user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Mod:User"..chat_id, user_id) then
 var = true  
+elseif database:sismember(bot_id.."BLACKBOTSS:MN:TF"..chat_id, user_id) then
+var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Special:User"..chat_id, user_id) then  
 var = true  
 else  
@@ -162,6 +164,8 @@ elseif database:sismember(bot_id.."BLACKBOTSS:Manager"..chat_id, user_id) then
 var = database:get(bot_id.."BLACKBOTSS:Manager:Rd"..chat_id) or "المدير"  
 elseif database:sismember(bot_id.."BLACKBOTSS:Mod:User"..chat_id, user_id) then
 var = database:get(bot_id.."BLACKBOTSS:Mod:Rd"..chat_id) or "الادمن"  
+elseif database:sismember(bot_id.."BLACKBOTSS:MN:TF"..chat_id, user_id) then
+var =  "منظف"  
 elseif database:sismember(bot_id.."BLACKBOTSS:Special:User"..chat_id, user_id) then  
 var = database:get(bot_id.."BLACKBOTSS:Special:Rd"..chat_id) or "المميز"  
 else  
@@ -425,11 +429,11 @@ end
 function Reply_Status(msg,user_id,status,text)
 tdcli_function ({ID = "GetUser",user_id_ = user_id},function(arg,data) 
 if data.first_name_ ~= false then
-local UserName = (data.username_ or "BLACKBOTSSTEAM")
+local UserName = (data.username_ or "fBBBBB")
 for BLACKBOTSS in string.gmatch(data.first_name_, "[^%s]+") do
 data.first_name_ = BLACKBOTSS
 end
-local NameUser = "⌔︙بواسطه » ["..data.first_name_.."](T.me/"..UserName..")\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+local NameUser = "⌔︙بواسطه » ["..data.first_name_.."](T.me/"..UserName..")\n — — — — — — — — —\n"
 local NameUserr = "⌔︙الاسم » ["..data.first_name_.."](T.me/"..UserName..")"
 if status == "lock" then
 send(msg.chat_id_, msg.id_,NameUser.."\n"..text.."\n⌔︙خاصية » المسح\n")
@@ -1068,10 +1072,10 @@ local GetWelcomeGroup = database:get(bot_id.."BLACKBOTSS:Get:Welcome:Group"..msg
 if GetWelcomeGroup then 
 t = GetWelcomeGroup
 else  
-t = "\n• نورت حبي \n•  name \n• user" 
+t = "\n⌔︙ نورت حبي \n⌔︙  name \n⌔︙ user"
 end 
 t = t:gsub("name",result.first_name_) 
-t = t:gsub("user",("@"..result.username_ or "لا يوجد")) 
+t = t:gsub("user",("@"..result.username_ or "لا يوجد معرف")) 
 send(msg.chat_id_, msg.id_,t)
 end,nil) 
 end 
@@ -2321,7 +2325,7 @@ send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح المحظورين")
 end
 if text == ("قائمه العام") and DevBLACKBOTSS(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:GBan:User")
-t = "\n⌔︙قائمة المحظورين عام \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المحظورين عام \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2338,7 +2342,7 @@ return false
 end
 if text == ("المطورين") and DevBLACKBOTSS(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Sudo:User")
-t = "\n⌔︙قائمة مطورين البوت \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة مطورين البوت \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2354,7 +2358,7 @@ send(msg.chat_id_, msg.id_, t)
 end
 if text == "المنشئين الاساسين" and DevBot(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_)
-t = "\n⌔︙قائمة المنشئين الاساسين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المنشئين الاساسين \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2380,7 +2384,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_)
-t = "\n⌔︙قائمة المنشئين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المنشئين \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2405,7 +2409,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_)
-t = "\n⌔︙قائمة المدراء \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المدراء \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2430,7 +2434,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_)
-t = "\n⌔︙قائمة الادمنيه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة الادمنيه \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2446,7 +2450,7 @@ send(msg.chat_id_, msg.id_, t)
 end
 if text == ("المميزين") and Addictive(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_)
-t = "\n⌔︙قائمة مميزين المجموعه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة مميزين المجموعه \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2471,7 +2475,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_)
-t = "\n⌔︙قائمة المكتومين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المكتومين \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -2497,7 +2501,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:Ban:User"..msg.chat_id_)
-t = "\n⌔︙قائمة محظورين المجموعه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة محظورين المجموعه \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -3745,7 +3749,6 @@ database:srem(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","⌔︙تم الغاء كتمه من هنا")  
 return false
 end
-
 if text == ("تقيد") and tonumber(msg.reply_to_message_id_) ~= 0 and Addictive(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4158,7 +4161,32 @@ send(msg.chat_id_,msg.id_,"⌔︙ليست لدي صلاحية التثبيت ي�
 end
 end,nil)
 end
-
+if text == 'الغاء تثبيت الكل' and Addictive(msg) then  
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⌔︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+if database:sismember(bot_id.."BLACKBOTSS:Lock:pin",msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_,msg.id_,"⌔︙التثبيت والغاء التثبيت تم قفله من قبل المنشئين")  
+return false  
+end
+tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
+if data.ID == "Ok" then
+send(msg.chat_id_, msg.id_,"⌔︙تم الغاء تثبيت الكل")   
+https.request('https://api.telegram.org/bot'..token..'/unpinAllChatMessages?chat_id='..msg.chat_id_)
+database:del(bot_id.."BLACKBOTSS:Pin:Id:Msg"..msg.chat_id_)
+elseif data.code_ == 6 then
+send(msg.chat_id_,msg.id_,"⌔︙انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
+elseif data.message_ == "CHAT_ADMIN_REQUIRED" then
+send(msg.chat_id_,msg.id_,"⌔︙ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات")  
+end
+end,nil)
+end
 if text and text:match("^وضع تكرار (%d+)$") and Addictive(msg) then   
 local Num = text:match("وضع تكرار (.*)")
 database:hset(bot_id.."BLACKBOTSS:flooding:settings:"..msg.chat_id_ ,"floodmax" ,Num) 
@@ -4255,25 +4283,36 @@ return false
 end
 return false  
 end
-if text and text == "امسح" and cleaner(msg) then   
-idmsgg = {[0]=msg.id_}
-local Message = msg.id_
-for i=1,100 do
-Message = Message - 1048576
-idmsgg[i] = Message
+if (msg.content_.animation_) or (msg.content_.photo_) or (msg.content_.video_) or (msg.content_.document) or (msg.content_.sticker_) or (msg.content_.voice_) or (msg.content_.audio_) and msg.reply_to_message_id_ == 0 then      
+database:sadd(bot_id.."BLACKBOTSS:allM"..msg.chat_id_, msg.id_)
 end
-tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = idmsgg},function(arg,data)
-new = 0
-KDESh = {}
-for i=0 ,data.total_count_ do
-if data.messages_[i] and data.messages_[i].content_ and data.messages_[i].content_.ID ~= "MessageText" then
-KDESh[new] = data.messages_[i].id_
-new = new + 1
+if text == ("امسح") and cleaner(msg) then  
+local list = database:smembers(bot_id.."BLACKBOTSS:allM"..msg.chat_id_)
+for k,v in pairs(list) do
+local Message = v
+if Message then
+t = "⌔︙تم مسح "..k.." من الوسائط الموجوده"
+DeleteMessage(msg.chat_id_,{[0]=Message})
+database:del(bot_id.."BLACKBOTSS:allM"..msg.chat_id_)
 end
 end
-DeleteMessage(msg.chat_id_,KDESh)
-end,nil)  
-send(msg.chat_id_, msg.id_,"⌔︙تم ازالة 100 من وسائط ") 
+if #list == 0 then
+t = "⌔︙لا يوجد ميديا في المجموعه"
+end
+send(msg.chat_id_, msg.id_, t)
+end
+if text == ("عدد الميديا") and cleaner(msg) then  
+local num = database:smembers(bot_id.."BLACKBOTSS:allM"..msg.chat_id_)
+for k,v in pairs(num) do
+local numl = v
+if numl then
+l = "⌔︙عدد الميديا الموجود هو "..k
+end
+end
+if #num == 0 then
+l = "⌔︙لا يوجد ميديا في المجموعه"
+end
+send(msg.chat_id_, msg.id_, l)
 end
 if text and text:match("^ضع صوره") and Addictive(msg) and msg.reply_to_message_id_ == 0 or text and text:match("^وضع صوره") and Addictive(msg) and msg.reply_to_message_id_ == 0 then  
 if AddChannel(msg.sender_user_id_) == false then
@@ -4432,7 +4471,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Filter"..msg.chat_id_)  
-t = "\n⌔︙قائمة المنع \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المنع \n — — — — — — — — — \n"
 for k,v in pairs(list) do  
 local BLACKBOTSS_Msg = database:get(bot_id.."BLACKBOTSS:Add:Filter:Rp2"..v..msg.chat_id_)   
 t = t..""..k.."- "..v.." » {"..BLACKBOTSS_Msg.."}\n"    
@@ -4491,7 +4530,40 @@ database:del(bot_id.."BLACKBOTSS:Add:Filter:Rp2"..text..msg.chat_id_)
 database:srem(bot_id.."BLACKBOTSS:List:Filter"..msg.chat_id_,text)  
 return false  end  
 end
-
+if text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:set(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_,true) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙تم قفـل الفارسيه")  
+end
+if text and database:get(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_) and not Addictive(msg) then 
+list = {"كس","كسمك","كسختك","عير","كسخالتك","خرا بالله","عير بالله","كسخواتكم","كحاب","مناويج","مناويج","كحبه","ابن الكحبه","فرخ","فروخ","طيزك","طيزختك"}
+for k,v in pairs(list) do
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text == 'فتح الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:del(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙ تـم فـتح الفارسيه\n")  
+end
+if text == 'قفل الفشار' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:set(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_,true) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙تم قفـل الفشار")  
+end
+if text and database:get(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_) and not Addictive(msg) then 
+list = {"ڄ","که","پی","خسته","برم","راحتی","بیام","بپوشم","كرمه","چه","چ","ڬ","ٺ","چ","ڇ","ڿ","ڀ","ڎ","ݫ","ژ","ڟ","ݜ","ڸ","پ","۴","زدن","دخترا","دیوث","مک","زدن"}
+for k,v in pairs(list) do
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text == 'فتح الفشار' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:del(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙ تـم فـتح الفشار\n")  
+end
 if text == "مسح البوتات" and Addictive(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4535,7 +4607,7 @@ return false
 end
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersBots"},offset_ = 0,limit_ = 100 },function(extra,result,success)
 local admins = result.members_  
-text = "\n⌔︙قائمة البوتات الموجوده \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "\n⌔︙قائمة البوتات الموجوده \n — — — — — — — — — \n"
 local n = 0
 local t = 0
 for i=0 , #admins do 
@@ -4554,7 +4626,7 @@ send(msg.chat_id_, msg.id_, "⌔︙لا توجد بوتات في المجموع�
 return false 
 end
 if #admins == i then 
-local a = "\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n⌔︙عدد البوتات التي هنا >> {"..n.."} بوت\n"
+local a = "\n — — — — — — — — — \n⌔︙عدد البوتات التي هنا >> {"..n.."} بوت\n"
 local f = "⌔︙عدد البوتات التي هي ادمن >> {"..t.."}\n⌔︙ملاحضه علامة ال (✯) تعني ان البوت ادمن \n⌔"
 send(msg.chat_id_, msg.id_, text..a..f)
 end
@@ -4633,7 +4705,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Cmd:Group:New"..msg.chat_id_.."")
-t = "⌔︙قائمه الاوامر المضافه  \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "⌔︙قائمه الاوامر المضافه  \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 Cmds = database:get(bot_id.."BLACKBOTSS:Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
 if Cmds then 
@@ -4867,7 +4939,7 @@ end
 return false
 end
 local list = database:smembers(bot_id.."BLACKBOTSS:MN:TF"..msg.chat_id_)
-t = "\n⌔︙قائمة المنظفين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المنظفين \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -5006,7 +5078,7 @@ send(msg.chat_id_, msg.id_,"⌔︙تم مسح ردود المدير")
 end
 if text == ("ردود المدير") and Owner(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Manager"..msg.chat_id_.."")
-text = "⌔︙قائمه ردود المدير \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔︙قائمه ردود المدير \n — — — — — — — — —\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."BLACKBOTSS:Add:Rd:Manager:Gif"..v..msg.chat_id_) then
 db = "متحركه 🎭"
@@ -5214,7 +5286,7 @@ send(msg.chat_id_, msg.id_,"⌔︙تم مسح ردود المطور")
 end
 if text == ("ردود المطور") and DevBLACKBOTSS(msg) then 
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Rd:Sudo")
-text = "\n⌔︙قائمة ردود المطور \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "\n⌔︙قائمة ردود المطور \n — — — — — — — — —\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."BLACKBOTSS:Add:Rd:Sudo:Gif"..v) then
 db = "متحركه 🎭"
@@ -5509,21 +5581,18 @@ end
 return false
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""), offset_ = 0,limit_ = 200},function(ta,taha)
-local t = "\n⌔︙ قائمة الاعضاء \n━━━━━━━━━━━━━\n"
+local t = "\n⌔︙ قائمة الاعضاء \n — — — — — — — — — \n"
 x = 0
 local list = taha.members_
 for k, v in pairs(list) do
 x = x + 1
 if database:get(bot_id.."BLACKBOTSS:User:Name"..v.user_id_) then
-t = t..""..x.." - {[@"..database:get(bot_id.."BLACKBOTSS:User:Name"..v.user_id_).."]}\n"
-else
-t = t..""..x.." - {"..v.user_id_.."}\n"
+t = t.."⌔︙"..x.."︙[@"..database:get(bot_id.."BLACKBOTSS:User:Name"..v.user_id_).."]\n"
 end
 end
 send(msg.chat_id_,msg.id_,t)
 end,nil)
 end
-
 if text == "رتبتي" then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -5670,7 +5739,7 @@ if DevBLACKBOTSS(msg) then
 database:srem(bot_id.."BLACKBOTSS:GBan:User",result.id_)
 database:srem(bot_id.."BLACKBOTSS:Ban:User"..msg.chat_id_,result.id_)
 database:srem(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_,result.id_)
-usertext = "\n⌔︙ العضو » ["..result.title_.."](t.me/"..(username or "kenwa")..")"
+usertext = "\n⌔︙ العضو » ["..result.title_.."](t.me/"..(username or "fBBBBB")..")"
 status  = "\n⌔︙ تم الغاء القيود عنه"
 texts = usertext..status
 send(msg.chat_id_, msg.id_,texts)
@@ -5706,7 +5775,7 @@ else
 database:srem(bot_id.."BLACKBOTSS:Ban:User"..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_,result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = "\n⌔︙ العضو » ["..data.first_name_.."](t.me/"..(data.username_ or "kenwa")..")"
+usertext = "\n⌔︙ العضو » ["..data.first_name_.."](t.me/"..(data.username_ or "fBBBBB")..")"
 status  = "\n⌔︙ تم الغاء القيود عنه"
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -5852,7 +5921,7 @@ if b.first_name_ == false then
 send(msg.chat_id_, msg.id_,"⌔︙ حساب المنشئ محذوف")
 return false  
 end
-local UserName = (b.username_ or "BLACKBOTSSTEAM")
+local UserName = (b.username_ or "fBBBBB")
 send(msg.chat_id_, msg.id_,"⌔︙منشئ المجموعه ~ ["..b.first_name_.."](T.me/"..UserName..")")  
 end,nil)   
 end
@@ -5872,7 +5941,7 @@ if b.first_name_ == false then
 send(msg.chat_id_, msg.id_,"⌔︙حساب المنشئ محذوف")
 return false  
 end
-local UserName = (b.username_ or "BLACKBOTSSTEAM")
+local UserName = (b.username_ or "fBBBBB")
 send(msg.chat_id_, msg.id_,"⌔︙تم ترقية منشئ المجموعه ~ ["..b.first_name_.."](T.me/"..UserName..")")  
 database:sadd(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_,b.id_)
 end,nil)   
@@ -6310,11 +6379,11 @@ kickme = "✘"
 end
 Num_Flood = database:hget(bot_id.."BLACKBOTSS:flooding:settings:"..msg.chat_id_,"floodmax") or 0
 local text = 
-"*\n⌔︙ااعدادات المجموعه "..
-"\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ "..
+"\n⌔︙ااعدادات المجموعه "..
+"\n — — — — — — — — — "..
 "\n⌔︙علامة ال {✓} تعني مفعل"..
 "\n⌔︙علامة ال {✘} تعني معطل"..
-"\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ "..
+"\n — — — — — — — — — "..
 "\n⌔︙الروابط » "..lock_links..
 "\n".."⌔︙المعرفات » "..lock_user..
 "\n".."⌔︙التاك » "..lock_hash..
@@ -6324,7 +6393,7 @@ local text =
 "\n".."⌔︙الاشعارات » "..lock_tagservr..
 "\n".."⌔︙الماركدون » "..lock_mark..
 "\n".."⌔︙التعديل » "..lock_edit..
-"\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ "..
+"\n — — — — — — — — — "..
 "\n".."⌔︙الكلايش » "..lock_spam..
 "\n".."⌔︙الكيبورد » "..lock_inlin..
 "\n".."⌔︙الاغاني » "..lock_vico..
@@ -6333,7 +6402,7 @@ local text =
 "\n".."⌔︙الدردشه » "..lock_text..
 "\n".."⌔︙الفيديو » "..lock_ved..
 "\n".."⌔︙الصور » "..lock_photo..
-"\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ "..
+"\n — — — — — — — — — "..
 "\n".."⌔︙الصوت » "..lock_muse..
 "\n".."⌔︙الملصقات » "..lock_ste..
 "\n".."⌔︙الجهات » "..lock_phon..
@@ -6344,7 +6413,7 @@ local text =
 "\n".."⌔︙التكرار » "..flood..
 "\n".."⌔︙الترحيب » "..welcome..
 "\n".."⌔︙عدد التكرار » "..Num_Flood..
-"\n\n.*"
+"\n\n"
 send(msg.chat_id_, msg.id_,text)     
 end    
 if text == "تعطيل اوامر التحشيش" and Owner(msg) then    
@@ -6449,7 +6518,6 @@ local Text= [[
 - `#edit` > عدد السحكات
 - `#game` > المجوهرات
 - `#AddMem` > عدد الجهات
-- `#Description` > تعليق الصوره
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false  
@@ -6490,16 +6558,6 @@ local Status_Gps = Get_Rank(Id,msg.chat_id_)
 local message_edit = database:get(bot_id..'BLACKBOTSS:message_edit'..msg.chat_id_..msg.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..msg.chat_id_..msg.sender_user_id_) or 0
 local Add_Mem = database:get(bot_id.."BLACKBOTSS:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
 local get_id = database:get(bot_id.."BLACKBOTSS:Klesh:Id:Bot"..msg.chat_id_)
 if not database:get(bot_id..'BLACKBOTSS:Lock:ID:Bot:Photo'..msg.chat_id_) then
 if taha.photos_[0] then
@@ -6511,15 +6569,14 @@ local get_id = get_id:gsub('#msgs',NumMsg)
 local get_id = get_id:gsub('#edit',message_edit) 
 local get_id = get_id:gsub('#stast',Status_Gps) 
 local get_id = get_id:gsub('#auto',TotalMsg) 
-local get_id = get_id:gsub('#Description',Description) 
 local get_id = get_id:gsub('#game',Num_Games) 
 local get_id = get_id:gsub('#photos',Total_Photp) 
 sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,get_id)
 else
-sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,'⌔︙'..Description..'\n⌔︙ايديك » '..Id..'\n⌔︙معرفك » '..UserName_User..'\n⌔︙رتبتك » '..Status_Gps..'\n⌔︙رسائلك » '..NumMsg..'\n⌔︙السحكات » '..message_edit..' \n⌔︙تتفاعلك » '..TotalMsg..'\n⌔︙ مجوهراتك » '..Num_Games)
+sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,"𓇡 . UsErNaMe . "..UserName_User.."  .𖠲 \n 𓇡 . StAsT . "..Status_Gps.." .𖠲 \n𓇡 . Id . "..Id.." .𖠲\n 𓇡 . GaMeS . "..Num_Games.." .𖠲\n𓇡 . MsGs . "..NumMsg.." .𖠲")
 end
 else
-send(msg.chat_id_, msg.id_,'⌔︙ليس لديك صوره \n'..'\n*⌔︙ايديك » '..Id..'\n⌔︙معرفك »* ['..UserName_User..']*\n⌔︙رتبتك » '..Status_Gps..'\n⌔︙رسائلك » '..NumMsg..'\n⌔︙السحكات » '..message_edit..' \n⌔︙تتفاعلك » '..TotalMsg..'\n⌔︙ مجوهراتك » '..Num_Games..'*') 
+send(msg.chat_id_, msg.id_,"𓇡 . UsErNaMe . "..UserName_User.."  .𖠲 \n 𓇡 . StAsT . "..Status_Gps.." .𖠲 \n𓇡 . Id . "..Id.." .𖠲\n 𓇡 . GaMeS . "..Num_Games.." .𖠲\n𓇡 . MsGs . "..NumMsg.." .𖠲")
 end
 else
 if get_id then
@@ -6530,12 +6587,11 @@ local get_id = get_id:gsub('#msgs',NumMsg)
 local get_id = get_id:gsub('#edit',message_edit) 
 local get_id = get_id:gsub('#stast',Status_Gps) 
 local get_id = get_id:gsub('#auto',TotalMsg) 
-local get_id = get_id:gsub('#Description',Description) 
 local get_id = get_id:gsub('#game',Num_Games) 
 local get_id = get_id:gsub('#photos',Total_Photp) 
 send(msg.chat_id_, msg.id_,'['..get_id..']') 
 else
-send(msg.chat_id_, msg.id_,'\n*⌔︙ايديك » '..Id..'\n⌔︙معرفك »* ['..UserName_User..']*\n⌔︙رتبتك » '..Status_Gps..'\n⌔︙رسائلك » '..NumMsg..'\n⌔︙السحكات » '..message_edit..' \n⌔︙تتفاعلك » '..TotalMsg..'\n⌔︙ مجوهراتك » '..Num_Games..'*') 
+send(msg.chat_id_, msg.id_,"𓇡 . UsErNaMe . "..UserName_User.."  .𖠲 \n 𓇡 . StAsT . "..Status_Gps.." .𖠲 \n𓇡 . Id . "..Id.." .𖠲\n 𓇡 . GaMeS . "..Num_Games.." .𖠲\n𓇡 . MsGs . "..NumMsg.." .𖠲")
 end
 end
 end,nil)   
@@ -7103,7 +7159,7 @@ return false
 end
 Teext = [[
 ⌔︙قائمه الالعاب الموجوده
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
+ — — — — — — — — — 
 ⌔︙لعبة البات » بات
 ⌔︙لعبة التخمين » خمن
 ⌔︙لعبه الاسرع » الاسرع
@@ -7113,7 +7169,7 @@ Teext = [[
 ⌔︙لعبة العكس » العكس 
 ⌔︙لعبة الحزوره » حزوره
 ⌔︙لعبة المعاني » معاني
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
+ — — — — — — — — — 
 ⌔︙مجوهراتي » لعرض عدد الارباح
 ⌔︙بيع مجوهراتي + العدد » لستبدال كل مجوهره ب50 رساله
 ]]
@@ -7391,13 +7447,13 @@ if text and text:match("^زخرفه (.*)$") and database:get(bot_id.."BLACKBOTSS
 local TextZhrfa = text:match("^زخرفه (.*)$")
 zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
 zx = JSON.decode(zh)
-t = "\n⌔️︙قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔️︙قائمه الزخرفه \n — — — — — — — — — \n"
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
 t = t..i.."-  `"..v.."` \n"
 end
-send(msg.chat_id_, msg.id_, t..'┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔︙اضغط على الاسم ليتم نسخه')
+send(msg.chat_id_, msg.id_, t..' — — — — — — — — —\n⌔︙اضغط على الاسم ليتم نسخه')
 end
 if text == "تعطيل الابراج" and Owner(msg) then
 send(msg.chat_id_, msg.id_, '⌯ تم تعطيل الابراج')
@@ -7584,6 +7640,68 @@ sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
 end,nil)
 end
 end
+if text == "admin" or text == "@admin" and Owner(msg) then
+if database:get(bot_id.."BLACKBOTSS:admin:Time"..msg.chat_id_) then 
+return
+ send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
+end
+database:setex(bot_id..'BLACKBOTSS:admin:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100 },function(extra,result,success)
+m = 0
+tgad = 0
+local ans = result.members_  
+for k, v in pairs(ans) do
+tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
+if m == 1 or m == tgad or k == 0 then
+tgad = m + 5
+t = "#Admin"
+end
+m = m + 1
+Adminame = data.first_name_
+Adminame = Adminame:gsub("]","")
+Adminame = Adminame:gsub("[[]","")
+t = t..", ["..Adminame.."](tg://user?id="..v.user_id_..")"
+if m == 1 or m == tgad or k == 0 then
+local Text = t:gsub('#Admin,','#Admin\n')
+sendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
+end
+end,nil)
+end
+end,nil)
+end
+if text == "all" or text == "@all" and Owner(msg) then
+if database:get(bot_id.."BLACKBOTSS:all:Time"..msg.chat_id_) then 
+return
+ send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
+end
+database:setex(bot_id..'BLACKBOTSS:all:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(argg,dataa) 
+tdcli_function({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub('-100',''), offset_ = 0,limit_ = dataa.member_count_},function(ta,hso)
+x = 0
+tags = 0
+local list = hso.members_
+for k, v in pairs(list) do
+tdcli_function({ID="GetUser",user_id_ = v.user_id_},function(arg,data)
+if x == 1 or x == tags or k == 0 then
+tags = x + 5
+t = "#all"
+end
+x = x + 1
+tagname = data.first_name_
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+t = t..", ["..tagname.."](tg://user?id="..v.user_id_..")"
+if x == 1 or x == tags or k == 0 then
+local Text = t:gsub('#all,','#all\n')
+sendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
+end
+end,nil)
+end
+end,nil)
+end,nil)
+end
+
+
 if text == 'الملفات' and DevBLACKBOTSS(msg) then
 t = '⌔︙جميع الملفات : \n — — — — — — — — — \n'
 i = 0
@@ -7751,7 +7869,7 @@ send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة
 end
 return false
 end
-Text = [[⌔ ︙  @LC6BOT   ]]
+Text = [[⌔ ︙@LC6BOT   ]]
 send(msg.chat_id_, msg.id_,Text)
 end
 if text == 'الاوامر' and Addictive(msg) then  
@@ -7773,7 +7891,7 @@ Text = [[
 ⌔︙ م4 » لعرض اوامر المنشئين
 ⌔︙ م5 » لعرض اوامر المطورين
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/Fbbbbb)
+[⌔︙- Black Team . ](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7820,7 +7938,7 @@ Text = [[
 ⌔︙الكلايش
 ⌔︙السيلفي
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/Fbbbbb)
+[⌔︙- Black Team . ](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7892,7 +8010,7 @@ Text = [[
 ⌔︙مسح الصلاحيات
 ⌔︙مسح الرابط
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/Fbbbbb)
+[⌔︙- Black Team . ](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7939,7 +8057,7 @@ Text = [[
 ⌔︙تفعيل/تعطيل اوامر التحشيش
 ⌔︙تفعيل/تعطيل الرابط/جلب الرابط
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/Fbbbbb)
+[⌔︙- Black Team . ](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7975,7 +8093,7 @@ Text = [[
 ⌔︙اضف رسائل + العدد بالرد
 ⌔︙اضف مجوهرات + العدد بالرد
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/Fbbbbb)
+[⌔︙- Black Team . ](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -8025,7 +8143,7 @@ Text = [[
 ⌔︙رفع/تنزيل منشئ اساسي
 ⌔︙مسح المنشئين الاساسين
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/Fbbbbb)
+[⌔︙- Black Team . ](t.me/Fbbbbb)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -8231,7 +8349,7 @@ local keyboard = {
 {'تحديث السورس ⌔','تحديث الملفات ⌔'},
 {'قائمه العام ⌔'},
 {'جلب نسخه احتياطيه ⌔'},
-{'الغاء ⌔'}
+{'الغاء ⌔'},
 }
 send_inline_key(msg.chat_id_,Text,keyboard)
 else
@@ -8431,7 +8549,8 @@ end
 database:setex(bot_id.."BLACKBOTSS:BLACKBOTSS:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
 send(msg.chat_id_, msg.id_,"⌔︙ارسل لي التوجيه الان") 
 return false
-end 
+end
+
 if text == "تفعيل الاذاعه ⌔" then
 database:del(bot_id.."BLACKBOTSS:Status:Bc") 
 send(msg.chat_id_, msg.id_,"\n⌔︙تم تفعيل الاذاعه " ) 
@@ -8570,7 +8689,7 @@ send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين  "
 end
 if text == ("قائمه العام ⌔") and DevBLACKBOTSS(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:GBan:User")
-t = "\n⌔︙قائمة المحظورين عام \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة المحظورين عام \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -8587,7 +8706,7 @@ return false
 end
 if text == ("المطورين ⌔") and DevBLACKBOTSS(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Sudo:User")
-t = "\n⌔︙قائمة مطورين البوت \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙قائمة مطورين البوت \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
@@ -8839,7 +8958,7 @@ database:incr(bot_id..'BLACKBOTSS:message_edit'..result.chat_id_..result.sender_
 local Text = result.content_.text_
 if database:get(bot_id.."BLACKBOTSS:Lock:edit"..msg.chat_id_) and not Text and not BasicConstructor(result) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_)
-t = "\n⌔︙ المنشئين الاساسين تعالو مخرب \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+t = "\n⌔︙ المنشئين الاساسين تعالو مخرب \n — — — — — — — — — \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
 if username then
