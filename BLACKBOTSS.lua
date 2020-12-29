@@ -8337,7 +8337,7 @@ send(msg.chat_id_, msg.id_,'⌔︙عـليك الاشـتࢪاك في قنـاة
 end
 return false
 end  
-if ALLSUDO(msg) then
+if KinGblaCk(msg) then
 local Text = '⌔︙مرحبا بك في اوامر المطور الجاهزه'
 local keyboard = {
 {'الاحصائيات ⌔'},
