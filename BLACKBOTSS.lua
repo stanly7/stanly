@@ -1718,10 +1718,10 @@ Reply_Status(msg,msg.sender_user_id_,"unlock","⌔️︙تم فتح الفيدي
 return false
 end 
 if text == "قفل المتحركه" and Addictive(msg) then  
-local url,res = https.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
+local url,res = https.request('https://forhassan.ml/Black/fBBBBB.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
 if data.Ch_Member.info ~= true then
-send(msg.chat_id_,msg.id_,'- شترك في قناة البوت اولآ @tenntime .')   
+send(msg.chat_id_,msg.id_,'- شترك في قناة البوت اولآ @fBBBBB .')   
 return false 
 end
 database:set(bot_id.."BLACKBOTSS:Lock:Animation"..msg.chat_id_,"del")  
@@ -7789,17 +7789,17 @@ send(msg.chat_id_, msg.id_, "⌔︙تم التحديث")
 end
 
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
-local url,res = https.request('https://forhassan.ml/Black/Black1.php?id='..msg.sender_user_id_)
+local url,res = https.request('https://forhassan.ml/Black/fBBBBB.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
 if data.Ch_Member.info ~= true then
-send(msg.chat_id_,msg.id_,'- شترك في قناة البوت اولآ @tenntime .')   
+send(msg.chat_id_,msg.id_,'- شترك في قناة البوت اولآ @fBBBBB .')   
 return false 
 end
 Text = [[
 *- Black Team .*
  — — — — — — — — — 
      
-[⌔︙ BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](http://t.me/II_II_II)
+[⌔︙ BLacK 𝖲𝗈𝗎𝗋𝖼𝖾  .](http://t.me/fBBBBB)
      
 [⌔︙ ToolS BLacK .](https://t.me/joinchat/AAAAAFPp_oZNV4U3n91zRQ)
      
@@ -7841,7 +7841,7 @@ Text = [[
 ⌔︙ م4 » لعرض اوامر المنشئين
 ⌔︙ م5 » لعرض اوامر المطورين
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/fBBBBB)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7888,7 +7888,7 @@ Text = [[
 ⌔︙الكلايش
 ⌔︙السيلفي
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/fBBBBB)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7960,7 +7960,7 @@ Text = [[
 ⌔︙مسح الصلاحيات
 ⌔︙مسح الرابط
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/fBBBBB)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -8007,7 +8007,7 @@ Text = [[
 ⌔︙تفعيل/تعطيل اوامر التحشيش
 ⌔︙تفعيل/تعطيل الرابط/جلب الرابط
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/fBBBBB)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -8043,7 +8043,7 @@ Text = [[
 ⌔︙اضف رسائل + العدد بالرد
 ⌔︙اضف مجوهرات + العدد بالرد
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/fBBBBB)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -8093,7 +8093,7 @@ Text = [[
 ⌔︙رفع/تنزيل منشئ اساسي
 ⌔︙مسح المنشئين الاساسين
  — — — — — — — — — 
-[⌔︙Ch Source](t.me/II_II_II)
+[⌔︙Ch Source](t.me/fBBBBB)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
