@@ -7646,10 +7646,8 @@ local Text_Dev = database:get(bot_id..'BLACKBOTSS:Text_Dev')
 if Text_Dev then 
 send(msg.chat_id_, msg.id_,Text_Dev)
 else
-tdcli_function ({ID = "GetUser",user_id_ = Id_Sudo},function(arg,result) 
-local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
+local Name = '⌔︙مطور البوت  : [ '..UserName..' ]'
 sendText(msg.chat_id_,Name,msg.id_/2097152/0.5,'md')
-end,nil)
 end
 end
 if text == 'الملفات' and DevBLACKBOTSS(msg) then
