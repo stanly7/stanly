@@ -136,6 +136,8 @@ elseif database:sismember(bot_id.."BLACKBOTSS:Manager"..chat_id, user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Mod:User"..chat_id, user_id) then
 var = true  
+elseif database:sismember(bot_id.."BLACKBOTSS:MN:TF"..chat_id, user_id) then
+var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Special:User"..chat_id, user_id) then  
 var = true  
 else  
@@ -1717,6 +1719,40 @@ database:del(bot_id.."BLACKBOTSS:Lock:Video"..msg.chat_id_)
 Reply_Status(msg,msg.sender_user_id_,"unlock","⌔️︙تم فتح الفيديو")  
 return false
 end 
+if text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:set(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_,true) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙تم قفـل الفارسيه")  
+end
+if text and database:get(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_) and not Addictive(msg) then 
+list = {"كس","كسمك","كسختك","عير","كسخالتك","خرا بالله","عير بالله","كسخواتكم","كحاب","مناويج","مناويج","كحبه","ابن الكحبه","فرخ","فروخ","طيزك","طيزختك"}
+for k,v in pairs(list) do
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text == 'فتح الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:del(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙ تـم فـتح الفارسيه\n")  
+end
+if text == 'قفل الفشار' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:set(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_,true) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙تم قفـل الفشار")  
+end
+if text and database:get(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_) and not Addictive(msg) then 
+list = {"ڄ","که","پی","خسته","برم","راحتی","بیام","بپوشم","كرمه","چه","چ","ڬ","ٺ","چ","ڇ","ڿ","ڀ","ڎ","ݫ","ژ","ڟ","ݜ","ڸ","پ","۴","زدن","دخترا","دیوث","مک","زدن"}
+for k,v in pairs(list) do
+if string.find(text,v) ~= nil then
+DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
+return false
+end
+end
+end
+if text == 'فتح الفشار' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
+database:del(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_) 
+Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙ تـم فـتح الفشار\n")  
+end
 if text == "قفل المتحركه" and Addictive(msg) then  
 local url,res = https.request('https://forhassan.ml/Black/fBBBBB.php?id='..msg.sender_user_id_)
 data = JSON.decode(url)
@@ -3747,40 +3783,7 @@ database:srem(bot_id.."BLACKBOTSS:Muted:User"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","⌔︙تم الغاء كتمه من هنا")  
 return false
 end
-if text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
-database:set(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_,true) 
-Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙تم قفـل الفارسيه")  
-end
-if text and database:get(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_) and not Addictive(msg) then 
-list = {"كس","كسمك","كسختك","عير","كسخالتك","خرا بالله","عير بالله","كسخواتكم","كحاب","مناويج","مناويج","كحبه","ابن الكحبه","فرخ","فروخ","طيزك","طيزختك"}
-for k,v in pairs(list) do
-if string.find(text,v) ~= nil then
-DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
-return false
-end
-end
-end
-if text == 'فتح الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
-database:del(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_) 
-Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙ تـم فـتح الفارسيه\n")  
-end
-if text == 'قفل الفشار' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
-database:set(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_,true) 
-Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙تم قفـل الفشار")  
-end
-if text and database:get(bot_id..'BLACKBOTSS:BLACKBOTSS:lock:Fshar'..msg.chat_id_) and not Addictive(msg) then 
-list = {"ڄ","که","پی","خسته","برم","راحتی","بیام","بپوشم","كرمه","چه","چ","ڬ","ٺ","چ","ڇ","ڿ","ڀ","ڎ","ݫ","ژ","ڟ","ݜ","ڸ","پ","۴","زدن","دخترا","دیوث","مک","زدن"}
-for k,v in pairs(list) do
-if string.find(text,v) ~= nil then
-DeleteMessage(msg.chat_id_,{[0] = msg.id_}) 
-return false
-end
-end
-end
-if text == 'فتح الفشار' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
-database:del(bot_id..'BLACKBOTSS:lock:Fshar'..msg.chat_id_) 
-Reply_Status(msg,msg.sender_user_id_,"lock","⌔︙ تـم فـتح الفشار\n")  
-end
+
 if text == ("تقيد") and tonumber(msg.reply_to_message_id_) ~= 0 and Addictive(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -5592,6 +5595,7 @@ end
 send(msg.chat_id_,msg.id_,t)
 end,nil)
 end
+
 if text == "رتبتي" then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
