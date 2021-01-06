@@ -40,15 +40,6 @@ print(serpent.block(value, {comment=false}))
 end 
 function dl_cb(t,s)
 end
-function DevBLACKBOTSS(msg)  
-local Taha_Sudo = false  
-for k,v in pairs(List_Sudos) do  
-if msg.sender_user_id_ == v then  
-Taha_Sudo = true  
-end  
-end  
-return Taha_Sudo  
-end 
 function DevBLACKBOTSSe(user)  
 local Taha_Sudo = false  
 for k,v in pairs(List_Sudos) do  
@@ -58,9 +49,19 @@ end
 end  
 return Taha_Sudo  
 end 
-function DevSudoBot(msg) 
+
+function VIP_DeV(msg)  
+local h_Sudo = false  
+for k,v in pairs(List_Sudos) do  
+if msg.sender_user_id_ == v then  
+h_Sudo = true  
+end  
+end  
+return h_Sudo  
+end 
+function DevBLACKBOTSS(msg) 
 local hash = database:sismember(bot_id.."DEV:Sudo:T", msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) then  
+if hash or VIP_DeV(msg) then  
 return true  
 else  
 return false  
@@ -68,7 +69,7 @@ end
 end
 function DevBot(msg) 
 local hash = database:sismember(bot_id.."BLACKBOTSS:Sudo:User", msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevSudoBot(msg) then  
+if hash or DevBLACKBOTSS(msg) or VIP_DeV(msg) then    
 return true  
 else  
 return false  
@@ -76,7 +77,7 @@ end
 end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or DevSudoBot(msg) then   
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or VIP_DeV(msg) then     
 return true 
 else 
 return false 
@@ -84,7 +85,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or DevSudoBot(msg) then      
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -92,7 +93,7 @@ end
 end
 function Owner(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or DevSudoBot(msg) then      
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -100,7 +101,7 @@ end
 end
 function Addictive(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or DevSudoBot(msg) then      
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -108,7 +109,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or DevSudoBot(msg) then      
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
 return true    
 else    
 return false    
@@ -116,7 +117,7 @@ end
 end
 function Vips(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_,msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or DevSudoBot(msg) then      
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or VIP_DeV(msg) then        
 return true 
 else 
 return false 
@@ -2237,7 +2238,7 @@ database:hdel(bot_id.."BLACKBOTSS:flooding:settings:"..msg.chat_id_ ,"flood")
 Reply_Status(msg,msg.sender_user_id_,"unlock","⌔️︙تم فتح التكرار")
 return false
 end 
-if text == ("اضف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("اضف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and VIP_DeV(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 database:sadd(bot_id.."DEV:Sudo:T", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
@@ -2245,7 +2246,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false 
 end
-if text and text:match("^اضف مطور ثانوي @(.*)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^اضف مطور ثانوي @(.*)$") and VIP_DeV(msg) then
 local username = text:match("^اضف مطور ثانوي @(.*)$")
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2262,13 +2263,13 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false 
 end
-if text and text:match("^اضف مطور ثانوي (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^اضف مطور ثانوي (%d+)$") and VIP_DeV(msg) then
 local userid = text:match("^اضف مطور ثانوي (%d+)$")
 database:sadd(bot_id.."DEV:Sudo:T", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
 return false 
 end
-if text == ("حذف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("حذف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and VIP_DeV(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 database:srem(bot_id.."DEV:Sudo:T", result.sender_user_id_)
 Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من المطور ثانويين")  
@@ -2276,7 +2277,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false 
 end
-if text and text:match("^حذف مطور ثانوي @(.*)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^حذف مطور ثانوي @(.*)$") and VIP_DeV(msg) then
 local username = text:match("^حذف مطور ثانوي @(.*)$")
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2289,7 +2290,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end  
-if text and text:match("^حذف مطور ثانوي (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^حذف مطور ثانوي (%d+)$") and VIP_DeV(msg) then
 local userid = text:match("^حذف مطور ثانوي (%d+)$")
 database:srem(bot_id.."DEV:Sudo:T", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من المطور ثانويين")  
@@ -2311,7 +2312,7 @@ t = "⌔︙لا يوجد مطورين ثانويين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("مسح الثانويين") and DevBLACKBOTSS(msg) then
+if text == ("مسح الثانويين") and VIP_DeV(msg) then
 database:del(bot_id.."DEV:Sudo:T")
 send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين الثانويين  ")
 end
@@ -2600,12 +2601,20 @@ if #list == 0 then
 t = "⌔︙لا يوجد محظورين"
 end
 send(msg.chat_id_, msg.id_, t)
-end
+end 
 
-if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and VIP_DeV(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 if result.sender_user_id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت الاساسي \n")
+return false 
+end
+if result.sender_user_id_ == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
+if result.sender_user_id_ == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
@@ -2619,7 +2628,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^حظر عام @(.*)$")  and DevBLACKBOTSS(msg) then
+if text and text:match("^حظر عام @(.*)$")  and VIP_DeV(msg) then
 local username = text:match("^حظر عام @(.*)$") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2632,7 +2641,15 @@ send(msg.chat_id_, msg.id_, "⌔︙لا تسطيع حظر البوت عام")
 return false 
 end
 if result.id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت الاساسي \n")
+return false 
+end
+if result.id_ == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
+if result.id_ == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 database:sadd(bot_id.."BLACKBOTSS:GBan:User", result.id_)
@@ -2644,10 +2661,18 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^حظر عام (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^حظر عام (%d+)$") and VIP_DeV(msg) then
 local userid = text:match("^حظر عام (%d+)$")
 if userid == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت الاساسي \n")
+return false 
+end
+if userid == tonumber(970017493) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
+if userid == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -2666,7 +2691,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^الغاء العام @(.*)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^الغاء العام @(.*)$") and VIP_DeV(msg) then
 local username = text:match("^الغاء العام @(.*)$") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2679,7 +2704,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^الغاء العام (%d+)$") and DevBLACKBOTSS(msg) then
+if text and text:match("^الغاء العام (%d+)$") and VIP_DeV(msg) then
 local userid = text:match("^الغاء العام (%d+)$")
 database:srem(bot_id.."BLACKBOTSS:GBan:User", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم الغاء حظره عام من المجموعات")  
@@ -3488,7 +3513,11 @@ return false
 end
 function Function_BLACKBOTSS(extra, result, success)
 if result.sender_user_id_ == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
+if result.sender_user_id_ == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
@@ -3552,8 +3581,16 @@ return false
 end
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
+if result.id_ == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
+if result.id_ == tonumber(Id_Sudo) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
+return false 
+end
 if result.id_ == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(result.id_, msg.chat_id_) == true then
@@ -3600,8 +3637,16 @@ if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) th
 send(msg.chat_id_, msg.id_,'⌔︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
 end
+if userid == tonumber(Id_Sudo) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
+return false 
+end
 if userid == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
+if userid == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(userid, msg.chat_id_) == true then
@@ -3707,7 +3752,15 @@ return false
 end
 function Function_BLACKBOTSS(extra, result, success)
 if result.sender_user_id_ == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس  \n")
+return false 
+end
+if result.sender_user_id_ == tonumber(665877797) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس  \n")
+return false 
+end
+if result.sender_user_id_ == tonumber(Id_Sudo) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت  \n")
 return false 
 end
 if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
@@ -3742,7 +3795,7 @@ end
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
 if result.id_ == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(result.id_, msg.chat_id_) == true then
@@ -3774,7 +3827,7 @@ return false
 end
 local userid = text:match("^كتم (%d+)$")
 if userid == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⌔︙هذا قدقد تاجراسك \n")
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(userid, msg.chat_id_) == true then
