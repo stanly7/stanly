@@ -4181,7 +4181,7 @@ local timsh = text:match("^وضع لقب (.*)$")
 function start_function(extra, result, success)
 local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..bot_id)
 local getInfo = JSON.decode(chek)
-if getInfo.result.can_promote_members == true then
+if getInfo.result.can_promote_members == false then
 send(msg.chat_id_, msg.id_,'⌔︙لا يمكنني تعديل  او وضع لقب ليس لدي صلاحيه') 
 return false  
 end
