@@ -4201,23 +4201,9 @@ if text == 'لقبي' and tonumber(msg.reply_to_message_id_) == 0 then
 Ge = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..msg.sender_user_id_)
 GeId = JSON.decode(Ge)
 send(msg.chat_id_, msg.id_,'⌔︙لقبك هو : '..GeId.result.custom_title) 
+else
+send(msg.chat_id_, msg.id_,'⌔︙وينكو لقب ') 
 end
-if text == 'لقبه' and tonumber(msg.reply_to_message_id_) > 0 and not database:get(bot_id..'BLACKBOTSS:Lock:ID:Bot'..msg.chat_id_) then
-function Function_BLACKBOTSS(extra, result, success)
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-if data.first_name_ == false then
-send(msg.chat_id_, msg.id_,'⌔︙ الحساب محذوف لا توجد معلوماته ')
-return false
-end
-Gee = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..data.id_)
-GerId = JSON.decode(Gee)
-send(msg.chat_id_, msg.id_,'⌔︙للقب الشخص هو : '..GerId.result.custom_title) 
-end,nil)   
-end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
-return false
-end
-
 if text == "فحص البوت" and Owner(msg) then
 local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..bot_id)
 local getInfo = JSON.decode(chek)
