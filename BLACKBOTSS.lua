@@ -4200,9 +4200,11 @@ end
 if text == 'لقبي' and tonumber(msg.reply_to_message_id_) == 0 then
 Ge = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..msg.sender_user_id_)
 GeId = JSON.decode(Ge)
+if GeId.result.custom_title then
 send(msg.chat_id_, msg.id_,'⌔︙لقبك هو : '..GeId.result.custom_title) 
 else
 send(msg.chat_id_, msg.id_,'⌔︙وينكو لقب ') 
+end
 end
 if text == "فحص البوت" and Owner(msg) then
 local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..bot_id)
