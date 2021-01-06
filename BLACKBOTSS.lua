@@ -4177,9 +4177,11 @@ return false
 end
 end
 if text == 'لقبه' and msg.reply_to_message_id_ ~= 0 then
+function start_function(extra, result, success)
 Ger = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_)
 GerId = JSON.decode(Ger)
 send(msg.chat_id_, msg.id_,'⌔︙للقب الشخص هو '..GerId.result.custom_title) 
+end
 end
 if text and text:match("^وضع لقب (.*)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 local timsh = text:match("^وضع لقب (.*)$")
