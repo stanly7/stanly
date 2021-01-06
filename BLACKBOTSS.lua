@@ -4176,13 +4176,6 @@ send(msg.chat_id_, msg.id_, '⌔︙تم تفعيل رفع » الادمن ~ ال
 return false
 end
 end
-if text == 'لقبه' and msg.reply_to_message_id_ ~= 0 then
-function start_function(extra, result, success)
-Ger = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_)
-GerId = JSON.decode(Ger)
-send(msg.chat_id_, msg.id_,'⌔︙للقب الشخص هو '..GerId.result.custom_title) 
-end
-end
 if text and text:match("^وضع لقب (.*)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 local timsh = text:match("^وضع لقب (.*)$")
 function start_function(extra, result, success)
@@ -4203,6 +4196,20 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
+
+if text == 'لقبي' and tonumber(msg.reply_to_message_id_) == 0 then
+Ge = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..msg.sender_user_id_)
+GeId = JSON.decode(Ge)
+send(msg.chat_id_, msg.id_,'⌔︙للقب الشخص هو '..GeId.result.custom_title) 
+end
+if text == 'لقبه' and msg.reply_to_message_id_ ~= 0 then
+function start_function(extra, result, success)
+Ger = https.request("https://api.telegram.org/bot"..token.."/getChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_)
+GerId = JSON.decode(Ger)
+send(msg.chat_id_, msg.id_,'⌔︙للقب الشخص هو '..GerId.result.custom_title) 
+end
+end
+
 if text == "فحص البوت" and Owner(msg) then
 local chek = https.request('https://api.telegram.org/bot'..token..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..bot_id)
 local getInfo = JSON.decode(chek)
