@@ -58,9 +58,17 @@ end
 end  
 return Taha_Sudo  
 end 
+function DevSudoBot(msg) 
+local hash = database:sismember(bot_id.."DEV:Sudo:T", msg.sender_user_id_) 
+if hash or DevBLACKBOTSS(msg) then  
+return true  
+else  
+return false  
+end  
+end
 function DevBot(msg) 
 local hash = database:sismember(bot_id.."BLACKBOTSS:Sudo:User", msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) then  
+if hash or DevBLACKBOTSS(msg) or DevSudoBot(msg) then  
 return true  
 else  
 return false  
@@ -68,7 +76,7 @@ end
 end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) then 
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or DevSudoBot(msg) then   
 return true 
 else 
 return false 
@@ -76,7 +84,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) then    
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or DevSudoBot(msg) then      
 return true    
 else    
 return false    
@@ -84,7 +92,7 @@ end
 end
 function Owner(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Manager"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) then    
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or DevSudoBot(msg) then      
 return true    
 else    
 return false    
@@ -92,7 +100,7 @@ end
 end
 function Addictive(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Mod:User"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) then    
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or DevSudoBot(msg) then      
 return true    
 else    
 return false    
@@ -100,7 +108,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) then    
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or DevSudoBot(msg) then      
 return true    
 else    
 return false    
@@ -108,7 +116,7 @@ end
 end
 function Vips(msg)
 local hash = database:sismember(bot_id.."BLACKBOTSS:Special:User"..msg.chat_id_,msg.sender_user_id_) 
-if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) then    
+if hash or DevBLACKBOTSS(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or DevSudoBot(msg) then      
 return true 
 else 
 return false 
@@ -123,6 +131,8 @@ var = true
 elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
 elseif tonumber(user_id) == tonumber(bot_id) then  
+var = true  
+elseif database:sismember(bot_id.."DEV:Sudo:T", user_id) then
 var = true  
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = true  
@@ -152,6 +162,7 @@ elseif DevBLACKBOTSSe(user_id) == true then
 var = "المطور الاساسي"  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = "البوت"
+elseif database:sismember(bot_id.."DEV:Sudo:T", user_id) then  var = "المطور الاساسي²"  
 elseif database:sismember(bot_id.."BLACKBOTSS:Sudo:User", user_id) then
 var = database:get(bot_id.."BLACKBOTSS:Sudo:Rd"..chat_id) or "المطور"  
 elseif database:sismember(bot_id.."BLACKBOTSS:Basic:Constructor"..chat_id, user_id) then
@@ -2226,7 +2237,84 @@ database:hdel(bot_id.."BLACKBOTSS:flooding:settings:"..msg.chat_id_ ,"flood")
 Reply_Status(msg,msg.sender_user_id_,"unlock","⌔️︙تم فتح التكرار")
 return false
 end 
-
+if text == ("اضف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+function Function_BLACKBOTSS(extra, result, success)
+database:sadd(bot_id.."DEV:Sudo:T", result.sender_user_id_)
+Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
+return false 
+end
+if text and text:match("^اضف مطور ثانوي @(.*)$") and DevBLACKBOTSS(msg) then
+local username = text:match("^اضف مطور ثانوي @(.*)$")
+function Function_BLACKBOTSS(extra, result, success)
+if result.id_ then
+if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
+send(msg.chat_id_,msg.id_,"⌔︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+return false 
+end      
+database:sadd(bot_id.."DEV:Sudo:T", result.id_)
+Reply_Status(msg,result.id_,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
+else
+send(msg.chat_id_, msg.id_,"⌔︙لا يوجد حساب بهاذا المعرف")
+end
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
+return false 
+end
+if text and text:match("^اضف مطور ثانوي (%d+)$") and DevBLACKBOTSS(msg) then
+local userid = text:match("^اضف مطور ثانوي (%d+)$")
+database:sadd(bot_id.."DEV:Sudo:T", userid)
+Reply_Status(msg,userid,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
+return false 
+end
+if text == ("حذف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
+function Function_BLACKBOTSS(extra, result, success)
+database:srem(bot_id.."DEV:Sudo:T", result.sender_user_id_)
+Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من المطور ثانويين")  
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
+return false 
+end
+if text and text:match("^حذف مطور ثانوي @(.*)$") and DevBLACKBOTSS(msg) then
+local username = text:match("^حذف مطور ثانوي @(.*)$")
+function Function_BLACKBOTSS(extra, result, success)
+if result.id_ then
+database:srem(bot_id.."DEV:Sudo:T", result.id_)
+Reply_Status(msg,result.id_,"reply","⌔︙تم تنزيله من المطور ثانويين")  
+else
+send(msg.chat_id_, msg.id_,"⌔︙لا يوجد حساب بهاذا المعرف")
+end
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
+return false
+end  
+if text and text:match("^حذف مطور ثانوي (%d+)$") and DevBLACKBOTSS(msg) then
+local userid = text:match("^حذف مطور ثانوي (%d+)$")
+database:srem(bot_id.."DEV:Sudo:T", userid)
+Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من المطور ثانويين")  
+return false 
+end
+if text == ("الثانويين") and DevBLACKBOTSS(msg) then
+local list = database:smembers(bot_id.."DEV:Sudo:T")
+t = "\n⌔︙قائمة مطورين الثانويين للبوت \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+for k,v in pairs(list) do
+local username = database:get(bot_id.."BLACKBOTSS:User:Name" .. v)
+if username then
+t = t..""..k.."- ([@"..username.."])\n"
+else
+t = t..""..k.."- (`"..v.."`)\n"
+end
+end
+if #list == 0 then
+t = "⌔︙لا يوجد مطورين ثانويين"
+end
+send(msg.chat_id_, msg.id_, t)
+end
+if text == ("مسح الثانويين") and DevBLACKBOTSS(msg) then
+database:del(bot_id.."DEV:Sudo:T")
+send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين الثانويين  ")
+end
 if text == ("مسح قائمه العام") and DevBLACKBOTSS(msg) then
 database:del(bot_id.."BLACKBOTSS:GBan:User")
 send(msg.chat_id_, msg.id_, "\n⌔︙تم مسح قائمه العام")
@@ -4091,8 +4179,8 @@ end
 if text and text:match("^وضع لقب (.*)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 local timsh = text:match("^وضع لقب (.*)$")
 function start_function(extra, result, success)
-if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,' البوت ليس مشرف يرجى ترقيتي !') 
+if msg.can_be_promote_members == false then 
+send(msg.chat_id_, msg.id_,'⌔︙لا يمكنني تعديل  او وضع لقب ليس لدي صلاحيه') 
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
