@@ -66,22 +66,6 @@ else
 return false  
 end  
 end
-function VipDev(user_id,chat_id)
-if tonumber(user_id) == tonumber(970017493) then  
-var = true  
-elseif tonumber(user_id) == tonumber(665877797) then
-var = true  
-elseif tonumber(user_id) == tonumber(Id_Sudo) then
-var = true  
-elseif tonumber(user_id) == tonumber(bot_id) then  
-var = true  
-elseif database:sismember(bot_id.."DEV:Sudo:T", user_id) then
-var = true  
-else  
-var = false  
-end  
-return var
-end 
 function DevBot(msg) 
 local hash = database:sismember(bot_id.."BLACKBOTSS:Sudo:User", msg.sender_user_id_) 
 if hash or DevBLACKBOTSS(msg) or DevSudoBot(msg) then  
@@ -2624,8 +2608,9 @@ if result.sender_user_id_ == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
 return false 
 end
-if VipDev(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "⌔︙لا تسطيع حظر البوت عام")
+return false 
 end
 database:sadd(bot_id.."BLACKBOTSS:GBan:User", result.sender_user_id_)
 Kick_Group(result.chat_id_, result.sender_user_id_)
@@ -2642,8 +2627,13 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_,"⌔︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
-if VipDev(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+if tonumber(result.id_) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "⌔︙لا تسطيع حظر البوت عام")
+return false 
+end
+if result.id_ == tonumber(Id_Sudo) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
+return false 
 end
 database:sadd(bot_id.."BLACKBOTSS:GBan:User", result.id_)
 Reply_Status(msg,result.id_,"reply","⌔︙تم حظره عام من المجموعات")  
@@ -2656,8 +2646,9 @@ return false
 end
 if text and text:match("^حظر عام (%d+)$") and DevBLACKBOTSS(msg) then
 local userid = text:match("^حظر عام (%d+)$")
-if VipDev(userid, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⌔︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+if userid == tonumber(Id_Sudo) then
+send(msg.chat_id_, msg.id_, "⌔︙لا يمكنك حظر المطور الاساسي \n")
+return false 
 end
 if tonumber(userid) == tonumber(bot_id) then  
 send(msg.chat_id_, msg.id_, "⌔︙لا تسطيع حظر البوت عام")
