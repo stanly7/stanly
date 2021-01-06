@@ -2603,7 +2603,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end 
 
-if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and VIP_DeV(msg) then
+if text == ("حظر عام") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBLACKBOTSS(msg) then
 function Function_BLACKBOTSS(extra, result, success)
 if result.sender_user_id_ == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت الاساسي \n")
@@ -2628,7 +2628,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^حظر عام @(.*)$")  and VIP_DeV(msg) then
+if text and text:match("^حظر عام @(.*)$")  and DevBLACKBOTSS(msg) then
 local username = text:match("^حظر عام @(.*)$") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2661,7 +2661,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^حظر عام (%d+)$") and VIP_DeV(msg) then
+if text and text:match("^حظر عام (%d+)$") and DevBLACKBOTSS(msg) then
 local userid = text:match("^حظر عام (%d+)$")
 if userid == tonumber(Id_Sudo) then
 send(msg.chat_id_, msg.id_, "⌔︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت الاساسي \n")
@@ -2691,7 +2691,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^الغاء العام @(.*)$") and VIP_DeV(msg) then
+if text and text:match("^الغاء العام @(.*)$") and DevBLACKBOTSS(msg) then
 local username = text:match("^الغاء العام @(.*)$") 
 function Function_BLACKBOTSS(extra, result, success)
 if result.id_ then
@@ -2704,7 +2704,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_BLACKBOTSS, nil)
 return false
 end
-if text and text:match("^الغاء العام (%d+)$") and VIP_DeV(msg) then
+if text and text:match("^الغاء العام (%d+)$") and DevBLACKBOTSS(msg) then
 local userid = text:match("^الغاء العام (%d+)$")
 database:srem(bot_id.."BLACKBOTSS:GBan:User", userid)
 Reply_Status(msg,userid,"reply","⌔︙تم الغاء حظره عام من المجموعات")  
